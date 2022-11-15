@@ -7,7 +7,7 @@
 \author{Benedikt Schöps @m4dh0rs3 <schoeps.benedikt@gmail.com>}
 
 % Set meta-data of the cheatsheet.
-\usepackage[xetex,
+\RequirePackage[xetex,
     pdfauthor={\@author},
     pdfcreator={\@author},
     pdftitle={\@title},
@@ -21,11 +21,31 @@
     pdflang=de,
 ]{hyperref}
 
+% OPTIONS
+%%%%%%%%%
+
+% Poster layout mode.
+\newif\ifMzPoster
+\MzPosterfalse
+
+\DeclareOption{poster}{
+  \MzPostertrue
+}
+
+% Uni Leipzig Branding.
+\newif\ifMzUniLeipzig
+\MzUniLeipzigfalse
+
+\DeclareOption{uniLeipzig}{
+  \MzUniLeipzigtrue
+  \MzPosterfalse
+}
+
+% Terminates the option processing.
+\ProcessOptions\relax
+
 % PACKAGES
 %%%%%%%%%%
-
-% Indexing keywords.
-\RequirePackage{makeidx}
 
 % FONTS
 %------
@@ -40,13 +60,6 @@
 
 % Palatino font.
 \RequirePackage{palatino}
-
-% Alternative fonts.
-% Latin modern font sans serif.
-% \usepackage{lmodern}
-% \renewcommand{\familydefault}{\sfdefault}
-% \RequirePackage[scaled]{helvet}
-% \renewcommand*\familydefault{\sfdefault}
 
 % Dingbat symbols.
 \RequirePackage{pifont}
@@ -92,13 +105,13 @@
 % Draw vector graphics.
 \RequirePackage{tikz}
 % Coordinate systems.
-% \usepackage{tkz-euclide}
+% \RequirePackage{tkz-euclide}
 % Line decorations.
 \usetikzlibrary{decorations.pathmorphing}
 % Draw matrices.
 \usetikzlibrary{matrix} 
 % Draw circuits.
-\usepackage{circuitikz}
+\RequirePackage{circuitikz}
 % Circuit settings.
 \ctikzset{
  % Use ANSI/IEEE Std 91/91a-1991.
@@ -106,40 +119,51 @@
 }
 
 % Color definitions.
-\usepackage{xcolor}
+\RequirePackage{xcolor}
 
 % Background pictures.
-\usepackage{eso-pic}
+\RequirePackage{eso-pic}
 
 % COLORS
 %%%%%%%%
+
+\ifMzUniLeipzig
+
+% Universität Leipzig corporate design. See
+% <https://gitea.math.uni-leipzig.de/hellmund/leipzig-theme/src/commit/a0b89c43e7c6d2e5499db484fe855137adb37a3f/beamerthemeleipzig.sty#L188-L192>
+\definecolor{primary}{HTML}{b02f2c}
+\definecolor{secondary}{HTML}{d64242}
+\definecolor{background}{HTML}{8ac2d1}
+
+% Universität Leipzig corporate design. See
+% <https://gitea.math.uni-leipzig.de/hellmund/leipzig-theme/src/commit/a0b89c43e7c6d2e5499db484fe855137adb37a3f/beamerthemeleipzig.sty#L402-L415>.
+\AddToShipoutPictureBG{
+  \hbox to \paperwidth{
+    \hfill
+    \begin{tikzpicture}[scale=1/16]
+      % Rendered redundant parts for less color-fringing.
+      \path [fill=background] (0,0) -- (24,0) -- (24,12) -- cycle;
+      \path [fill=primary] (24,12) -- (40,12) -- (40,60) -- cycle;
+      \path [fill=secondary] (20,0) -- (40,0) -- (40,20) -- (24,12) -- cycle;
+
+      % Author.
+      % \draw[white] (30,3) node[scale=0.7] {\tiny Benedikt Schöps};
+    \end{tikzpicture}
+  }
+}
+
+% Alternative fonts.
+% Latin modern font sans serif.
+\RequirePackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+
+\else
 
 % Color definitions.
 \definecolor{primary}{named}{violet}
 \definecolor{background}{named}{lightgray}
 
-% Universität Leipzig corporate design. See
-% <https://gitea.math.uni-leipzig.de/hellmund/leipzig-theme/src/commit/a0b89c43e7c6d2e5499db484fe855137adb37a3f/beamerthemeleipzig.sty#L188-L192>
-% \definecolor{primary}{HTML}{b02f2c}
-% \definecolor{secondary}{HTML}{d64242}
-% \definecolor{background}{HTML}{8ac2d1}
-
-% Universität Leipzig corporate design. See
-% <https://gitea.math.uni-leipzig.de/hellmund/leipzig-theme/src/commit/a0b89c43e7c6d2e5499db484fe855137adb37a3f/beamerthemeleipzig.sty#L402-L415>.
-% \AddToShipoutPictureBG{
-%   \hbox to \paperwidth{
-%     \hfill
-%     \begin{tikzpicture}[scale=1/16]
-%       % Rendered redundant parts for less color-fringing.
-%       \path [fill=background] (0,0) -- (24,0) -- (24,12) -- cycle;
-%       \path [fill=primary] (24,12) -- (40,12) -- (40,60) -- cycle;
-%       \path [fill=secondary] (20,0) -- (40,0) -- (40,20) -- (24,12) -- cycle;
-% 
-%       % Author.
-%       \draw[white] (30,3) node[scale=0.7] {\tiny Benedikt Schöps};
-%     \end{tikzpicture}
-%   }
-% }
+\fi
 
 \hypersetup{
   linkcolor=primary,
@@ -152,10 +176,6 @@
 
 % COMMANDS
 %%%%%%%%%%
-
-% Poster layout mode.
-\newif\ifMzPoster
-\MzPostertrue
 
 % \chapterprecis{chapter summary}
 % \fancybreak{break characters}
@@ -183,10 +203,21 @@
 % Position and resize page graphics.
 \newcommand{\mzGraphic}[1]{\mzScale{1}{#1}}
 
+\ifMzUniLeipzig
+
+% Color formatting.
+\newcommand{\mzEmph}[1]{\emph{\color{background}#1}}
+\newcommand{\mzMathEmph}[1]{\mathbin{\color{background}\mathbf{#1}}}
+\newcommand{\mzSymbolEmph}[1]{\mathbin{\color{background}\boldsymbol{#1}}}
+
+\else
+
 % Color formatting.
 \newcommand{\mzEmph}[1]{\emph{\color{primary}#1}}
 \newcommand{\mzMathEmph}[1]{\mathbin{\color{primary}\mathbf{#1}}}
 \newcommand{\mzSymbolEmph}[1]{\mathbin{\color{primary}\boldsymbol{#1}}}
+
+\fi
 
 % LAYOUT
 %-------
@@ -197,10 +228,16 @@
 % Set chapter-style.
 % \chapterstyle{dash}
 % \chapterstyle{thatcher}
-% \chapterstyle{culver}
 % \chapterstyle{bringhurst}
 % \chapterstyle{lyhne}
-\chapterstyle{wilsondob}
+
+\ifMzUniLeipzig
+  \chapterstyle{culver}
+  \renewcommand\printchaptername{\color{background}}
+  \renewcommand{\labelitemi}{$\bullet$}
+\else
+  \chapterstyle{wilsondob}
+\fi
 
 % Set margins.
 % Safe margin of at least 1/4" for most printers.
@@ -229,8 +266,19 @@
 \pagenumbering{gobble}
 
 % Extend chapter, sub-/section style with underline.
+
+\ifMzUniLeipzig
+
+\setsecheadstyle{\Large\bfseries\color{primary}}
+\setsubsecheadstyle{\large\bfseries\color{primary}}
+
+\else
+
+% Extend chapter, sub-/section style with underline.
 \setsecheadstyle{\Large\bfseries\mzUnderline}
 \setsubsecheadstyle{\large\bfseries\mzUnderline}
+
+\fi
 
 % Fix removed header warnings.
 \setlength{\headheight}{0pt}
@@ -258,21 +306,49 @@
 \makeindex
 
 % Set stock width to third and height to half of A4 paper.
-\stockheight=148.5mm
-\stockwidth=70mm
+\stockheight=148.5mm\stockwidth=70mm
+% \stockheight=297mm\stockwidth=140mm
 \settrimmedsize{\stockheight}{\stockwidth}{*}
 
 % Ruled header style.
 \pagestyle{ruled}
 
+\ifMzUniLeipzig
+
+% Extend chapter, sub-/section style with underline.
+\setsecheadstyle{\filbreak\Large\bfseries\color{primary}}
+\setsubsecheadstyle{\filbreak\large\bfseries\color{primary}}
+
+\else
+
 % Extend chapter, sub-/section style with underline.
 \setsecheadstyle{\filbreak\Large\bfseries\mzUnderline}
 \setsubsecheadstyle{\filbreak\large\bfseries\mzUnderline}
+
+\fi
 
 % Set margins.
 \setlrmarginsandblock{5mm}{5mm}{*}
 \setulmarginsandblock{14mm}{14mm}{*}
 
+% Print ToC at beginning of document.
+\AtBeginDocument{
+  % \begin{titlingpage}
+  %   \thispagestyle{empty}
+  %   \rotatebox{45}{
+  %     \begin{minipage}{\linewidth}
+  %       % \fontsize{25}{30}
+  %       % \selectfont
+  %       {\HUGE info}\\
+  %       \normalsize
+  %       Merkzettel\\
+  %       Benedikt Schöps
+  %     \end{minipage}
+  %   }
+  % \end{titlingpage}
+  % \newpage
+  \tableofcontents
+}
 % Print index keywords at end of document.
 \AtEndDocument{\clearforchapter\printindex}
 
@@ -281,3 +357,4 @@
 \fi
 
 \checkandfixthelayout
+\endinput
