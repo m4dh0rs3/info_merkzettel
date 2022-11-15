@@ -1,0 +1,30 @@
+% !TEX program = xelatex
+% !TeX root = ./info_merkzettel.tex
+% !TeX encoding = utf8
+% arara: xelatex
+
+% Setup class properties.
+\documentclass[
+  % Font for smaller sizes.
+  9pt,
+  % showtrims,
+  % Paper orientation in landscape mode.
+  landscape,
+  % Use A4 paper.
+  a4paper,
+  % Support German language.
+  ngerman,
+]{memoir}
+
+% Use custom package for styling and configuration.
+\usepackage{merkzettel}
+
+\usepackage{lipsum}
+
+\begin{document}
+
+\input{tex/mathematik/logik}
+\input{tex/mathematik/mengen}
+\input{tex/mathematik/analysis}
+
+\end{document}

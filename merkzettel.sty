@@ -1,0 +1,283 @@
+\ProvidesPackage{merkzettel}[2022/11/13 Merkzettel]
+
+% DOCUMENT METADATA
+%%%%%%%%%%%%%%%%%%%
+
+\title{Cheatsheet Informatik Bachelor of Science}
+\author{Benedikt Schöps @m4dh0rs3 <schoeps.benedikt@gmail.com>}
+
+% Set meta-data of the cheatsheet.
+\usepackage[xetex,
+    pdfauthor={\@author},
+    pdfcreator={\@author},
+    pdftitle={\@title},
+    pdfsubject={Informatik Bachelor of Science, Universität Leipzig (Analysis, Diskrete Strukturen, Algorithmen und Datenstrukturen, Modellierung und Programmierung, Technische Informatik)},
+    pdfkeywords={Informatik, Computer science, Cheatsheet, Universität Leipzig, Benedikt Schöps, m4dh0rs3},
+    pdfproducer={LaTeX, Latexmk, TeX Live, TikZ, VSCode LaTeX Workshop},
+    baseurl={m4dh0rs3.github.io/},
+    pdfcenterwindow=true,
+    pdfdisplaydoctitle=true,
+    pdffitwindow=true,
+    pdflang=de,
+]{hyperref}
+
+% PACKAGES
+%%%%%%%%%%
+
+% Indexing keywords.
+\RequirePackage{makeidx}
+
+% FONTS
+%------
+
+% T1 text encoding support German special characters.
+% European-style quoting ,,quote´´.
+% \RequirePackage{fontspec}
+\RequirePackage[T1]{fontenc}
+% UTF-8 Unicode encoding.
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[ngerman]{babel}
+
+% Palatino font.
+\RequirePackage{palatino}
+
+% Alternative fonts.
+% Latin modern font sans serif.
+% \usepackage{lmodern}
+% \renewcommand{\familydefault}{\sfdefault}
+% \RequirePackage[scaled]{helvet}
+% \renewcommand*\familydefault{\sfdefault}
+
+% Dingbat symbols.
+\RequirePackage{pifont}
+
+\newcommand{\mzBreak}{\fancybreak{\ding{167}\quad\ding{167}\quad\ding{167}}}
+
+% MATH
+%-----
+
+% Better math support.
+\RequirePackage{
+  amsmath,
+  amsthm,
+  amsfonts,
+  amssymb,
+  mathtools,
+}
+
+% Floor and ceiling math functions.
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+% Source-code
+%------------
+
+% Source code highlighting.
+% Requirers at least Python 2.6 and Pygments.
+\RequirePackage{minted}
+
+\setminted{
+  % TODO: Custom style.
+  style=bw,
+  breaklines,
+  autogobble,
+  frame={lines},
+  % framerule={0.8pt},
+  fontsize={\footnotesize}
+}
+
+% GRAPHICS
+%---------
+
+% Draw vector graphics.
+\RequirePackage{tikz}
+% Coordinate systems.
+% \usepackage{tkz-euclide}
+% Line decorations.
+\usetikzlibrary{decorations.pathmorphing}
+% Draw matrices.
+\usetikzlibrary{matrix} 
+% Draw circuits.
+\usepackage{circuitikz}
+% Circuit settings.
+\ctikzset{
+ % Use ANSI/IEEE Std 91/91a-1991.
+  logic ports=ieee,
+}
+
+% Color definitions.
+\usepackage{xcolor}
+
+% Background pictures.
+\usepackage{eso-pic}
+
+% COLORS
+%%%%%%%%
+
+% Color definitions.
+\definecolor{primary}{named}{violet}
+\definecolor{background}{named}{lightgray}
+
+% Universität Leipzig corporate design. See
+% <https://gitea.math.uni-leipzig.de/hellmund/leipzig-theme/src/commit/a0b89c43e7c6d2e5499db484fe855137adb37a3f/beamerthemeleipzig.sty#L188-L192>
+% \definecolor{primary}{HTML}{b02f2c}
+% \definecolor{secondary}{HTML}{d64242}
+% \definecolor{background}{HTML}{8ac2d1}
+
+% Universität Leipzig corporate design. See
+% <https://gitea.math.uni-leipzig.de/hellmund/leipzig-theme/src/commit/a0b89c43e7c6d2e5499db484fe855137adb37a3f/beamerthemeleipzig.sty#L402-L415>.
+% \AddToShipoutPictureBG{
+%   \hbox to \paperwidth{
+%     \hfill
+%     \begin{tikzpicture}[scale=1/16]
+%       % Rendered redundant parts for less color-fringing.
+%       \path [fill=background] (0,0) -- (24,0) -- (24,12) -- cycle;
+%       \path [fill=primary] (24,12) -- (40,12) -- (40,60) -- cycle;
+%       \path [fill=secondary] (20,0) -- (40,0) -- (40,20) -- (24,12) -- cycle;
+% 
+%       % Author.
+%       \draw[white] (30,3) node[scale=0.7] {\tiny Benedikt Schöps};
+%     \end{tikzpicture}
+%   }
+% }
+
+\hypersetup{
+  linkcolor=primary,
+  anchorcolor=primary,
+  filecolor=primary,
+  menucolor=primary,
+  runcolor=primary,
+  urlcolor=primary
+}
+
+% COMMANDS
+%%%%%%%%%%
+
+% Poster layout mode.
+\newif\ifMzPoster
+\MzPostertrue
+
+% \chapterprecis{chapter summary}
+% \fancybreak{break characters}
+% \epigraph{text}{author}
+
+% Common underline style.
+\newcommand{\mzUnderline}[1]{#1\vskip2ex{\color{primary}\hrule}}
+
+% Resize and position inline graphics.
+\newcommand{\mzInline}[1]{
+  \raisebox{-.5ex}{
+    \resizebox{!}{2ex}{#1}
+  }
+}
+
+% Position and resize graphics.
+\newcommand{\mzScale}[2]{
+  \begin{center}
+    \resizebox{#1\linewidth}{!}{%
+      #2
+    }
+  \end{center}
+}
+
+% Position and resize page graphics.
+\newcommand{\mzGraphic}[1]{\mzScale{1}{#1}}
+
+% Color formatting.
+\newcommand{\mzEmph}[1]{\emph{\color{primary}#1}}
+\newcommand{\mzMathEmph}[1]{\mathbin{\color{primary}\mathbf{#1}}}
+\newcommand{\mzSymbolEmph}[1]{\mathbin{\color{primary}\boldsymbol{#1}}}
+
+% LAYOUT
+%-------
+
+% Table formatting.
+\RequirePackage{tabularray}
+
+% Set chapter-style.
+% \chapterstyle{dash}
+% \chapterstyle{thatcher}
+% \chapterstyle{culver}
+% \chapterstyle{bringhurst}
+% \chapterstyle{lyhne}
+\chapterstyle{wilsondob}
+
+% Set margins.
+% Safe margin of at least 1/4" for most printers.
+\newlength{\mzOuterMargin}
+\setlength{\mzOuterMargin}{7mm}
+
+\newlength{\mzInnerMargin}
+\setlength{\mzInnerMargin}{3mm}
+
+\ifMzPoster
+
+% POSTER LAYOUT
+%--------------
+
+% Don't start new page on poster.
+\renewcommand{\clearforchapter}{}
+
+% Set margins.
+\setlength{\columnsep}{\mzInnerMargin}
+
+\setlrmarginsandblock{\mzOuterMargin}{\mzOuterMargin}{*}
+\setulmarginsandblock{\mzOuterMargin}{\mzOuterMargin}{*}
+
+% Remove headers and page numbering.
+\pagestyle{empty}
+\pagenumbering{gobble}
+
+% Extend chapter, sub-/section style with underline.
+\setsecheadstyle{\Large\bfseries\mzUnderline}
+\setsubsecheadstyle{\large\bfseries\mzUnderline}
+
+% Fix removed header warnings.
+\setlength{\headheight}{0pt}
+\setlength{\footskip}{0pt}
+
+% Remove chapter and section numbering.
+\setcounter{secnumdepth}{0}
+\renewcommand{\printchapternum}{\hfill}
+
+% Multiple columns for dense information presentation
+\RequirePackage{multicol}
+
+% Set multicolumn layout.
+\AtBeginDocument{\begin{multicols*}{5}}
+\AtEndDocument{
+  \end{multicols*}
+}
+
+\else
+
+% LEAFLET LAYOUT
+%--------------
+
+% Use the inderpage
+\makeindex
+
+% Set stock width to third and height to half of A4 paper.
+\stockheight=148.5mm
+\stockwidth=70mm
+\settrimmedsize{\stockheight}{\stockwidth}{*}
+
+% Ruled header style.
+\pagestyle{ruled}
+
+% Extend chapter, sub-/section style with underline.
+\setsecheadstyle{\filbreak\Large\bfseries\mzUnderline}
+\setsubsecheadstyle{\filbreak\large\bfseries\mzUnderline}
+
+% Set margins.
+\setlrmarginsandblock{5mm}{5mm}{*}
+\setulmarginsandblock{14mm}{14mm}{*}
+
+% Print index keywords at end of document.
+\AtEndDocument{\clearforchapter\printindex}
+
+\hypersetup{pdfpagelayout=TwoPageRight}
+
+\fi
+
+\checkandfixthelayout

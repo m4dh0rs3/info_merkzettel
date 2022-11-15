@@ -1,0 +1,285 @@
+\chapter{Logik}
+
+\section{Aussagenlogik}
+
+\index{Aussage}
+\paragraph{Aussage} Satz/Formel entweder wahr \linebreak oder falsch;
+,,-form`` bei zu wenig Infos.
+
+\index{Theorem}
+\paragraph{Theoreme} sind wahre Aussagen.
+
+\subsection{Junktoren}
+
+\begin{description}
+  \item [Negation
+        \index{Negation}
+        $\mzSymbolEmph{\neg} A$]
+        ,,Nicht``
+        (\mintinline{Java}{!}, \mintinline{Lua}{~},
+        \mzInline{
+          \begin{circuitikz}
+            \draw (0,0) node[not port] {};
+          \end{circuitikz}
+        })
+
+  \item [Konjunkt.
+        \index{Konjunktion}
+        $A \mzSymbolEmph{\land} V$]
+        ,,und``
+        (\mintinline{Java}{&&},
+        \mzInline{
+          \begin{circuitikz}
+            \draw (0,0) node[and port] {};
+          \end{circuitikz}
+        })
+
+  \item [Disjunkt.
+        \index{Disjunktion}
+        $A \mzSymbolEmph{\lor} B$]
+        ,,oder``
+        (\mintinline{Java}{||},
+        \mzInline{
+          \begin{circuitikz}
+            \draw (0,0) node[or port] {};
+          \end{circuitikz}
+        })
+
+  \item [Implikat.
+        \index{Implikation}
+        $A \mzSymbolEmph{\Rightarrow} B$]
+        ,,Wenn, dann`` / \linebreak ,,zwingt``
+        ($\rightarrow$, \mintinline{Java}{if})
+
+  \item [Äquiv.
+        \index{Äquivalenz}
+        $A \mzSymbolEmph{\Leftrightarrow} B$]
+        ,,Genau dann, wenn``
+        ($\leftrightarrow$, $\equiv$,
+        \mintinline{Java}{==},
+        \mzInline{
+          \begin{circuitikz}
+            \draw (0,0) node[xnor port] {};
+          \end{circuitikz}
+        })
+\end{description}
+
+\index{Wahrheitswertetabelle}
+
+\paragraph{Wahrheitswertetabelle} mit $2^n$ Zeilen für $n$ Atome. Konstruktionssystematik: Frequenz pro Atom verdoppeln.
+
+\mzGraphic{
+  \begin{tblr}{
+    cells = {c},
+    vline{3} = {-}{},
+    hline{1-2,6} = {-}{},
+      }
+    $A$ & $B$ & $\neg A$ & $A \land B$ & $A \lor B$ & $A \Rightarrow B$    & $A \Leftrightarrow B$ \\
+    $0$ & $0$ & $1$      & $0$         & $0$        & $1$                  & $1$                   \\
+    $0$ & $1$ & $1$      & $0$         & $1$        & $1$                  & $0$                   \\
+    $1$ & $0$ & $0$      & $0$         & $1$        & $\mzMathEmph{0}$ & $0$                   \\
+    $1$ & $1$ & $0$      & $1$         & $1$        & $1$                  & $1$
+  \end{tblr}
+}
+
+\mzBreak
+
+\mzGraphic{
+  \begin{tblr}{
+    cells = {c},
+    cell{1}{1} = {c=2}{},
+    cell{2}{3} = {r=2}{r},
+    cell{4}{3} = {r=2}{r},
+    cell{6}{3} = {r=2}{r},
+    cell{8}{3} = {r=2}{r},
+    cell{10}{3} = {r},
+    cell{11}{3} = {r=2}{r},
+    cell{13}{3} = {r=2}{r},
+    cell{15}{3} = {r=3}{r},
+    vline{2} = {2-17}{},
+    hline{1-2,18} = {-}{},
+      }
+    \textbf{Äquivalente Formeln $\mzSymbolEmph{\Leftrightarrow}$}               &                                                 & Bezeichnung \\
+    $A \land B$                                & $B \land A$                                     & \index{Logische Kommutativität}Kommutativ  \\
+    $A \lor B$                                 & $B \lor A$                                      &             \\
+    $A \land (B \land C)$                      & $(A \land B) \land C$                           & \index{Logische Assoziativität}Assoziativ  \\
+    $A \lor (B \lor C)$                        & $(A \lor B) \lor C$                             &             \\
+    $A \land (B \lor C)$                       & $(A \land B) \lor (A \land C)$                  & \index{Logische Distributivität}Distributiv \\
+    $A \lor (B \land C)$                       & $(A \lor B) \land (A \lor C)$                   &             \\
+    $A \land A$                                & $A$                                             & \index{Idempotenz}Idempotenz  \\
+    $A \lor A$                                 & $A$                                             &             \\
+    $\neg \neg A$                              & $A$                                             & \index{Involution}Involution  \\
+    $\neg (A \land B)$                         & $\neg A \mzSymbolEmph{\lor} \neg B$  & \index{\textsc{De-Morgan}}\textsc{De-Morgan}   \\
+    $\neg (A \lor B)$                          & $\neg A \mzSymbolEmph{\land} \neg B$ &             \\
+    $A \land (\mzMathEmph{A} \lor B)$ & $A$                                             & \index{Absoption}Absorption  \\
+    $A \lor (\mzMathEmph{A} \land B)$ & $A$                                             &             \\
+    $A \Rightarrow B$                          & $\mzMathEmph{\neg A} \lor B$           & \index{Elimination}Elimination \\
+    $\neg (A \Rightarrow B)$                   & $A \land \neg B$                                &             \\
+    $A \Leftrightarrow B$                      & $(A \Rightarrow B) \land (B \Rightarrow A)$     &
+  \end{tblr}
+}
+
+\subsection{Axiomatik}
+
+\index{Axiom}
+\paragraph{Axiome} als wahr angenommene Aussagen; an Nützlichkeit gemessen.
+
+Anspruch, aber nach \textsc{Gödels} \index{Unvollständigkeitssatz} Unvollständigkeitssatz nicht möglich:
+
+\begin{itemize}
+  \item Unabhängig
+  \item Vollständig
+  \item Widerspruchsfrei
+\end{itemize}
+
+\index{Prädikatenlogik}
+\section{Prädikatenlogik}
+
+\index{Quantor}
+\paragraph{Quantoren} Innerhalb eines Universums:
+
+\begin{description}
+  \item [Existenzq. $\exists$]
+        \index{Existenzquantor}
+        ,,Mind. eines``
+
+  \item [Individuum $\exists!$]
+        \index{Individuum}
+        ,,Genau eines``
+
+  \item [Allq. $\forall$ ]
+        \index{Allquantor}
+        ,,Für alle``
+\end{description}
+
+\paragraph{Quantitative Aussagen}
+
+\begin{description}
+  \item[Erfüllbar]
+    \index{Erfüllbar}
+    $\exists x F(x)$
+
+  \item[Widerlegbar]
+    \index{Widerlegbar}
+    $\exists x \neg F(x)$
+
+  \item[Tautologie]
+    \index{Tautologie}
+    $\top = \forall x F(x)$
+    (alle Schlussregeln)
+
+  \item[Kontradiktion]
+    \index{Kontradiktion}
+    $\bot = \forall x \neg F(x)$
+\end{description}
+
+\mzScale{.25}{
+  \begin{tikzpicture}[fill=background,fill opacity=0.5,text opacity=1,scale=1/12]
+    % Erfüllbar.
+    \fill (0,0) circle (12);
+    % Tautologie.
+    \filldraw (-4,0) circle (4) node {T};
+    % Widerlegbar.
+    \filldraw (16,0) circle (12) node[above=8] {W};
+    % Kontradiktion.
+    \filldraw (20,0) circle (4) node {K};
+    % Erfüllbar Outline
+    \draw (0,0) circle (12) node[above=8] {E};
+  \end{tikzpicture}
+}
+
+\mzGraphic{
+  \begin{tblr}{
+    cells = {c},
+    column{2} = {r},
+    cell{4}{2} = {r=2}{},
+    hline{1-2,6} = {-}{},
+      }
+    \textbf{Klassische Tautologien}           & Bezeichnung              \\
+    $A \lor \neg A$                           & \index{Ausgeschlossenes Drittes}Ausgeschlossenes Drittes \\
+    $A \land (A \Rightarrow B) \Rightarrow B$ & \index{Modus ponens}Modus ponens             \\
+    $(A \land B) \Rightarrow A$               & \index{Abschwächung}Abschwächung             \\
+    $A \Rightarrow (A \lor B)$                &
+  \end{tblr}
+}
+
+\paragraph{Negation} (\textsc{De-Morgan})
+\index{Negation}
+
+\begin{align*}
+  \neg \exists x F(x) \Leftrightarrow \mzSymbolEmph{\forall} x \mzSymbolEmph{\neg} F(x) \\
+  \neg \forall x F(x) \Leftrightarrow \mzSymbolEmph{\exists} x \mzSymbolEmph{\neg} F(x)
+\end{align*}
+
+\subsection{Häufige Fehler}
+
+\begin{itemize}
+  \item $U = \emptyset^\complement$
+        nicht notwendig
+
+  \item $\exists x (P(x) \Rightarrow Q(x)) \not \Rightarrow \exists x P(x)$
+
+  \item $\neg \exists x \exists y P(x, y) \Leftrightarrow \forall x \neg \exists y P(x, y)$
+\end{itemize}
+
+\section[Beweistechniken]{Beweistechniken\hfill\mzEmph{\qedsymbol}}
+
+\paragraph{Achtung:} Aus falschen Aussagen können wahre \mzEmph{und} falsche Aussagen folgen.
+
+\begin{description}
+  \item[Direkt $A \Rightarrow B$]
+    \index{Direkter Beweis}
+    Angenommen $A$, zeige $B$.
+    Oder: Angenommen $\neg B$, zeige $\neg A$ \linebreak (\mzEmph{Kontraposition}\index{Kontraposition}).
+
+    $$
+      (A \Rightarrow B) \Leftrightarrow (\neg B \Rightarrow \neg A)
+    $$
+
+  \item[Fallunters.]
+    \index{Fallunterscheidung}
+    Aufteilen, lösen, zusammenführen.
+    O.B.d.A\index{O.B.d.A} = ,,Ohne Beschränkung der Allgemeinheit``
+
+  \item[Widerspruch $(\neg A  \Rightarrow \bot) \Rightarrow A$]
+    \index{Widerspruch}
+    Angenommen $A \land \mzMathEmph{\neg B}$, zeige Kontradiktion. (Reductio ad absurdum)\index{Reductio ad absurdum}
+
+  \item[Ring] (Transitivität der Implikation)
+    \begin{align*}
+             & A \Leftrightarrow B \Leftrightarrow C \Leftrightarrow \cdots                \\
+      \equiv & A \Rightarrow B \Rightarrow C \Rightarrow \cdots \mzMathEmph{\Rightarrow A}
+    \end{align*}
+
+  \item[Induktion $F(n) \quad \forall n \geq n_0 \in \mathbb{N}$]
+    \index{Induktion}\
+
+    \begin{enumerate}
+      \item
+            \begin{description}
+              \item[Anfang:]
+                \index{Induktionsanfang}
+                Zeige $F(n_0)$.
+            \end{description}
+
+      \item \begin{description}
+              \item [Schritt:]
+                    \index{Induktionsschritt}
+                    Angenommen
+                    $F(n)$ (Hypothese \index{Induktionshypothese}),
+                    zeige $F(n + 1)$ (Behauptung \index{Induktionsbehauptung}).
+              \item [Starke Induktion:]
+                    \index{Starke Induktion}
+                    Angenommen
+                    $F(k) \quad \forall n_0 \leq k \leq n \in \mathbb{N}$.
+            \end{description}
+    \end{enumerate}
+\end{description}
+
+\subsection{Häufige Fehler}
+
+\begin{itemize}
+  \item Nicht voraussetzen, was zu beweisen ist
+
+  \item Äquival. von Implikat. unterscheiden (Zweifelsfall immer Implikat.)
+\end{itemize}
