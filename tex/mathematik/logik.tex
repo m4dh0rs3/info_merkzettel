@@ -3,7 +3,7 @@
 \section{Aussagenlogik}
 
 \index{Aussage}
-\paragraph{Aussage} Satz/Formel entweder wahr \linebreak oder falsch;
+\paragraph{Aussage} Satz/Formel entweder wahr oder falsch;
 ,,-form`` bei zu wenig Infos.
 
 \index{Theorem}
@@ -14,7 +14,7 @@
 \begin{description}
   \item [Negation
         \index{Negation}
-        $\mzSymbolEmph{\neg} A$]
+        $\mzSymbolEmph{\neg} \mathcal{A}$]
         ,,Nicht``
         (\mintinline{Java}{!}, \mintinline{Lua}{~},
         \mzInline{
@@ -25,7 +25,7 @@
 
   \item [Konjunkt.
         \index{Konjunktion}
-        $A \mzSymbolEmph{\land} V$]
+        $\mathcal{A} \mzSymbolEmph{\land} \mathcal{B}$]
         ,,und``
         (\mintinline{Java}{&&},
         \mzInline{
@@ -36,7 +36,7 @@
 
   \item [Disjunkt.
         \index{Disjunktion}
-        $A \mzSymbolEmph{\lor} B$]
+        $\mathcal{A} \mzSymbolEmph{\lor} \mathcal{B}$]
         ,,oder``
         (\mintinline{Java}{||},
         \mzInline{
@@ -47,13 +47,13 @@
 
   \item [Implikat.
         \index{Implikation}
-        $A \mzSymbolEmph{\Rightarrow} B$]
+        $\mathcal{A} \mzSymbolEmph{\Rightarrow} \mathcal{B}$]
         ,,Wenn, dann`` / \linebreak ,,zwingt``
         ($\rightarrow$, \mintinline{Java}{if})
 
   \item [Äquiv.
         \index{Äquivalenz}
-        $A \mzSymbolEmph{\Leftrightarrow} B$]
+        $\mathcal{A} \mzSymbolEmph{\Leftrightarrow} \mathcal{B}$]
         ,,Genau dann, wenn``
         ($\leftrightarrow$, $\equiv$,
         \mintinline{Java}{==},
@@ -74,7 +74,7 @@
     vline{3} = {-}{},
     hline{1-2,6} = {-}{},
       }
-    $A$ & $B$ & $\neg A$ & $A \land B$ & $A \lor B$ & $A \Rightarrow B$    & $A \Leftrightarrow B$ \\
+    $\mathcal{A}$ & $\mathcal{B}$ & $\neg \mathcal{A}$ & $\mathcal{A} \land \mathcal{B}$ & $\mathcal{A} \lor \mathcal{B}$ & $\mathcal{A} \Rightarrow \mathcal{B}$    & $\mathcal{A} \Leftrightarrow \mathcal{B}$ \\
     $0$ & $0$ & $1$      & $0$         & $0$        & $1$                  & $1$                   \\
     $0$ & $1$ & $1$      & $0$         & $1$        & $1$                  & $0$                   \\
     $1$ & $0$ & $0$      & $0$         & $1$        & $\mzMathEmph{0}$ & $0$                   \\
