@@ -14,7 +14,7 @@
 \begin{description}
   \item [Negation
         \index{Negation}
-        $\mzSymbolEmph{\neg} \mathcal{A}$]
+        $\boldsymbol{\neg} \mathcal{A}$]
         ,,Nicht``
         (\mintinline{Java}{!}, \mintinline{Lua}{~},
         \mzInline{
@@ -25,7 +25,7 @@
 
   \item [Konjunkt.
         \index{Konjunktion}
-        $\mathcal{A} \mzSymbolEmph{\land} \mathcal{B}$]
+        $\mathcal{A} \boldsymbol{\land} \mathcal{B}$]
         ,,und``
         (\mintinline{Java}{&&},
         \mzInline{
@@ -36,7 +36,7 @@
 
   \item [Disjunkt.
         \index{Disjunktion}
-        $\mathcal{A} \mzSymbolEmph{\lor} \mathcal{B}$]
+        $\mathcal{A} \boldsymbol{\lor} \mathcal{B}$]
         ,,oder``
         (\mintinline{Java}{||},
         \mzInline{
@@ -47,13 +47,13 @@
 
   \item [Implikat.
         \index{Implikation}
-        $\mathcal{A} \mzSymbolEmph{\Rightarrow} \mathcal{B}$]
+        $\mathcal{A} \boldsymbol{\Rightarrow} \mathcal{B}$]
         ,,Wenn, dann`` / \linebreak ,,zwingt``
         ($\rightarrow$, \mintinline{Java}{if})
 
   \item [Äquiv.
         \index{Äquivalenz}
-        $\mathcal{A} \mzSymbolEmph{\Leftrightarrow} \mathcal{B}$]
+        $\mathcal{A} \boldsymbol{\Leftrightarrow} \mathcal{B}$]
         ,,Genau dann, wenn``
         ($\leftrightarrow$, $\equiv$,
         \mintinline{Java}{==},
@@ -77,7 +77,7 @@
     $\mathcal{A}$ & $\mathcal{B}$ & $\neg \mathcal{A}$ & $\mathcal{A} \land \mathcal{B}$ & $\mathcal{A} \lor \mathcal{B}$ & $\mathcal{A} \Rightarrow \mathcal{B}$    & $\mathcal{A} \Leftrightarrow \mathcal{B}$ \\
     $0$ & $0$ & $1$      & $0$         & $0$        & $1$                  & $1$                   \\
     $0$ & $1$ & $1$      & $0$         & $1$        & $1$                  & $0$                   \\
-    $1$ & $0$ & $0$      & $0$         & $1$        & $\mzMathEmph{0}$ & $0$                   \\
+    $1$ & $0$ & $0$      & $0$         & $1$        & $\mathbf{0}$ & $0$                   \\
     $1$ & $1$ & $0$      & $1$         & $1$        & $1$                  & $1$
   \end{tblr}
 }
@@ -99,7 +99,7 @@
     vline{2} = {2-17}{},
     hline{1-2,18} = {-}{},
       }
-    \textbf{Äquivalente Formeln $\mzSymbolEmph{\Leftrightarrow}$}               &                                                 & Bezeichnung \\
+    \textbf{Äquivalente Formeln $\boldsymbol{\Leftrightarrow}$}               &                                                 & Bezeichnung \\
     $A \land B$                                & $B \land A$                                     & \index{Logische Kommutativität}Kommutativ  \\
     $A \lor B$                                 & $B \lor A$                                      &             \\
     $A \land (B \land C)$                      & $(A \land B) \land C$                           & \index{Logische Assoziativität}Assoziativ  \\
@@ -109,11 +109,11 @@
     $A \land A$                                & $A$                                             & \index{Idempotenz}Idempotenz  \\
     $A \lor A$                                 & $A$                                             &             \\
     $\neg \neg A$                              & $A$                                             & \index{Involution}Involution  \\
-    $\neg (A \land B)$                         & $\neg A \mzSymbolEmph{\lor} \neg B$  & \index{\textsc{De-Morgan}}\textsc{De-Morgan}   \\
-    $\neg (A \lor B)$                          & $\neg A \mzSymbolEmph{\land} \neg B$ &             \\
-    $A \land (\mzMathEmph{A} \lor B)$ & $A$                                             & \index{Absoption}Absorption  \\
-    $A \lor (\mzMathEmph{A} \land B)$ & $A$                                             &             \\
-    $A \Rightarrow B$                          & $\mzMathEmph{\neg A} \lor B$           & \index{Elimination}Elimination \\
+    $\neg (A \land B)$                         & $\neg A \boldsymbol{\lor} \neg B$  & \index{\textsc{De-Morgan}}\textsc{De-Morgan}   \\
+    $\neg (A \lor B)$                          & $\neg A \boldsymbol{\land} \neg B$ &             \\
+    $A \land (\mathbf{A} \lor B)$ & $A$                                             & \index{Absoption}Absorption  \\
+    $A \lor (\mathbf{A} \land B)$ & $A$                                             &             \\
+    $A \Rightarrow B$                          & $\mathbf{\neg A} \lor B$           & \index{Elimination}Elimination \\
     $\neg (A \Rightarrow B)$                   & $A \land \neg B$                                &             \\
     $A \Leftrightarrow B$                      & $(A \Rightarrow B) \land (B \Rightarrow A)$     &
   \end{tblr}
@@ -207,8 +207,8 @@ Anspruch, aber nach \textsc{Gödels} \index{Unvollständigkeitssatz} Unvollstän
 \index{Negation}
 
 \begin{align*}
-  \neg \exists x F(x) \Leftrightarrow \mzSymbolEmph{\forall} x \mzSymbolEmph{\neg} F(x) \\
-  \neg \forall x F(x) \Leftrightarrow \mzSymbolEmph{\exists} x \mzSymbolEmph{\neg} F(x)
+  \neg \exists x F(x) \Leftrightarrow \boldsymbol{\forall} x \boldsymbol{\neg} F(x) \\
+  \neg \forall x F(x) \Leftrightarrow \boldsymbol{\exists} x \boldsymbol{\neg} F(x)
 \end{align*}
 
 \subsection{Häufige Fehler}
@@ -222,15 +222,15 @@ Anspruch, aber nach \textsc{Gödels} \index{Unvollständigkeitssatz} Unvollstän
   \item $\neg \exists x \exists y P(x, y) \Leftrightarrow \forall x \neg \exists y P(x, y)$
 \end{itemize}
 
-\section[Beweistechniken]{Beweistechniken\hfill\mzEmph{\qedsymbol}}
+\section[Beweistechniken]{Beweistechniken\hfill\emph{\qedsymbol}}
 
-\paragraph{Achtung:} Aus falschen Aussagen können wahre \mzEmph{und} falsche Aussagen folgen.
+\paragraph{Achtung:} Aus falschen Aussagen können wahre \emph{und} falsche Aussagen folgen.
 
 \begin{description}
   \item[Direkt $A \Rightarrow B$]
     \index{Direkter Beweis}
     Angenommen $A$, zeige $B$.
-    Oder: Angenommen $\neg B$, zeige $\neg A$ \linebreak (\mzEmph{Kontraposition}\index{Kontraposition}).
+    Oder: Angenommen $\neg B$, zeige $\neg A$ \linebreak (\emph{Kontraposition}\index{Kontraposition}).
 
     $$
       (A \Rightarrow B) \Leftrightarrow (\neg B \Rightarrow \neg A)
@@ -243,12 +243,12 @@ Anspruch, aber nach \textsc{Gödels} \index{Unvollständigkeitssatz} Unvollstän
 
   \item[Widerspruch $(\neg A  \Rightarrow \bot) \Rightarrow A$]
     \index{Widerspruch}
-    Angenommen $A \land \mzMathEmph{\neg B}$, zeige Kontradiktion. (Reductio ad absurdum)\index{Reductio ad absurdum}
+    Angenommen $A \land \mathbf{\neg B}$, zeige Kontradiktion. (Reductio ad absurdum)\index{Reductio ad absurdum}
 
   \item[Ring] (Transitivität der Implikation)
     \begin{align*}
-             & A \Leftrightarrow B \Leftrightarrow C \Leftrightarrow \cdots                \\
-      \equiv & A \Rightarrow B \Rightarrow C \Rightarrow \cdots \mzMathEmph{\Rightarrow A}
+             & A \Leftrightarrow B \Leftrightarrow C \Leftrightarrow \cdots            \\
+      \equiv & A \Rightarrow B \Rightarrow C \Rightarrow \cdots \mathbf{\Rightarrow A}
     \end{align*}
 
   \item[Induktion $F(n) \quad \forall n \geq n_0 \in \mathbb{N}$]

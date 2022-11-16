@@ -4,11 +4,11 @@
 \index{Menge}
 
 \begin{description}
-  \item[Element $x \mzSymbolEmph{\in} M$]
+  \item[Element $x \boldsymbol{\in} M$]
     \index{Element}
     ,,enthält``
 
-  \item[Leere M. $\mzMathEmph{\emptyset}$]
+  \item[Leere M. $\mathbf{\emptyset}$]
     \index{Leere Menge}
     $=\{\}$
 
@@ -67,7 +67,7 @@
 \paragraph{Abzählbar} \index{Abzählbarkeit} $\exists f_\text{surj.}: \mathbb{N} \rightarrow M$
 
 \begin{itemize}
-  \item Endliche Mengen, $\emptyset$, $\mathbb{N}$, $\mathbb{Z}$, $\mzSymbolEmph{\mathbb{Q}}$
+  \item Endliche Mengen, $\emptyset$, $\mathbb{N}$, $\mathbb{Z}$, $\boldsymbol{\mathbb{Q}}$
   \item $M_\text{abz.} \land N_\text{abz.} \Rightarrow (M \cup N)_\text{abz.}$ \\
         ($= \{ m_1, n_1, m_2, n_2, \dots \}$)
 
@@ -114,10 +114,10 @@
 }
 
 \begin{gather*}
-  f(1) = 0, \mzMathEmph{r_{11}} r_{12} r_{13} r_{14} \dots\\
-  f(2) = 0, r_{21} \mzMathEmph{r_{22}} r_{23} r_{24} \dots\\
-  f(3) = 0, r_{31} r_{32} \mzMathEmph{r_{33}} r_{34} \dots\\
-  f(4) = 0, r_{41} r_{42} r_{43} \mzMathEmph{r_{44}} \dots\\
+  f(1) = 0, \mathbf{r_{11}} r_{12} r_{13} r_{14} \dots\\
+  f(2) = 0, r_{21} \mathbf{r_{22}} r_{23} r_{24} \dots\\
+  f(3) = 0, r_{31} r_{32} \mathbf{r_{33}} r_{34} \dots\\
+  f(4) = 0, r_{41} r_{42} r_{43} \mathbf{r_{44}} \dots\\
   \vdots
 \end{gather*}
 
@@ -129,7 +129,7 @@
 \begin{description}
   \item [Vereinig. $M \cup N$]
         \index{Vereinigung}
-        $\linebreak\Leftrightarrow \{x \mid x \in M \mzMathEmph{\lor} x \in N\}$
+        $\linebreak\Leftrightarrow \{x \mid x \in M \mathbf{\lor} x \in N\}$
         \mzInline{
           \begin{tikzpicture}[scale=.125]
             \draw[line width=1.5]
@@ -143,7 +143,7 @@
 
   \item [Schnitt $M \cap N$]
         \index{Schnitt}
-        $\Leftrightarrow \{x \mid x \in M \mzMathEmph{\land} x \in N \}$
+        $\Leftrightarrow \{x \mid x \in M \mathbf{\land} x \in N \}$
         ($= \emptyset$ ,,disjunkt``)
         \mzInline{
           \begin{tikzpicture}[scale=.125]
@@ -161,7 +161,7 @@
 
   \item [Diff. $M \setminus N$]
         \index{Differenz}
-        $\Leftrightarrow \{x \mid x \in M \land x \mzSymbolEmph{\notin} N \}$
+        $\Leftrightarrow \{x \mid x \in M \land x \boldsymbol{\notin} N \}$
         \mzInline{
           \begin{tikzpicture}[scale=.125]
             \filldraw[fill=background]
@@ -173,7 +173,7 @@
 
   \item [Komplement $M^\complement$]
         \index{Komplement}
-        $\{x \mid x \mzSymbolEmph{\notin} M\}$
+        $\{x \mid x \boldsymbol{\notin} M\}$
         \mzInline{
           \begin{tikzpicture}[scale=.25]
             \filldraw[even odd rule, fill=background]
@@ -190,7 +190,7 @@ Alle logischen Äquivalenzen gelten auch für die Mengenoperationen.
 \subsection{Häufige Fehler}
 
 \begin{itemize}
-  \item $\forall M: \emptyset \mzSymbolEmph{\subseteq} M$
+  \item $\forall M: \emptyset \boldsymbol{\subseteq} M$
         , nicht
         $\forall M: \emptyset \in M$
 \end{itemize}
@@ -201,17 +201,17 @@ Sei Indexmenge $I$ und Mengen $M_i \quad \forall i \in I$.
 
 \begin{align*}
   \bigcup_{i \in I} M_i
-  :=                       & \{x \mid \mzSymbolEmph{\exists} i \in I: x \in M_i \} \\
-  \bigcap_{i \in I} M_i := & \{x \mid \mzSymbolEmph{\forall} i \in I: x \in M_i \}
+  :=                       & \{x \mid \boldsymbol{\exists} i \in I: x \in M_i \} \\
+  \bigcap_{i \in I} M_i := & \{x \mid \boldsymbol{\forall} i \in I: x \in M_i \}
 \end{align*}
 
 \paragraph{Neutrale Elemente}
 \index{Neutrale Mengenelemente}
 
 \begin{itemize}
-  \item $\bigcup_{i \in \emptyset} M_i = \mzSymbolEmph{\emptyset}$ (,,hinzufügen``)
+  \item $\bigcup_{i \in \emptyset} M_i = \boldsymbol{\emptyset}$ (,,hinzufügen``)
 
-  \item $\bigcap_{i \in \emptyset} M_i = \mzSymbolEmph{U}$ (,,wegnehmen``)
+  \item $\bigcap_{i \in \emptyset} M_i = \boldsymbol{U}$ (,,wegnehmen``)
 \end{itemize}
 
 \subsection{Potenzmenge}
@@ -225,10 +225,10 @@ Sei Indexmenge $I$ und Mengen $M_i \quad \forall i \in I$.
 \section{Abbildungen}
 \index{Abbildung}
 
-\paragraph{Abbildung $\mzMathEmph{f}$}
+\paragraph{Abbildung $\mathbf{f}$}
 von $X$ (Definitionsb. \index{Definitionsbereich}) nach $Y$ (Werteb. \index{Wertebereich}) ordnet jedem $x \in X$ eindeutig ein $y \in Y$ zu.
 
-$$\mzMathEmph{f}: X \rightarrow Y$$
+$$\mathbf{f}: X \rightarrow Y$$
 
 \begin{description}
   \item [Graph]
@@ -253,11 +253,11 @@ $$\mzMathEmph{f}: X \rightarrow Y$$
   \item [Injektiv]
         \index{Injektiv}
         $\forall x_1, x_2 \in X:$ \\
-        $x_1 \mzSymbolEmph{\neq} x_2 \Leftrightarrow f(x_1) \mzSymbolEmph{\neq} f(x_2)$
+        $x_1 \boldsymbol{\neq} x_2 \Leftrightarrow f(x_1) \boldsymbol{\neq} f(x_2)$
 
   \item [Surjektiv]
         \index{Surjektiv}
-        $\forall y \in Y \exists x \in X: \mzMathEmph{y = f(x)}$
+        $\forall y \in Y \exists x \in X: \mathbf{y = f(x)}$
 
   \item [Bijektiv]
         \index{Bijektiv}
@@ -296,46 +296,46 @@ $$(f \circ g) (a) = f(g(a))$$
 \end{gather*}
 
 \index{Relation}
-\paragraph{Relation $\mzSymbolEmph{\sim}$} von/auf $M$ nach $N$ ist Teilmenge $R \subseteq M \times N$. ($R' \subseteq N \times P$)
+\paragraph{Relation $\boldsymbol{\sim}$} von/auf $M$ nach $N$ ist Teilmenge $R \subseteq M \times N$. ($R' \subseteq N \times P$)
 
-$$m \mzSymbolEmph{\sim} n \Leftrightarrow (m, n) \in R$$
+$$m \boldsymbol{\sim} n \Leftrightarrow (m, n) \in R$$
 
 \begin{description}
-  \item [$\mzSymbolEmph{\equiv}$ Reflexiv]
+  \item [$\boldsymbol{\equiv}$ Reflexiv]
         \index{Reflexivität}
-        $\forall x \in M: (\mzMathEmph{x}, \mzMathEmph{x}) \in R$ \\
+        $\forall x \in M: (\mathbf{x}, \mathbf{x}) \in R$ \\
         $\Leftrightarrow \text{id}_M \subseteq R$
         % \\ $\not\Leftrightarrow \text{Irreflexiv} \land M \neq \emptyset$
 
   \item [Irreflexiv]
         \index{Irreflexivität}
-        $\forall x \in M: (x, x) \mzSymbolEmph{\notin} R$ \\
+        $\forall x \in M: (x, x) \boldsymbol{\notin} R$ \\
         $\Leftrightarrow \text{id}_M \cap R = \emptyset$
 
-  \item [$\mzSymbolEmph{\equiv}$ Sym.]
+  \item [$\boldsymbol{\equiv}$ Sym.]
         \index{Symmetrie}
-        $\forall (x,\mzMathEmph{y}) \in R: (\mzMathEmph{y}, x) \in R$ \\
+        $\forall (x,\mathbf{y}) \in R: (\mathbf{y}, x) \in R$ \\
         $\Leftrightarrow R \subseteq R^{-1}$
 
   \item [Antis.]
         \index{Antisymmetrie}
-        $\forall x,y: ((x,y) \in R \land (y,x) \in R) \Rightarrow \mzMathEmph{x = y}$ \\
+        $\forall x,y: ((x,y) \in R \land (y,x) \in R) \Rightarrow \mathbf{x = y}$ \\
         $\Leftrightarrow R \cap R' \subseteq \text{id}_M$
 
-  \item [$\mzSymbolEmph{\equiv}$ Transitiv]
+  \item [$\boldsymbol{\equiv}$ Transitiv]
         \index{Transitivität}
-        $\forall \mzMathEmph{x},y,\mzMathEmph{z}: ((x,y) \in R \land (y,z) \in R) \Rightarrow (\mzMathEmph{x},\mzMathEmph{z}) \in R$ \\
+        $\forall \mathbf{x},y,\mathbf{z}: ((x,y) \in R \land (y,z) \in R) \Rightarrow (\mathbf{x},\mathbf{z}) \in R$ \\
         $\Leftrightarrow R;R \subseteq R$
 
   \item [Vollst.]
         \index{Vollständigkeit}
-        $\forall \mzMathEmph{x},\mzMathEmph{y} \in M: (x,y) \in R \lor (y,x) \in R$ \\
+        $\forall \mathbf{x},\mathbf{y} \in M: (x,y) \in R \lor (y,x) \in R$ \\
         $\Leftrightarrow R \cup R^{-1} = M \times M$
 \end{description}
 
 % TODO: This <https://de.wikipedia.org/wiki/Relation_(Mathematik)#/media/Datei:Zusammenhang_der_Eigenschaften_bin%C3%A4rer_Relationen.svg>.
 
-% ($\mzSymbolEmph{\equiv}$ Äquivalenzrelation)
+% ($\boldsymbol{\equiv}$ Äquivalenzrelation)
 
 % \mzScale{0.4}{
 %   \begin{tikzpicture}
@@ -373,11 +373,11 @@ $$m \mzSymbolEmph{\sim} n \Leftrightarrow (m, n) \in R$$
   \item [Allrelation $M \times M$]
         \index{Allrelation}
 
-  \item [Äquivalenzrelation $\mzSymbolEmph{\equiv}$]
+  \item [Äquivalenzrelation $\boldsymbol{\equiv}$]
         \index{Äquivalenzrelation}
         reflexiv, symmetrisch und transitiv. (Gleichheit***)
 
-        \item[Äquivalenzklasse $\mzMathEmph{[m]_\equiv}$]
+        \item[Äquivalenzklasse $\mathbf{[m]_\equiv}$]
         \index{Äquivalenzklasse}
         auf $M$, Vertreter $m \in M$.
 
@@ -386,7 +386,7 @@ $$m \mzSymbolEmph{\sim} n \Leftrightarrow (m, n) \in R$$
                      & \Leftrightarrow [m]_\equiv = [x]_\equiv
         \end{align*}
 
-  \item [Zerlegung $\mzSymbolEmph{\mathcal{N}}$]
+  \item [Zerlegung $\boldsymbol{\mathcal{N}}$]
         \index{Zerlegung}
         $\subseteq \mathcal{P}(M)$ von $M$.
 
@@ -398,7 +398,7 @@ $$m \mzSymbolEmph{\sim} n \Leftrightarrow (m, n) \in R$$
           \item (Korrespondiert zur ÄR.)
         \end{itemize}
 
-  \item [Quotient $\mzMathEmph{(M / \equiv)}$]
+  \item [Quotient $\mathbf{(M / \equiv)}$]
         \index{Mengenquotient}
         Sei $\equiv$ ÄR. auf $M$. (ist Zerlegung)
 
