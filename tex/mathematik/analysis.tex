@@ -367,9 +367,9 @@ Sei $(a_n)_{n \in \mathbb{N}} \subseteq \mathbb{R}, a \in \mathbb{R}$.
 
 \begin{gather*}
   a_n \xrightarrow{n \rightarrow \infty} a \Leftrightarrow \\
-  \forall \varepsilon > 0 \exists n_0 \in \mathbb{N} \forall n \in \mathbb{N} n \geq n_0: \\
-  \mathbf{|a_n - a| \leq \varepsilon} \\
-  (a - \varepsilon \leq a_n \leq a + \varepsilon)
+  \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n \in \mathbb{N} n \geq n_0: \\
+  \mathbf{|a_n - a| \leq \epsilon} \\
+  (a - \epsilon \leq a_n \leq a + \epsilon)
 \end{gather*}
 
 \mzScale{0.5}{
@@ -377,8 +377,8 @@ Sei $(a_n)_{n \in \mathbb{N}} \subseteq \mathbb{R}, a \in \mathbb{R}$.
     \draw[->] (-2,0) -- (2,0) node[below right] {$\mathbb{R}$};
 
     \node at (0,0) (a) [below] {$a$};
-    \node at (-1,0) (minus) [below] {$a - \varepsilon$};
-    \node at (1,0) (plus) [below] {$a + \varepsilon$};
+    \node at (-1,0) (minus) [below] {$a - \epsilon$};
+    \node at (1,0) (plus) [below] {$a + \epsilon$};
 
     \node at (a.north) [above] {\footnotesize Epsilonumgebung \index{Epsilonumgebung}};
 
@@ -527,8 +527,8 @@ $${(a_n)_{n \in \mathbb{N}}}_{\text{\emph{beschr.}}} \Rightarrow \exists h_\text
 \index{Cauchy-Folge}
 
 \begin{gather*}
-  \forall \varepsilon > 0 \exists n_0 \in \mathbb{N} \forall n, m \geq n_0:\\
-  |a_n - a_m| \leq \varepsilon
+  \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n, m \geq n_0:\\
+  |a_n - a_m| \leq \epsilon
 \end{gather*}
 
 (Konv. ohne bekannten Grenzwert)
@@ -545,3 +545,85 @@ $${(a_n)_{n \in \mathbb{N}}}_\text{\emph{Cauchy}} \Leftrightarrow \exists \lim_{
    & \Rightarrow \exists h \quad \text{\tiny (BW)}         \\
    & \Rightarrow \lim_{n \rightarrow \infty} a_n = h)
 \end{align*}
+
+\section{Reihen}
+
+\begin{description}
+  \item [Reihe $(s_n)_{n \in \mathbb{N}} = \sum_{k=1}^\infty a_k$]
+        \index{Reihe}
+        mit den Gliedern $(a_k)_{k \in \mathbb{N}}$.
+
+  \item [$n$te Partialsumme]
+        \index{Partialsumme}
+        $s_n = \sum_{k=1}^{\mathbf{n}} a_k$
+
+  \item [Grenzwert] ebenfalls $\sum_{k=1}^\infty a_k$, falls $s_n$ konvergiert
+\end{description}
+
+\paragraph{Spezielle Reihen}
+
+\begin{description}
+  \item[Geom.]
+    \index{Geometrische Reihe}
+    $\sum_{k=0}^\infty q^k = \frac{1}{1- q} \quad q \in (-1;1)$
+
+  \item [Harmon.]
+        \index{Geometrische Reihe}
+        $\sum_{k=1}^\infty \frac{1}{k}$ divergent
+
+  \item [Allg. Harmon.]
+        \index{Allgemeine Harmonische Reihe}
+        $\sum_{k=1}^\infty \frac{1}{k^\alpha}$ konvergiert für $\alpha > 1$
+\end{description}
+
+\paragraph{Lemma}
+
+\begin{itemize}
+  \item $\sum_{k=1}^\infty a_k$, $\sum_{k=1}^\infty b_k$ konvergent
+        \begin{itemize}
+          \item $\sum_{k=1}^\infty a_k + \sum_{k=1}^\infty b_k = \sum_{k=1}^\infty (a_k + b_k)$
+          \item $c * \sum_{k=1}^\infty a_k = \sum_{k=1}^\infty c * a_k$
+        \end{itemize}
+
+  \item $\exists N \in \mathbb{N}: (\sum_{k=N}^\infty a_k)_\text{konv.} \Rightarrow (\sum_{k=1}^\infty a_k)_\text{konv.}$ (Es reicht spätere Glieder zu betrachten)
+
+  \item $(\sum_{k=1}^\infty a_k)_\text{konv.} \linebreak \Rightarrow \forall N \in \mathbb{N}: (\sum_{k=N}^\infty a_k)_\text{konv.} \linebreak \Rightarrow \lim_{N \rightarrow \infty} \sum_{k=N}^\infty a_k = 0$
+\end{itemize}
+
+\subsection{Konvergenzkriterien}
+
+\begin{description}
+  \item [Chauchy]
+        \index{Chauchy-Konvergenzkriterium}
+        \index{Chauchy-Kriterium}
+        $$
+          \begin{aligned}
+                            & (\sum_{k=1}^\infty a_k)_\text{konv.}                                  \\
+            \Leftrightarrow & {(\sum_{k=1}^n a_k)_{n \in \mathbb{N}}}_\text{Chauchy}                \\
+            \Leftrightarrow & \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n > m > n_0 : \\
+                            & | \sum_{k=m + 1}^n a_k | \leq \epsilon
+          \end{aligned}
+        $$
+
+  \item [Notwendige]
+        $$
+          \begin{aligned}
+            (\sum_{k=1}^\infty a_k)_\text{konv.} \Rightarrow \lim_{n \rightarrow \infty} a_n = 0 \\
+            \lim_{n \rightarrow \infty} a_n \neq 0 \Rightarrow (\sum_{k=1}^\infty a_k)_\text{div.}
+          \end{aligned}
+        $$
+
+  \item [Hinreichende]\
+        \begin{description}
+          \item [Lemma] $a_k \geq 0$ ($\Rightarrow$ mnt.) $\forall k \in \mathbb{N}$
+                $$(\sum_{k=1}^\infty a_k)_\text{konv.} \Leftrightarrow (\sum_{k=1}^\infty a_k)_\text{beschr.}$$
+
+          \item [Majorante]
+                \index{Majorantenkriterium}
+                $0 \leq a_k \leq b_k \quad \forall k \in \mathbb{N}$\\
+                (Min. $\leq$ Major.)
+                \index{Majorante}
+                \index{Minorante}
+                $$(\sum_{k=1}^\infty b_k)_\text{konv.} \Leftrightarrow (\sum_{k=1}^\infty a_k)_\text{konv.}$$
+        \end{description}
+\end{description}
