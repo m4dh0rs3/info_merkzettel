@@ -523,8 +523,8 @@ $${(a_n)_{n \in \mathbb{N}}}_{\text{\emph{beschr.}}} \Rightarrow \exists h_\text
 
 (Teilfolge + (beschr.) $\Rightarrow \exists$ Häuf.)
 
-\subsection{Cauchy-Folge}
-\index{Cauchy-Folge}
+\subsection{\textsc{Cauchy}-Folge}
+\index{\textsc{Cauchy}-Folge}
 
 \begin{gather*}
   \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n, m \geq n_0:\\
@@ -536,13 +536,13 @@ $${(a_n)_{n \in \mathbb{N}}}_{\text{\emph{beschr.}}} \Rightarrow \exists h_\text
 \paragraph{Vollständigkeit von $\boldsymbol{\mathbb{R}}$}
 \index{Vollständigkeit der Reelen Zahlen}
 
-$${(a_n)_{n \in \mathbb{N}}}_\text{\emph{Cauchy}} \Leftrightarrow \exists \lim_{n \rightarrow \infty} a_n$$
+$${(a_n)_{n \in \mathbb{N}}}_\text{\emph{\textsc{Cauchy}}} \Leftrightarrow \exists \lim_{n \rightarrow \infty} a_n$$
 
 \begin{align*}
   (\exists \lim_{n \rightarrow \infty} a_n
-   & \Rightarrow {(a_n)_{n \in \mathbb{N}}}_\text{Cauchy}  \\
-   & \Rightarrow {(a_n)_{n \in \mathbb{N}}}_\text{beschr.} \\
-   & \Rightarrow \exists h \quad \text{\tiny (BW)}         \\
+   & \Rightarrow {(a_n)_{n \in \mathbb{N}}}_\text{\textsc{Cauchy}} \\
+   & \Rightarrow {(a_n)_{n \in \mathbb{N}}}_\text{beschr.}         \\
+   & \Rightarrow \exists h \quad \text{\tiny (BW)}                 \\
    & \Rightarrow \lim_{n \rightarrow \infty} a_n = h)
 \end{align*}
 
@@ -557,7 +557,7 @@ $${(a_n)_{n \in \mathbb{N}}}_\text{\emph{Cauchy}} \Leftrightarrow \exists \lim_{
         \index{Partialsumme}
         $s_n = \sum_{k=1}^{\mathbf{n}} a_k$
 
-  \item [Grenzwert] ebenfalls $\sum_{k=1}^\infty a_k$, falls $s_n$ konvergiert
+  \item [Grenzwert] ebenfalls $\sum_{k=1}^{\boldsymbol{\infty}} a_k$, falls $s_n$ konvergiert
 \end{description}
 
 \paragraph{Spezielle Reihen}
@@ -573,7 +573,7 @@ $${(a_n)_{n \in \mathbb{N}}}_\text{\emph{Cauchy}} \Leftrightarrow \exists \lim_{
 
   \item [Allg. Harmon.]
         \index{Allgemeine Harmonische Reihe}
-        $\sum_{k=1}^\infty \frac{1}{k^\alpha}$ konvergiert für $\alpha > 1$
+        $\sum_{k=1}^\infty \frac{1}{k^\alpha}$ konvergiert $\forall \mathbf{\alpha > 1}$
 \end{description}
 
 \paragraph{Lemma}
@@ -581,11 +581,11 @@ $${(a_n)_{n \in \mathbb{N}}}_\text{\emph{Cauchy}} \Leftrightarrow \exists \lim_{
 \begin{itemize}
   \item $\sum_{k=1}^\infty a_k$, $\sum_{k=1}^\infty b_k$ konvergent
         \begin{itemize}
-          \item $\sum_{k=1}^\infty a_k + \sum_{k=1}^\infty b_k = \sum_{k=1}^\infty (a_k + b_k)$
-          \item $c * \sum_{k=1}^\infty a_k = \sum_{k=1}^\infty c * a_k$
+          \item $\sum_{k=1}^\infty \mathbf{a_k} + \sum_{k=1}^\infty \mathbf{b_k} = \sum_{k=1}^\infty (\mathbf{a_k + b_k})$
+          \item $\mathbf{c *} \sum_{k=1}^\infty \mathbf{a_k} = \sum_{k=1}^\infty \mathbf{c * a_k}$
         \end{itemize}
 
-  \item $\exists N \in \mathbb{N}: (\sum_{k=N}^\infty a_k)_\text{konv.} \Rightarrow (\sum_{k=1}^\infty a_k)_\text{konv.}$ (Es reicht spätere Glieder zu betrachten)
+  \item $\exists N \in \mathbb{N}: (\sum_{k=\boldsymbol{N}}^\infty a_k)_\text{konv.} \Rightarrow (\sum_{k=\boldsymbol{1}}^\infty a_k)_\text{konv.}$ (Es reicht spätere Glieder zu betrachten)
 
   \item $(\sum_{k=1}^\infty a_k)_\text{konv.} \linebreak \Rightarrow \forall N \in \mathbb{N}: (\sum_{k=N}^\infty a_k)_\text{konv.} \linebreak \Rightarrow \lim_{N \rightarrow \infty} \sum_{k=N}^\infty a_k = 0$
 \end{itemize}
@@ -593,13 +593,13 @@ $${(a_n)_{n \in \mathbb{N}}}_\text{\emph{Cauchy}} \Leftrightarrow \exists \lim_{
 \subsection{Konvergenzkriterien}
 
 \begin{description}
-  \item [Chauchy]
-        \index{Chauchy-Konvergenzkriterium}
-        \index{Chauchy-Kriterium}
+  \item [\textsc{Cauchy}]
+        \index{\textsc{Cauchy}-Konvergenzkriterium}
+        \index{\textsc{Cauchy}-Kriterium}
         $$
           \begin{aligned}
                             & (\sum_{k=1}^\infty a_k)_\text{konv.}                                  \\
-            \Leftrightarrow & {(\sum_{k=1}^n a_k)_{n \in \mathbb{N}}}_\text{Chauchy}                \\
+            \Leftrightarrow & {(\sum_{k=1}^n a_k)_{n \in \mathbb{N}}}_\text{\emph{\textsc{Cauchy}}} \\
             \Leftrightarrow & \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n > m > n_0 : \\
                             & | \sum_{k=m + 1}^n a_k | \leq \epsilon
           \end{aligned}
@@ -608,19 +608,19 @@ $${(a_n)_{n \in \mathbb{N}}}_\text{\emph{Cauchy}} \Leftrightarrow \exists \lim_{
   \item [Notwendige]
         $$
           \begin{aligned}
-            (\sum_{k=1}^\infty a_k)_\text{konv.} \Rightarrow \lim_{n \rightarrow \infty} a_n = 0 \\
+            (\sum_{k=1}^\infty a_k)_\text{konv.} \Rightarrow \lim_{n \rightarrow \infty} a_n = \boldsymbol{0} \\
             \lim_{n \rightarrow \infty} a_n \neq 0 \Rightarrow (\sum_{k=1}^\infty a_k)_\text{div.}
           \end{aligned}
         $$
 
   \item [Hinreichende]\
         \begin{description}
-          \item [Lemma] $a_k \geq 0$ ($\Rightarrow$ mnt.) $\forall k \in \mathbb{N}$
-                $$(\sum_{k=1}^\infty a_k)_\text{konv.} \Leftrightarrow (\sum_{k=1}^\infty a_k)_\text{beschr.}$$
+          \item [Lemma] $a_k \mathbf{\geq 0}$ ($\Rightarrow$ \emph{mnt.}) $\forall k \in \mathbb{N}$
+                $$(\sum_{k=1}^\infty a_k)_\text{konv.} \Leftrightarrow (\sum_{k=1}^\infty a_k)_\text{\emph{beschr.}}$$
 
           \item [Majorante]
                 \index{Majorantenkriterium}
-                $0 \leq a_k \leq b_k \quad \forall k \in \mathbb{N}$\\
+                $0 \leq \mathbf{a_k \leq b_k} \quad \forall k \in \mathbb{N}$\\
                 (Min. $\leq$ Major.)
                 \index{Majorante}
                 \index{Minorante}
