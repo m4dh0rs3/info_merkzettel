@@ -130,6 +130,10 @@
 % Source-code
 %------------
 
+% Format algorithms.
+\RequirePackage{algorithm2e}
+\SetAlFnt{\tiny}
+
 % Source code highlighting.
 % Requirers at least Python 2.6 and Pygments.
 \RequirePackage{minted}
