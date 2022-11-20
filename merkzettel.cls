@@ -133,6 +133,7 @@
 % Format algorithms.
 \RequirePackage{algorithm2e}
 \SetAlFnt{\tiny}
+\SetArgSty{oldEmph}
 
 % Source code highlighting.
 % Requirers at least Python 2.6 and Pygments.
@@ -209,6 +210,8 @@
 
 % Table formatting.
 \RequirePackage{tabularray}
+% Sideways text in table cell.
+\RequirePackage{rotating}
 
 \ifPoster
   % Multiple columns for dense information presentation
