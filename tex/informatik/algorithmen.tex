@@ -546,13 +546,254 @@ mit Optimierung nach geringen
 \index{Halbordnung}
 
 \subsection{Einfache Sortierverfahren $O(n^2)$}
+
+\paragraph{Selection}
+\index{Selectionsort}
+Entferne kleinstes Element in unsortierter Liste und füge es sortierter Liste an.
+
+\SetKwFunction{Swap}{Swap}
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Selectionsort}
+  \SetKwFunction{Selectionsort}{Selectionsort}
+
+  \KwIn{Liste $L$}
+  \KwOut{Sortierte Liste $L$}
+
+  \For{$i \leftarrow 0$ \KwTo $L.\text{len} - 2$}{
+    min $\leftarrow$ i
+
+    \For{$j \leftarrow i + 1$ \KwTo $L.\text{len} - 1$}{
+      \uIf{$L[i] < L[\text{min}]$}{
+        min $\leftarrow$ j
+      }
+    }
+
+    \uIf{min $\neq i$}{
+      \Swap $L[\text{min}]$, $L[i]$
+    }
+  }
+
+  \uIf{$L.\text{len} = 0$}{
+    \Return{$-1$}
+  }
+\end{algorithm}
+
+\paragraph{Insertion}
+\index{Insertionsort}
+Verschiebe erstes Element aus unsortierter Liste von hinten durch sortierte Liste, bis das vorgehende Element kleiner ist.
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Insertionsort}
+  \SetKwFunction{Insertionsort}{Insertionsort}
+
+  \KwIn{Liste $L$}
+  \KwOut{Sortierte Liste $L$}
+
+  \For{$i \leftarrow \mathbf{1}$ \KwTo $L.\text{len} - 1$}{
+    \uIf{$L[i] < L[i - 1]$}{
+      temp $\leftarrow L[i]$
+
+      $j \leftarrow i$
+
+      \While{temp $< L[j - 1] \land j > 0$}{
+        $L[j] \leftarrow L[j - 1]$
+
+        $j--$
+      }
+
+      $L[j] \leftarrow temp$
+    }
+  }
+\end{algorithm}
+
+\paragraph{Bubble}
+\index{Bubblesort}
+Vertausche benachbarte Elemente die nicht in Sortierordnung sind, durchlaufe bis nichts vertauscht wird. \emph{Achtung:} Die hinteren Elemente können im Durchlauf ignoriert werden!
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Bubblesort}
+  \SetKwFunction{Bubblesort}{Bubblesort}
+
+  \KwIn{Liste $L$}
+  \KwOut{Sortierte Liste $L$}
+
+  $i \leftarrow L.\text{len}$
+
+  swapped $\leftarrow 1$
+
+  \While{swapped}{
+    swapped $\leftarrow 0$
+
+    \For{$j \leftarrow 0$ \KwTo $i - 2$}{
+      \uIf{$L[j] > L[j + 1]$}{
+        \Swap $L[j]$, $L[j + 1]$
+
+        swapped $\leftarrow 1$
+      }
+    }
+
+    $\mathbf{i--}$
+  }
+\end{algorithm}
+
 \subsection{Verbesserte Sortierverfahren $O(n \log n)$}
+
+\paragraph{Shell}
+\index{Shellsort}
+Insertionsort, nur werden Elemente nicht mit Nachbarn getauscht, sondern in $t$ Sprüngen $h_i$, die kleiner werden. Im letzten Schritt dann Insertionsort ($h_t = 1$); somit Sortierung von grob bis fein, also Reduzierung der Tauschvorgänge.
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Shellsort}
+  \SetKwFunction{Shellsort}{Shellsort}
+
+  \KwIn{Liste $L$, Absteigende Liste von Sprunggrö\ss en $H$}
+  \KwOut{Sortierte Liste $L$}
+
+  \ForEach{$h$ in $H$}{
+    \For{$i \leftarrow h$ \KwTo $L.\text{len} - 1$}{
+      temp $\leftarrow L[i]$
+
+      \For{$j \leftarrow i$; temp $< L[j - h] \land j \geq h$; $j \leftarrow j - h$}{
+        $L[j] \leftarrow L[j - h]$
+      }
+
+      $L[j] \leftarrow$ temp
+    }
+  }
+\end{algorithm}
+
+\paragraph{Quick}
+\index{Quicksort}
+Rekursiv: Pivot-Element in der Mitte, Teillisten $L_<$, $L_>$, sodass $\forall l_< \in L_< \forall l_> \in L_>: l_< < x < L_>$. Zerlegung: Durchlauf von Links bis $L[i] \geq x$ und von Rechts bis $L[j] \leq x$, dann tauschen.
+
+% Do-while Kontrollstruktur.
+\SetKwRepeat{Do}{do}{while}
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Quicksort}
+  \SetKwFunction{Quicksort}{Quicksort}
+
+  \KwIn{Liste $L$, Indices $l$, $r$}
+  \KwOut{$L$, sortiert zwischen $l$ und $r$}
+
+  \uIf{$l \geq r$}{
+    \Return{}
+  }
+
+  $i \leftarrow l$
+
+  $j \leftarrow r$
+
+  piv $\leftarrow L[\floor{ \frac{l + r}{2} }]$
+
+  \Do{$i \leq j$}{
+    \While{$L[i] <$ piv}{
+      $i++$
+    }
+
+    \While{$L[j] >$ piv}{
+      $j--$
+    }
+
+    \uIf{$i \leq j$}{
+      \Swap $L[i]$, $L[j]$
+
+      $i++$
+
+      $j--$
+    }
+  }
+
+  \Quicksort($L$, $l$, $j$)
+
+  \Quicksort($L$, $i$, $r$)
+\end{algorithm}
+
+\paragraph{Turnier}
+\index{Turniersortierung}
+Liste also Binärbaum, bestimme $\min L$ durch Austragen des Turniers, entferne Sieger und wiederhole von Siegerpfad aus.
+
+% \begin{algorithm}[H]
+%   \TitleOfAlgo{Turniersortierung}
+%   \SetKwFunction{Turniersortierung}{Turniersortierung}
+% 
+%   \KwIn{Liste $L$, Indice $l$, $r$}
+%   \KwOut{Sortierte Liste $L$}
+% 
+% \end{algorithm}
+
+\paragraph{Heap}
+\index{Heapsort}
+Stelle Max-Heap (größtes Element in der Wurzel) her, gib Wurzel aus under ersetze mit Element ganz rechts in unterster Ebene.
+
+% TODO: Definiere Max-Heap-Eigenschaft (MHE).
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Max-Heapify}
+  \SetKwFunction{MaxHeapify}{Max-Heapify}
+
+  \KwIn{Liste $L$, Index $i$ der MHE widerspricht und $\forall j > i$ erfüllen MHE}
+  \KwOut{Liste $L$ mit MHE $\forall j \geq i$}
+
+  $l \leftarrow 2i + 1$
+
+  $r \leftarrow 2i + 2$
+
+  \eIf{$l < L.\text{len} \land L[l] > L[i]$}{
+    largest $\leftarrow l$
+  }{
+    largest $\leftarrow i$
+  }
+
+  \uIf{$r < L.\text{len} \land L[r] > L[\text{largest}]$}{
+    largest $\leftarrow r$
+  }
+
+  \uIf{largest $\neq i$}{
+    \Swap $L[i]$, $L[\text{largest}]$
+
+    \MaxHeapify $L$, largest
+  }
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Build-Max-Heap}
+  \SetKwFunction{BuildMaxHeap}{Build-Max-Heap}
+
+  \KwIn{Liste $L$}
+  \KwOut{Liste $L$ mit MHE}
+
+  \For{$i \leftarrow \floor{\frac{L.\text{len}}{2}} - 1$ \KwTo $0$}{
+    \MaxHeapify $L$, $i$
+  }
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Heapsort}
+  \SetKwFunction{Heapsort}{Heapsort}
+
+  \KwIn{Liste $L$}
+  \KwOut{Sortierte Liste $L$}
+
+  \BuildMaxHeap L
+
+  \For{$i \leftarrow L.\text{len} - 1$ \KwTo $1$}{
+    \Swap $L[0]$, $L[i]$
+
+    $L.\text{len} --$
+
+    \MaxHeapify $L$, $0$
+  }
+\end{algorithm}
+
 \subsection{Gro\ss e Datensätze sortieren}
 \subsection{Spezielle Sortierverfahren $O(n)$}
 
-\mzBreak
+\mzBreak\
 
-% TODO: Remove shell sort.
+% TODO: Merge Shell sort cells and add this text:
+% Abhängig von Sprunggrö\ss en $h_i$: $O(n \log n)$, $O(n^\frac{3}{2})$ bis $O(n^2)$ (h_i = 1)
 \mzGraphic{
   \begin{tblr}{
     row{2} = {c},
@@ -642,7 +883,7 @@ mit Optimierung nach geringen
 
     Quick & \ding{55} & $\log n$ & $n \log n$ & & $n \log n$ & & $n^2$ & & \\
 
-    Tunier & \ding{55} & $n$ & $n \log n$ & & $n \log n$ & & $n \log n$ & & \\
+    Turnier & \ding{55} & $2n - 1$ & $n \log n$ & & $n \log n$ & & $n \log n$ & & \\
 
     Heap & \ding{55} & $1$ & $n \log n$ & & $n \log n$ &  & $n \log n$ &  & \\
 
