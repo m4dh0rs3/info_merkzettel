@@ -500,6 +500,51 @@ Zeiger auf Vorgänger \fbox{(key) | value | prev | next}
 
 \section{Sortierverfahren}
 
+\paragraph{Sortierproblem}
+\index{Sortierproblem}
+
+\begin{description}
+  \item[Gegeben] (endliche) Folge von Schlüsseln (von Daten) $(K_i)_{i \in I}$
+  \item[Gesucht] Bijektive Abbildung $\pi: I \rightarrow I$ (Permutation), sodass $K_{\pi(i)} \leq K_{\pi(i + 1)}$
+\end{description}
+
+mit Optimierung nach geringen
+
+\begin{itemize}
+  \item Schlüsselvergleichen $C$
+  \item Satzbewegungen $M$
+\end{itemize}
+
+\paragraph{Eigenschaften}
+
+\begin{description}
+  \item [Ordnung] \emph{Allgemein} vs. \emph{speziell}: Ordnung wird nur über Schlüsselvergleiche hergestellt
+        \index{Allgemeine Suche}
+        \index{Spezielle Suche}
+  \item [Relation] \emph{Stabil} vs. \emph{instabil}: Vorherig relative Reihenfolge bleibt erhalten
+        \index{Stabile Suche}
+        \index{Instabile Suche}
+  \item [Speicher] \emph{In situ} vs. \emph{ex situ}: Zusätzlicher Speicher notwendig
+        \index{In situ Suche}
+        \index{Ex situ Suche}
+  \item [Lokal] \emph{Intern} vs. \emph{extern}: Hauptspeicher oder Mischung vorsortierter externer Teilfolgen
+        \index{Interne Suche}
+        \index{Externe Suche}
+\end{description}
+
+\paragraph{Ordnung} $\forall x, y \in X$
+\index{Ordnung}
+
+\begin{description}
+  \item[Reflexiv] $x \leq x$
+  \item[Antisym.] $x \leq y \land y \leq x \Rightarrow x = y$
+  \item[Transitiv] $x \leq y \land y \leq z \Rightarrow x = z$
+  \item[Total (Vollständig)] $x \leq y \lor y \leq x$
+\end{description}
+
+(ohne Total: ,,\emph{Halbordnung}``)
+\index{Halbordnung}
+
 \subsection{Einfache Sortierverfahren $O(n^2)$}
 \subsection{Verbesserte Sortierverfahren $O(n \log n)$}
 \subsection{Gro\ss e Datensätze sortieren}
@@ -581,18 +626,30 @@ Zeiger auf Vorgänger \fbox{(key) | value | prev | next}
     cell{13}{10} = {r},
     hline{1,3,6-7,12-14} = {-}{},
       }
-    \textbf{Algorithmus} & \textbf{Stabil} & \textbf{Speicher} & \textbf{Schlüsselvergleiche} &  &  & \textbf{Satzbewegungen} &  &  & \textbf{Komplexität} \\
+    \textbf{Algo.} & \textbf{Stabil} & \textbf{Mem.} & \textbf{Schlüsselvergleiche} &  &  & \textbf{Satzbewegungen} &  &  & \\
+
     &  &  & $C_B$ & $C_A$ & $C_W$ & $M_B$ & $M_A$ & $M_W$ & \\
+
     Selection & \ding{55} & $1$ & $\frac{n * (n - 1)}{2}$ & $\frac{n * (n - 1)}{2}$ & $\frac{n * (n - 1)}{2}$ & $3 * (n - 1)$ & $3 * (n - 1)$ & $3 * (n -1)$ & \begin{sideways}$O(n^2)$\end{sideways}\\
+
     Insertion & \ding{51} & $1$ & $n - 1$ & $\approx \frac{n * (n - 1)}{4} + n - \ln n$ & $\frac{n * (n - 1)}{2}$ & $2 * (n - 1)$ & $\frac{n^2 + 3n - 4}{4} + n - 1$ & $\frac{n^2 + 3n - 4}{2}$ & \\
+
     Bubble & \ding{51} & $1$ & $\frac{n * (n - 1)}{2}$ & $\frac{n * (n - 1)}{2}$ & $\frac{n * (n - 1)}{2}$ & $0$ & $\frac{3n * (n - 1)}{4}$ & $\frac{3n * (n - 1)}{2}$ & \\
+
     &  &  & \textbf{Best-case} &  & \textbf{Average-case} &  & \textbf{Worst-case} &  & \\
+
     Shell & \ding{55} & $1$ & - &  & - &  & - &  & \begin{sideways}$O(n \log n)$\end{sideways}\\
+
     Quick & \ding{55} & $\log n$ & $n \log n$ & & $n \log n$ & & $n^2$ & & \\
+
     Tunier & \ding{55} & $n$ & $n \log n$ & & $n \log n$ & & $n \log n$ & & \\
+
     Heap & \ding{55} & $1$ & $n \log n$ & & $n \log n$ &  & $n \log n$ &  & \\
+
     Merge & \ding{51} & $n$ & $n \log n$ &  & $n \log n$ &  & $n \log n$ &  & \\
-    \textbf{Untere Schranke $\Omega (n \log n)$ für allg. Sortierverfahren} & & & & & & & & & \\
-    Distribution & \ding{51} & $n$ & $n$ &  & $n$ &  & $n \log n$, $n^2$ &  & Speziell $O(n)$
+
+    \textbf{Untere Schranke $\Omega (n \log n)$ für allgemeine Sortierverfahren} & & & & & & & & & \\
+
+    Distribution & \ding{51} & $n$ & $n$ &  & $n$ &  & $n \log n$, $n^2$ &  & $O(n)$
   \end{tblr}
 }
