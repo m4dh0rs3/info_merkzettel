@@ -134,7 +134,7 @@ Kosten $C_f(n)$ mit $g: \mathbb{N} \rightarrow \mathbb{R} \exists c > 0 \exists 
   \end{cases}
 \end{gather*}
 
-\paragraph{Floor/Ceiling}
+\paragraph{Floor/Ceiling} Runden
 
 \begin{description}
   \item [Floor] $\floor{x}$ nach unten
@@ -545,7 +545,40 @@ mit Optimierung nach geringen
 (ohne Total: ,,\emph{Halbordnung}``)
 \index{Halbordnung}
 
-\subsection{Einfache Sortierverfahren $O(n^2)$}
+\subsection{Grad der Sortierung}
+\index{Grad der Sortierung}
+
+\begin{description}
+  \item [Anzahl der Inversionen]
+        \index{Anzahl der Inversionen}
+        Anzahl kleinerer Nachfolger für jedes Element:
+        \begin{gather*}
+          \text{inv} (L) := |\{ (i,j) \mid \\
+          0 \leq i < j \leq n - 1, \\
+          L[i] \geq L[j] \}|
+        \end{gather*}
+
+  \item [Anzahl der Runs]
+        \index{Run}
+        Ein \emph{Run} ist eine sortierte Teilliste, die nicht nach links oder rechts verlängert werden kann.
+        Die Anzahl der Runs ist:
+        \begin{gather*}
+          \text{runs} (L) := |\{ i \mid \\
+          0 \leq i < n - 1, \\
+          L[i + 1] < L[i]  \}| \mathbf{+ 1}
+        \end{gather*}
+
+  \item [Längster Run]
+        \index{Längster Run}
+        Anzahl der Elemente der längsten sortierten Teilliste:
+        \begin{gather*}
+          \text{las} (L) := \max \{ r.\text{len} \mid \\
+          r \text{ ist Run in } L \} \\
+          \text{rem} (L) := L.\text{len} - \text{las} (L)
+        \end{gather*}
+\end{description}
+
+\subsection{Einfache Sortierverfahren $\mathbf{O(n^2)}$}
 
 \paragraph{Selection}
 \index{Selectionsort}
@@ -637,7 +670,7 @@ Vertausche benachbarte Elemente die nicht in Sortierordnung sind, durchlaufe bis
   }
 \end{algorithm}
 
-\subsection{Verbesserte Sortierverfahren $O(n \log n)$}
+\subsection{Verbesserte Sortierverfahren $\mathbf{O(n \log n)}$}
 
 \paragraph{Shell}
 \index{Shellsort}
@@ -787,8 +820,115 @@ Stelle Max-Heap (größtes Element in der Wurzel) her, gib Wurzel aus under erse
   }
 \end{algorithm}
 
+\paragraph{Merge}
+\index{Mergesort}
+Zerlege Liste in $k$ Teile, sortiere diese (mit Mergesort) und verschmelze die sortierten Teillisten (merge).
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{2-Merge}
+  \SetKwFunction{Merge}{Merge}
+
+  \KwIn{Liste $L$ mit $L[l \dots m - 1]$ und $L[m \dots r]$ sortiert, Indices $l$, $m$, $r$}
+  \KwOut{Liste $L$ mit $L[l \dots r]$ sortiert}
+
+  $j \leftarrow l$
+
+  $k \leftarrow m$
+
+  \For{$i \leftarrow 0$ \KwTo $r - l$}{
+    \eIf{$k > r \lor (j < m \land L[j] \leq L[k])$}{
+      $B[i] \leftarrow L[j]$
+
+      $j \leftarrow j + 1$
+    }{
+      $B[i] \leftarrow L[k]$
+
+      $k \leftarrow k + 1$
+    }
+  }
+
+  \For{$i \leftarrow 0$ \KwTo $r - l$}{
+    $L[l + i] \leftarrow B[i]$
+  }
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Rekursives 2-Mergesort}
+  \SetKwFunction{Mergesort}{Mergesort}
+
+  \KwIn{Liste $L$, Indices $l$, $r$}
+  \KwOut{Liste $L$ mit $L[l \dots r]$ sortiert}
+
+  \eIf{$l \geq r$}{
+    \Return{}
+  }{
+    $m \leftarrow \floor{\frac{l + r + 1}{2}}$
+
+    \Mergesort $L$, $l$, $m - 1$
+
+    \Mergesort $L$, $m$, $r$
+
+    \Merge $L$, $l$, $m$, $r$
+  }
+\end{algorithm}
+
+\begin{description}
+  \item [Nicht Rekursives 2-Mergesort]
+        \begin{algorithm}[H]
+          \TitleOfAlgo{2-Mergesort (nicht rekursiv)}
+
+          \KwIn{Liste $L$}
+          \KwOut{Sortierte Liste $L$}
+
+          \For{$k \leftarrow 2$; $k < n$; $k \leftarrow k * 2$}{
+            \For{$i \leftarrow 0$; $i + k \leq n$; $i \leftarrow i + k$}{
+              \Merge $L$, $i$, $\min(i + k - 1, n - 1)$, $i + \frac{k}{2}$
+            }
+          }
+
+          \Merge $L$, $0$, $n - 1$, $\frac{k}{2}$
+        \end{algorithm}
+
+  \item [Natürliches Mergesort]
+        \index{Natürliches Mergesort}
+        Verschmelzen von benachbarten Runs (Ausnutzen der Vorsortierung)
+
+        % TODO: k-Wege-Mergesort
+\end{description}
+
+\subsection{Untere Schranke allgemeiner Sortierverfahren}
+\index{Untere Schranke allgemeiner Sortierverfahren}
+
+Jedes allgemeine Sortierverfahren benötigt im Worst- und Average-case Schlüsselvergleiche von mindestens:
+
+$$\Omega (n \log n)$$
+
+(Siehe Pfadlänge auf Entscheidungsbaum)
+
+\subsection{Spezielle Sortierverfahren $\mathbf{O(n)}$}
+
+\paragraph{Distribution}
+\index{Distributionsort}
+
+Abspeichern der Frequenz jedes Elementes $k$ auf $F[k]$; Ausgeben jedes Index $F[k]$ mal.
+
+\paragraph{Lexikographische Ordnung}
+\index{Lexikographische Ordnung}
+Sei $A = \{ a_1, \dots, a_n \}$ ein Alphabet, dass sich mit gegebener Ordnung $a_1 < \cdots < a_n$ wie folgt auf dem Lexikon $A* = \bigcup_{n \in \mathbb{N}_0} A^n$ fortsetzt:
+\begin{align*}
+                  & v = (v_1, \dots, v_p) \leq w = (w_1, \dots, w_q)   \\
+  \Leftrightarrow & \forall 1 \leq i \leq p: v_i = w_i \quad p \leq q  \\
+  \lor            & \forall 1 \leq j \leq i: v_j = w_j \quad v_i < w_i
+\end{align*}
+
+(Die antisymmetrische Relation $\leq$ hei\ss t Lexikographische Ordnung)
+
+\paragraph{Fachverteilen}
+\index{Fachverteilen}
+Sortieren von $n$ $k$-Tupeln in $k$ Schritten: Sortieren nach letztem Element, vorletzem usw.
+
 \subsection{Gro\ss e Datensätze sortieren}
-\subsection{Spezielle Sortierverfahren $O(n)$}
+
 
 \mzBreak\
 
