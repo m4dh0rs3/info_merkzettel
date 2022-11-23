@@ -38,7 +38,7 @@ Raum/Zeit-Tradeoff: schnell + gro\ss vs. klein + langsam.
     hline{1-2,4} = {-}{},
       }
     \textbf{Programmlaufzeit/-allokationen} & \textbf{Komplexität}    \\
-    Einfluss äußerer Faktoren      & Unabh.                  \\
+    Einfluss äu\ss erer Faktoren      & Unabh.                  \\
     Konkrete Grö\ss e                 & Asymptotische Schätzung
   \end{tblr}
 }
@@ -758,7 +758,7 @@ Liste also Binärbaum, bestimme $\min L$ durch Austragen des Turniers, entferne 
 
 \paragraph{Heap}
 \index{Heapsort}
-Stelle Max-Heap (größtes Element in der Wurzel) her, gib Wurzel aus under ersetze mit Element ganz rechts in unterster Ebene.
+Stelle Max-Heap (grö\ss tes Element in der Wurzel) her, gib Wurzel aus under ersetze mit Element ganz rechts in unterster Ebene.
 
 % TODO: Definiere Max-Heap-Eigenschaft (MHE).
 
@@ -873,9 +873,9 @@ Zerlege Liste in $k$ Teile, sortiere diese (mit Mergesort) und verschmelze die s
 \end{algorithm}
 
 \begin{description}
-  \item [Nicht Rekursives 2-Mergesort]
+  \item [Iteratives 2-Mergesort]
         \begin{algorithm}[H]
-          \TitleOfAlgo{2-Mergesort (nicht rekursiv)}
+          \TitleOfAlgo{Iteratives 2-Mergesort}
 
           \KwIn{Liste $L$}
           \KwOut{Sortierte Liste $L$}
@@ -909,6 +909,7 @@ $$\Omega (n \log n)$$
 
 \paragraph{Distribution}
 \index{Distributionsort}
+\index{Bucketsort}
 
 Abspeichern der Frequenz jedes Elementes $k$ auf $F[k]$; Ausgeben jedes Index $F[k]$ mal.
 
@@ -921,7 +922,7 @@ Sei $A = \{ a_1, \dots, a_n \}$ ein Alphabet, dass sich mit gegebener Ordnung $a
   \lor            & \forall 1 \leq j \leq i: v_j = w_j \quad v_i < w_i
 \end{align*}
 
-(Die antisymmetrische Relation $\leq$ hei\ss t Lexikographische Ordnung)
+(Die antisymmetrische Relation $\boldsymbol{\leq}$ hei\ss t Lexikographische Ordnung)
 
 \paragraph{Fachverteilen}
 \index{Fachverteilen}
@@ -929,6 +930,21 @@ Sortieren von $n$ $k$-Tupeln in $k$ Schritten: Sortieren nach letztem Element, v
 
 \subsection{Gro\ss e Datensätze sortieren}
 
+\paragraph{Indirekt}
+\index{Indirektes Sortieren}
+Liste von Zeigern $Z[i] = i$ auf die eigentlichen Listenelemente. Schlüsselvergleiche mit $L[Z[i]]$, Satzbewegungen nur als Zeigertausch in $Z$. Anschlie\ss end linear kopieren.
+
+\paragraph{Extern}
+\index{Externes Sortieren}
+Zerlegen in $m$ Blöcke, sortieren im Hauptspeicher (Run) der mind. $m + 1$ Blöcke gro\ss~ ist, verschmelzen der Runs ($m$-Wege-Merge).
+
+\begin{description}
+  \item [Ausgeglichenes 2-Wege-Mergesort]
+        \index{Ausgeglichenes 2-Wege-Mergesort}
+        Daten auf Band $n$, sortieren von Block $r_1 < n$ auf zweites Band und $r_2$ auf drittes Band, löschen des ersten Bandes und Merge $2r$ abwechselnd auf erstes (neues $2r_1$) und viertes Band (neues $2r_2$) und wiederholen.
+
+  \item [Replacement Selectionsort] Lese $r < n$ Elemente auf Priority-Queue $Q$. Falls $x = \min(Q) \geq$ letztem Element auf zweiten Band, schreibe $x$ aus, sonst schreibe $Q$ auf Band. Wiederhole auf dritten Band und dann merge.
+\end{description}
 
 \mzBreak\
 
