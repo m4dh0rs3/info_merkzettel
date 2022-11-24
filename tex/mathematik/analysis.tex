@@ -594,36 +594,69 @@ $${(a_n)_{n \in \mathbb{N}}}_\text{\emph{\textsc{Cauchy}}} \Leftrightarrow \exis
 
 \begin{description}
   \item [\textsc{Cauchy}]
-        \index{\textsc{Cauchy}-Konvergenzkriterium}
         \index{\textsc{Cauchy}-Kriterium}
+        \begin{align*}
+          \Leftrightarrow & {(\sum_{k=1}^n a_k)_{n \in \mathbb{N}}} \text{\emph{\textsc{ Cauchy}}} \\
+                          & (\sum_{k=1}^\infty a_k)_\text{konv.}                                   \\
+          \Leftrightarrow & \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n > m > n_0 :  \\
+                          & | \sum_{k=m + 1}^n a_k | \leq \epsilon
+        \end{align*}
+
+  \item [Notwendig]
+        \begin{align*}
+          (\sum_{n=1}^\infty a_n)_\text{konv.} \Rightarrow \lim_{n \rightarrow \infty} a_n = \boldsymbol{0} \\
+          \lim_{n \rightarrow \infty} a_n \neq 0 \Rightarrow (\sum_{n=1}^\infty a_n)_\text{div.}
+        \end{align*}
+
+  \item [Beschränkt]
+        $a_n \geq 0$ ($\Rightarrow$ \emph{mnt.}) $\forall n \in \mathbb{N}$
+        $$(\sum_{n=1}^\infty a_n)_\text{\emph{beschr.}} \Leftrightarrow (\sum_{n=1}^\infty a_n)_\text{konv.}$$
+
+  \item [Majorante]
+        \index{Majorantenkriterium}
+        $0 \leq \mathbf{a_n \leq b_k} \quad \forall n \in \mathbb{N}$\\
+        % (Min. $\leq$ Major.)
+        \index{Majorante}
+        \index{Minorante}
+        $$(\sum_{n=1}^\infty b_n)_\text{konv.} \Leftrightarrow (\sum_{n=1}^\infty a_n)_\text{konv.}$$
+
+  \item [Quotient]
+        \index{Quotientenkriterium}
+        $a_n \geq 0 \quad \forall n \in \mathbb{N}$
         $$
-          \begin{aligned}
-                            & (\sum_{k=1}^\infty a_k)_\text{konv.}                                  \\
-            \Leftrightarrow & {(\sum_{k=1}^n a_k)_{n \in \mathbb{N}}}_\text{\emph{\textsc{Cauchy}}} \\
-            \Leftrightarrow & \forall \epsilon > 0 \exists n_0 \in \mathbb{N} \forall n > m > n_0 : \\
-                            & | \sum_{k=m + 1}^n a_k | \leq \epsilon
-          \end{aligned}
+          \lim_{n \rightarrow \infty} \frac{a_{n + 1}}{a_n} \begin{cases}
+            \mathbf{< 1} \rightarrow (\sum_{n = 1}^\infty a_n)_\text{konv.} \\
+            \mathbf{> 1} \rightarrow (\sum_{n = 1}^\infty a_n)_\text{div.}
+          \end{cases}
         $$
 
-  \item [Notwendige]
+  \item [Wurzel]
+        \index{Wurzelkriterium}
+        $a_n \geq 0 \quad \forall n \in \mathbb{N}$
         $$
-          \begin{aligned}
-            (\sum_{k=1}^\infty a_k)_\text{konv.} \Rightarrow \lim_{n \rightarrow \infty} a_n = \boldsymbol{0} \\
-            \lim_{n \rightarrow \infty} a_n \neq 0 \Rightarrow (\sum_{k=1}^\infty a_k)_\text{div.}
-          \end{aligned}
+          \lim_{n \rightarrow \infty} \sqrt[n]{a_n} \begin{cases}
+            \mathbf{< 1} \rightarrow (\sum_{n = 1}^\infty a_n)_\text{konv.} \\
+            \mathbf{> 1} \rightarrow (\sum_{n = 1}^\infty a_n)_\text{div.}
+          \end{cases}
         $$
 
-  \item [Hinreichende]\
-        \begin{description}
-          \item [Lemma] $a_k \mathbf{\geq 0}$ ($\Rightarrow$ \emph{mnt.}) $\forall k \in \mathbb{N}$
-                $$(\sum_{k=1}^\infty a_k)_\text{konv.} \Leftrightarrow (\sum_{k=1}^\infty a_k)_\text{\emph{beschr.}}$$
+  \item [Absolut]
+        \index{Absolute Konvergent}
+        $$(\sum_{n=1}^\infty | a_n |)_\text{konv.} \Rightarrow (\sum_{n=1}^\infty a_n)_\text{konv.}$$
 
-          \item [Majorante]
-                \index{Majorantenkriterium}
-                $0 \leq \mathbf{a_k \leq b_k} \quad \forall k \in \mathbb{N}$\\
-                (Min. $\leq$ Major.)
-                \index{Majorante}
-                \index{Minorante}
-                $$(\sum_{k=1}^\infty b_k)_\text{konv.} \Leftrightarrow (\sum_{k=1}^\infty a_k)_\text{konv.}$$
-        \end{description}
+        $$| \sum_{n=1}^\infty a_n | \leq \sum_{n=1}^\infty | a_n |$$
+
+        (Dreiecksungleichung)
+        \index{Reihendreiecksungleichung}
+
+  \item [Leibniz] $(a_n)_{n \in \mathbb{N}}$ mnt. Nullfolge
+        \index{Leibniz-Kriterium}
+        $$(\sum_{n=1}^\infty (-1)^n * a_n)_\text{konv.}$$
+
+  \item [Grenzwert] $a_n, b_n \geq 0 \quad \forall n \in \mathbb{N}$
+        \index{Grenzwertkriterium}
+        \begin{gather*}
+          \lim_{n \rightarrow \infty} \frac{a_n}{b_n} \mathbf{> 0} \Rightarrow \\
+          (\sum_{n=1}^\infty a_n)_\text{konv.} \Leftrightarrow (\sum_{n=1}^\infty b_n)_\text{konv.}
+        \end{gather*}
 \end{description}
