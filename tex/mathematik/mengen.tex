@@ -222,13 +222,38 @@ Sei Indexmenge $I$ und Mengen $M_i \quad \forall i \in I$.
   |\mathcal{P}(M)| = & 2^{|M|} \quad (\in / \notin \text{binär})
 \end{align*}
 
+\subsection{Auswahlaxiom (AC)}
+\index{Auswahlaxiom}
+
+Für Menge $\mathcal{X}$ nicht-leerer Mengen:
+
+\begin{gather*}
+  \exists c: \mathcal{X} \rightarrow \bigcup \mathcal{X} \\
+  \forall X \in \mathcal{X}: c(X) \in X
+\end{gather*}
+
+Nutzung kennzeichnen!
+
 \section{Abbildungen}
 \index{Abbildung}
+\index{Funktion}
 
 \paragraph{Abbildung $\mathbf{f}$}
 von $X$ (Definitionsb. \index{Definitionsbereich}) nach $Y$ (Werteb. \index{Wertebereich}) ordnet jedem $x \in X$ eindeutig ein $y \in Y$ zu.
 
+\begin{description}
+  \item[Totalität] $\forall x \in X \exists y \in Y: f(x) = y$
+  \item[Eindeutigkeit] $\forall x \in X \forall a, b \in Y: f(x) = a \land f(x) = b \Rightarrow a = b$
+\end{description}
+
 $$\mathbf{f}: X \rightarrow Y$$
+
+\begin{description}
+  \item [Bilder] $f(X') = \{ f(x) \mid x \in X' \} \quad X' \subseteq X$
+        \index{Bild}
+  \item [Urbilder] $f^{-1}(Y') = \{ x \in X \mid f(x) \in Y' \} \quad Y' \subseteq Y$
+        \index{Urbild}
+\end{description}
 
 \begin{description}
   \item [Graph]
@@ -244,7 +269,14 @@ $$\mathbf{f}: X \rightarrow Y$$
 
   \item [Umkehrfunktion $f^{-1}: Y \rightarrow X$]
         \index{Umkehrfunktion}
-        wenn $f$ bijektiv und $(f \circ f^{-1}) (y) = y$
+        wenn $f$ bijektiv und $(f \circ f^{-1}) (y) = y$ bzw. $f;f^{-1} = \text{id}_X \land f^{-1};f = \text{id}_X$
+
+        Für die Relation $f^{-1}$ gilt:
+
+        \begin{itemize}
+          \item $x \in f^{-1}(\{ f(x) \})$
+          \item $f(f^{-1}(\{ y \})) = \{ y \}$ falls $f$ surjektiv
+        \end{itemize}
 \end{description}
 
 \paragraph{Eigenschaften}
@@ -259,7 +291,7 @@ $$\mathbf{f}: X \rightarrow Y$$
         \index{Surjektiv}
         $\forall y \in Y \exists x \in X: \mathbf{y = f(x)}$
 
-  \item [Bijektiv]
+  \item [Bijektiv/Invertierbar]
         \index{Bijektiv}
         wenn injektiv und surjektiv
 \end{description}
