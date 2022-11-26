@@ -29,7 +29,7 @@ Menschl. Sprache, Pseudocode, Mathematische Ausdrücke, Quellcode, Binärcode
 \section{Effizienz}
 \index{Effizienz}
 
-Raum/Zeit-Tradeoff: schnell + gro\ss vs. klein + langsam.
+Raum/Zeit-Tradeoff: Zwischenspeichern vs. Neuberechnen
 \index{Raum/Zeit-Tradeoff}
 
 \mzGraphic{
@@ -49,7 +49,7 @@ Raum/Zeit-Tradeoff: schnell + gro\ss vs. klein + langsam.
   \item Best-case $C_B$
         \index{Best-case Komplexität}
 
-  \item Average-case $C_A$
+  \item Average-case
         \index{Average-case Komplexität}
 
   \item Worst-case $C_W$
@@ -122,14 +122,14 @@ Kosten $C_f(n)$ mit $g: \mathbb{N} \rightarrow \mathbb{R} \exists c > 0 \exists 
 \end{description}
 
 \index{Mastertheorem}
-\paragraph{Mastertheorem} $a \geq 1$, $b > 1$, $\Theta > 0$
+\paragraph{Mastertheorem} $a \geq 1$, $b > 1$, $\Theta \geq 0$
 
 
 \begin{gather*}
   T(n) = a * T( \frac{n}{b} ) + \Theta (n^k) \\
   \Rightarrow \begin{cases}
     \Theta ( n^k ) \quad          & a < b^k \\
-    \Theta ( n^k * \log n ) \quad & a = b^k \\
+    \Theta ( n^k \log n ) \quad   & a = b^k \\
     \Theta ( n^{\log_b a} ) \quad & a > b^k
   \end{cases}
 \end{gather*}
@@ -152,7 +152,7 @@ endlich, geordnete (nicht sortierte) Folge $n$ Elemente $L := [a_0, \dots, a_n]$
 
 \paragraph{Array}
 \index{Array}
-Sequenzielle Abfolge im Speicher, statisch, Index $O(1)$, schnelle Suchverfahren
+Sequenzielle Abfolge im Speicher, statisch, Index $O(1)$, schnelle Suchverfahren \fbox{$L[0] \mid \dots \mid L[n - 1]$}
 
 \index{Sequenzielle Suche}
 \paragraph{Sequenziell}
@@ -222,7 +222,7 @@ Finde $i$-kleinstes Element in unsortierter Liste $\in \Theta (n)$
 
 \paragraph{Binär}
 \index{Binäre Suche}
-$C_W(n) = \lfloor \log_2 n \rfloor + 1$, $C_A(n) \approx \log_2 n \in O(\log n)$\
+$C_W(n) = \floor{\log_2 n} + 1$, $C_A(n) \overset{n \rightarrow \infty}{\approx} \log_2 n \in O(\log n)$\
 
 \begin{algorithm}[H]
   \TitleOfAlgo{Binary Search}
@@ -258,7 +258,7 @@ Kosten Vergleich $a$, Sprung $b$ mit optimaler Sprungweite:
 
 $$m = \floor[\big]{\sqrt{(\frac{a}{b}) * n)}}$$
 
-$$C_A(n) = \frac{1}{2} ( \ceil[\big]{\frac{n}{m}} * a + m*b) \in O(\sqrt{n})$$
+$$C_A(n) = \frac{1}{2} ( \ceil[\big]{\frac{n}{m}} * a + mb) \in O(\sqrt{n})$$
 
 \begin{algorithm}[H]
   \TitleOfAlgo{Jump Search}
@@ -281,7 +281,7 @@ $$C_A(n) = \frac{1}{2} ( \ceil[\big]{\frac{n}{m}} * a + m*b) \in O(\sqrt{n})$$
 \end{algorithm}
 
 \begin{itemize}
-  \item Rekursive Sprungsuche $\in O(\sqrt[k]{n})$
+  \item $k$-Ebenen Sprungsuche $\in O(\sqrt[k]{n})$
 
   \item Partitionierung in Blöcke $m$ möglich
 \end{itemize}
@@ -348,7 +348,7 @@ $C_A (n) = 1 + \log_2 \log_2 n$, $C_W (n) \in O(n)$\
 
 \paragraph{Häufigkeitsordnungen}
 \index{Häufigkeitsgeordnete Listen}
-mit Zugriffswahrscheinlichkeit $p_i$: $C_A (n) = \sum_{i=0}^n i*p_i$
+mit Zugriffswahrscheinlichkeit $p_i$: $C_A (n) = \sum_{i=0}^n ip_i$
 
 \begin{description}
   \item [Frequency-count] Zugriffszähler pro Element
@@ -364,7 +364,7 @@ mit Zugriffswahrscheinlichkeit $p_i$: $C_A (n) = \sum_{i=0}^n i*p_i$
 \section{Verkettete Listen}
 \index{Verkettete Liste}
 
-\paragraph{Container} Jedes Element $p$ ist in der Form $p \rightarrow$ \fbox{(key) | value | next}. Index $\in O(n)$
+\paragraph{Container} Jedes Element $p$ ist in der Form $p \rightarrow$ \fbox{(key) | value | next}. Index ist seq. Suche $\in O(n)$
 
 \paragraph{Löschen} $\in O(1)$\
 
@@ -407,7 +407,7 @@ mit Zugriffswahrscheinlichkeit $p_i$: $C_A (n) = \sum_{i=0}^n i*p_i$
 Zeiger auf Vorgänger \fbox{(key) | value | prev | next}
 
 \begin{itemize}
-  \item Bestimmung des Vorgängers
+  \item Bestimmung des Vorgängers (bei Einfügen, Löschen)
         $\in O(1)$ statt $O(n)$
 
   \item Höherer Speicheraufwand
@@ -417,7 +417,7 @@ Zeiger auf Vorgänger \fbox{(key) | value | prev | next}
 \index{Skip-Liste}
 
 \mzGraphic{
-  \begin{tikzpicture}[scale=.5]
+  \begin{tikzpicture}[scale=.5,yscale=-1]
     \draw
     (-2,0) rectangle (-1,4)
 
@@ -466,14 +466,14 @@ Zeiger auf Vorgänger \fbox{(key) | value | prev | next}
 \end{itemize}
 
 \begin{description}
-  \item [Perfekt]
-        Einfügen, Löschen $\in O(n)$ (Vollst. Reorga.)
+  \item [(Perfekt)]
         \index{Perfekte Skip-Liste}
+        Einfügen, Löschen $\mathbf{\in O(n)}$ (Vollst. Reorga.)
 
   \item [Randomisiert]
         \index{Randomisierte Skip-Liste}
         Höhe zufällig (keine vollst. Reorga.) \\
-        $P(h) = \frac{1}{2^{h + 1}}$: Einfügen, Löschen $\in O(\log n)$
+        $P(h) = \frac{1}{2^{h + 1}}$: Einfügen, Löschen $\mathbf{\in O(\log n)}$
 \end{description}
 
 \subsection{Spezielle Listen}
@@ -482,11 +482,11 @@ Zeiger auf Vorgänger \fbox{(key) | value | prev | next}
 \index{Abstrakter Datentyp}
 
 \begin{description}
-  \item [Stack $S = | \text{,,TOP``}, \cdots$]
+  \item [Stack $S = | \texttt{TOP}, \cdots$]
         \index{Stack}
         Operationen nur auf letztem Element $\in O(1)$
 
-  \item [Queue $Q = || \text{,,HEAD``}, \cdots, \text{,,TAIL``}$]
+  \item [Queue $Q = || \texttt{HEAD}, \cdots, \texttt{TAIL}$]
         \index{Queue}
         Vorne Löschen, hinten einfügen $\in O(1)$
 
@@ -494,7 +494,7 @@ Zeiger auf Vorgänger \fbox{(key) | value | prev | next}
             p_0 & p_1 & \cdots & p_n \\
             a_0 & a_1 & \cdots & a_n
           \end{bmatrix}$]
-        Jedes Element hat Priorität; Entfernen von Element mit höchster (,,MIN``) Priorität
+        Jedes Element $a$ hat Priorität $p$; Entfernen von Element mit höchster (\texttt{MIN}) Priorität
         \index{Priority Queue}
 \end{description}
 
@@ -505,7 +505,7 @@ Zeiger auf Vorgänger \fbox{(key) | value | prev | next}
 
 \begin{description}
   \item[Gegeben] (endliche) Folge von Schlüsseln (von Daten) $(K_i)_{i \in I}$
-  \item[Gesucht] Bijektive Abbildung $\pi: I \rightarrow I$ (Permutation), sodass $K_{\pi(i)} \leq K_{\pi(i + 1)}$
+  \item[Gesucht] Bijektive Abbildung $\pi: I \rightarrow I$ (Permutation), sodass $K_{\pi(i)} \leq K_{\pi(i + 1)} \quad \forall i \in I$
 \end{description}
 
 mit Optimierung nach geringen
@@ -527,7 +527,7 @@ mit Optimierung nach geringen
   \item [Speicher] \emph{In situ} vs. \emph{ex situ}: Zusätzlicher Speicher notwendig
         \index{In situ Suche}
         \index{Ex situ Suche}
-  \item [Lokal] \emph{Intern} vs. \emph{extern}: Hauptspeicher oder Mischung vorsortierter externer Teilfolgen
+  \item [Lokal] \emph{Intern} vs. \emph{extern}: Alles im RAM oder Mischung vorsortierter externer Teilfolgen
         \index{Interne Suche}
         \index{Externe Suche}
 \end{description}
@@ -642,7 +642,7 @@ Verschiebe erstes Element aus unsortierter Liste von hinten durch sortierte List
 
 \paragraph{Bubble}
 \index{Bubblesort}
-Vertausche benachbarte Elemente die nicht in Sortierordnung sind, durchlaufe bis nichts vertauscht wird. \emph{Achtung:} Die hinteren Elemente können im Durchlauf ignoriert werden!
+Vertausche benachbarte Elemente, durchlaufe bis nichts vertauscht werden muss. \emph{Achtung:} Die hinteren Elemente können im Durchlauf ignoriert werden!
 
 \begin{algorithm}[H]
   \TitleOfAlgo{Bubblesort}
@@ -674,7 +674,7 @@ Vertausche benachbarte Elemente die nicht in Sortierordnung sind, durchlaufe bis
 
 \paragraph{Shell}
 \index{Shellsort}
-Insertionsort, nur werden Elemente nicht mit Nachbarn getauscht, sondern in $t$ Sprüngen $h_i$, die kleiner werden. Im letzten Schritt dann Insertionsort ($h_t = 1$); somit Sortierung von grob bis fein, also Reduzierung der Tauschvorgänge.
+Insertionsort, nur werden Elemente nicht mit Nachbarn getauscht, sondern in $t$ Sprüngen $h_i$, die kleiner werden (Kamm). Im letzten Schritt dann Insertionsort ($h_t = 1$); somit Sortierung von grob bis fein, also Reduzierung der Tauschvorgänge.
 
 \begin{algorithm}[H]
   \TitleOfAlgo{Shellsort}
@@ -732,9 +732,9 @@ Rekursiv: Pivot-Element in der Mitte, Teillisten $L_<$, $L_>$, sodass $\forall l
     \uIf{$i \leq j$}{
       \Swap $L[i]$, $L[j]$
 
-      $i++$
+      $\mathbf{i++}$
 
-      $j--$
+      $\mathbf{j--}$
     }
   }
 
@@ -745,7 +745,7 @@ Rekursiv: Pivot-Element in der Mitte, Teillisten $L_<$, $L_>$, sodass $\forall l
 
 \paragraph{Turnier}
 \index{Turniersortierung}
-Liste also Binärbaum, bestimme $\min L$ durch Austragen des Turniers, entferne Sieger und wiederhole von Siegerpfad aus.
+Liste also Binärbaum, bestimme $\min(L)$ durch Austragen des Turniers, entferne Sieger und wiederhole von Siegerpfad aus.
 
 % \begin{algorithm}[H]
 %   \TitleOfAlgo{Turniersortierung}
@@ -758,7 +758,7 @@ Liste also Binärbaum, bestimme $\min L$ durch Austragen des Turniers, entferne 
 
 \paragraph{Heap}
 \index{Heapsort}
-Stelle Max-Heap (grö\ss tes Element in der Wurzel) her, gib Wurzel aus under ersetze mit Element ganz rechts in unterster Ebene.
+Stelle Max-Heap (grö\ss tes Element in der Wurzel) her, gib Wurzel aus und ersetze mit Element ganz rechts in unterster Ebene.
 
 % TODO: Definiere Max-Heap-Eigenschaft (MHE).
 
@@ -783,7 +783,7 @@ Stelle Max-Heap (grö\ss tes Element in der Wurzel) her, gib Wurzel aus under er
     largest $\leftarrow r$
   }
 
-  \uIf{largest $\neq i$}{
+  \If{largest $\neq i$}{
     \Swap $L[i]$, $L[\text{largest}]$
 
     \MaxHeapify $L$, largest
@@ -913,7 +913,7 @@ $$\Omega (n \log n)$$
 
 Abspeichern der Frequenz jedes Elementes $k$ auf $F[k]$; Ausgeben jedes Index $F[k]$ mal.
 
-\paragraph{Lexikographische Ordnung}
+\paragraph{Lexikographische Ordnung $\mathbf{\leq}$}
 \index{Lexikographische Ordnung}
 Sei $A = \{ a_1, \dots, a_n \}$ ein Alphabet, dass sich mit gegebener Ordnung $a_1 < \cdots < a_n$ wie folgt auf dem Lexikon $A* = \bigcup_{n \in \mathbb{N}_0} A^n$ fortsetzt:
 \begin{align*}
@@ -921,8 +921,6 @@ Sei $A = \{ a_1, \dots, a_n \}$ ein Alphabet, dass sich mit gegebener Ordnung $a
   \Leftrightarrow & \forall 1 \leq i \leq p: v_i = w_i \quad p \leq q  \\
   \lor            & \forall 1 \leq j \leq i: v_j = w_j \quad v_i < w_i
 \end{align*}
-
-(Die antisymmetrische Relation $\boldsymbol{\leq}$ hei\ss t Lexikographische Ordnung)
 
 \paragraph{Fachverteilen}
 \index{Fachverteilen}
@@ -1027,11 +1025,11 @@ Zerlegen in $m$ Blöcke, sortieren im Hauptspeicher (Run) der mind. $m + 1$ Blö
 
     &  &  & $C_B$ & $C_A$ & $C_W$ & $M_B$ & $M_A$ & $M_W$ & \\
 
-    Selection & \ding{55} & $1$ & $\frac{n * (n - 1)}{2}$ & $\frac{n * (n - 1)}{2}$ & $\frac{n * (n - 1)}{2}$ & $3 * (n - 1)$ & $3 * (n - 1)$ & $3 * (n -1)$ & \begin{sideways}$O(n^2)$\end{sideways}\\
+    Selection & \ding{55} & $1$ & $\frac{n (n - 1)}{2}$ & $\frac{n (n - 1)}{2}$ & $\frac{n (n - 1)}{2}$ & $3 (n - 1)$ & $3 (n - 1)$ & $3 (n -1)$ & \begin{sideways}$O(n^2)$\end{sideways}\\
 
-    Insertion & \ding{51} & $1$ & $n - 1$ & $\approx \frac{n * (n - 1)}{4} + n - \ln n$ & $\frac{n * (n - 1)}{2}$ & $2 * (n - 1)$ & $\frac{n^2 + 3n - 4}{4} + n - 1$ & $\frac{n^2 + 3n - 4}{2}$ & \\
+    Insertion & \ding{51} & $1$ & $n - 1$ & $\overset{n \rightarrow \infty}{\approx} \frac{n (n - 1)}{4} + n - \ln n$ & $\frac{n (n - 1)}{2}$ & $2 (n - 1)$ & $\frac{n^2 + 3n - 4}{4} + n - 1$ & $\frac{n^2 + 3n - 4}{2}$ & \\
 
-    Bubble & \ding{51} & $1$ & $\frac{n * (n - 1)}{2}$ & $\frac{n * (n - 1)}{2}$ & $\frac{n * (n - 1)}{2}$ & $0$ & $\frac{3n * (n - 1)}{4}$ & $\frac{3n * (n - 1)}{2}$ & \\
+    Bubble & \ding{51} & $1$ & $\frac{n (n - 1)}{2}$ & $\frac{n (n - 1)}{2}$ & $\frac{n (n - 1)}{2}$ & $0$ & $\frac{3n (n - 1)}{4}$ & $\frac{3n (n - 1)}{2}$ & \\
 
     &  &  & \textbf{Best-case} &  & \textbf{Average-case} &  & \textbf{Worst-case} &  & \\
 

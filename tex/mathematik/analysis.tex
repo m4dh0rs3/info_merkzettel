@@ -135,13 +135,13 @@ $$a | b \Leftrightarrow \exists n \in \mathbb{Z}: b = a * n$$
 \index{Bruch}
 
 \begin{itemize}
-      \item $\frac{a}{b} * \frac{c}{d} = \frac{a * c}{b * d}$
+      \item $\frac{a}{b} * \frac{c}{d} = \frac{a c}{b d}$
 
-      \item $\frac{a}{b} \overset{\mathbf{* d}}{=} \frac{a \mathbf{* d}}{b \mathbf{* d}}$
+      \item $\frac{a}{b} \overset{\mathbf{* d}}{=} \frac{a \mathbf{d}}{b \mathbf{d}}$
 
       \item $\frac{a}{\mathbf{c}} + \frac{b}{\mathbf{c}} = \frac{a + b}{\mathbf{c}}$
 
-      \item $\frac{a}{b} + \frac{c}{d} = \frac{a * d + c * b}{b * d}$
+      \item $\frac{a}{b} + \frac{c}{d} = \frac{ad + cb}{bd}$
 \end{itemize}
 
 \paragraph{Wurzeln} $b^n = a \Leftrightarrow b = \sqrt[n]{a}$
@@ -348,9 +348,9 @@ $$\sum_{i=0}^n q^i = \frac{1 - q^{n+1}}{1 - q}$$
 \paragraph{\textsc{Bernoulli} Unglei.} $n \in \mathbb{N}_0, x \geq -1$
 \index{\textsc{Bernoulli} Ungleichung}
 
-$$(1 + x)^n \geq 1 + n * x$$
+$$(1 + x)^n \geq 1 + nx$$
 
-\paragraph{Binom. Koeff.} $\binom{n}{k} = \frac{n!}{k! * (n - k)!}$
+\paragraph{Binom. Koeff.} $\binom{n}{k} = \frac{n!}{k! (n - k)!}$
 \index{Binomial Koeffizient}
 
 \begin{itemize}
@@ -364,7 +364,7 @@ $$(1 + x)^n \geq 1 + n * x$$
 \paragraph{Binomischer Satz} $n \in \mathbb{N}$
 \index{Binomischer Satz}
 
-$$(a + b)^n = \sum_{k=0}^n \binom{n}{k} * a^{n - k} * b^k$$
+$$(a + b)^n = \sum_{k=0}^n \binom{n}{k} * a^{n - k} b^k$$
 
 \section{Grenzwerte}
 
@@ -432,7 +432,7 @@ $$\lim_{n \rightarrow \infty} a_n = \begin{cases}
             \begin{itemize}
                   \item  $\lim_{n \rightarrow \infty} \frac{1}{n^k} = \mathbf{0} \quad k \in \mathbb{N}$
 
-                  \item $\lim_{n \rightarrow \infty} n * q^n = \mathbf{0}$
+                  \item $\lim_{n \rightarrow \infty} nq^n = \mathbf{0}$
             \end{itemize}
 
             \item[Folgen gegen $\mathbf{1}$]\
@@ -496,7 +496,7 @@ $$\lim_{n \rightarrow \infty} a_n = a, \lim_{n \rightarrow \infty} b_n = b$$
       \item $a_n \xrightarrow{n \rightarrow \infty} a \land a_n \xrightarrow{n \rightarrow \infty} b \linebreak \Rightarrow a = b$ (Max. einen Grenzw.)
 
       \item $a = \mathbf{0} \land (b_n)_\text{\emph{beschr.}}$ \\
-            $\Leftrightarrow \lim_{n \rightarrow \infty} a_n * b_n = \mathbf{0}$
+            $\Leftrightarrow \lim_{n \rightarrow \infty} a_n b_n = \mathbf{0}$
 
       \item $a_n \boldsymbol{\leq} b_n \Leftrightarrow a \boldsymbol{\leq} b \quad (\text{nicht} <)$
 
@@ -504,7 +504,7 @@ $$\lim_{n \rightarrow \infty} a_n = a, \lim_{n \rightarrow \infty} b_n = b$$
             $\lim_{n \rightarrow \infty} \begin{cases}
                         a_n \boldsymbol{\pm} b_n = a \boldsymbol{\pm} b                                                   \\
                         a_n \boldsymbol{\divideontimes} b_n = a \boldsymbol{\divideontimes} b                             \\
-                        a_n \boldsymbol{*} c = a \boldsymbol{*} c                                                         \\
+                        a_n \boldsymbol{\divideontimes} c = a \boldsymbol{\divideontimes} c                               \\
                         \mathbf{\sqrt[\color{black}k]{\color{black}a_n}} = \mathbf{\sqrt[\color{black}k]{\color{black}a}} \\
                         \boldsymbol{|}a_n\boldsymbol{|} = \boldsymbol{|}a\boldsymbol{|}
                   \end{cases}$
@@ -547,7 +547,7 @@ $$\lim_{n \rightarrow \infty} {a_n}_k = h$$
 
 $${(a_n)_{n \in \mathbb{N}}}_{\text{\emph{beschr.}}} \Rightarrow \exists h_\text{\emph{Häuf.}}$$
 
-(Teilfolge + (beschr.) $\Rightarrow \exists$ Häuf.)
+(Beschränkte Teilfolgen besitzen mind. einen Häufungspunkt)
 
 \subsection{\textsc{Cauchy}-Folge}
 \index{\textsc{Cauchy}-Folge}
@@ -705,7 +705,7 @@ $$\exp(x) * \exp(y) = \exp(x + y)$$
 \paragraph{\textsc{Cauchy}-Produkt}
 \index{\textsc{Cauchy}-Produkt}
 
-$$(\sum_{n = 0}^\infty a_n) * (\sum_{n = 0}^\infty b_n) = \sum_{n = 0}^\infty \sum_{k = 0}^n a_k * b_{n - k}$$
+$$(\sum_{n = 0}^\infty a_n)(\sum_{n = 0}^\infty b_n) = \sum_{n = 0}^\infty \sum_{k = 0}^n a_k b_{n - k}$$
 
 \paragraph{Korollar}
 
