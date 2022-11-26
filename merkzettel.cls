@@ -51,8 +51,8 @@
 
 \DeclareOption{uniLeipzig}{
   \UniLeipzigtrue
-  \Postertrue
-  \Bookletfalse
+  % \Postertrue
+  % \Bookletfalse
 }
 
 \DeclareOption{classy}{
@@ -375,8 +375,8 @@
   \makeindex
 
   \ifUniLeipzig
-    \setsecheadstyle{\filbreak\Large\bfseries\color{primary}}
-    \setsubsecheadstyle{\filbreak\large\bfseries\color{primary}}
+    \setsecheadstyle{\Large\bfseries\color{primary}}
+    \setsubsecheadstyle{\large\bfseries\color{primary}}
   \else
     % Extend chapter, sub-/section style with underline.
     \setsecheadstyle{\filbreak\Large\bfseries\secUnderline}
@@ -404,6 +404,7 @@
   % Print index keywords at end of document.
   \AtEndDocument{
     \clearforchapter
+    \tiny
     \printindex
   }
 

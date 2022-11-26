@@ -1,0 +1,94 @@
+\chapter{Bäume}
+
+\begin{itemize}
+  \item Verallg. von Listen: Element/Knoten kann mehrere Nachfolger haben
+  \item Darstellung von Hierarchien
+\end{itemize}
+
+\paragraph{Ungerichteter Graph}
+\index{Ungerichteter Graph}
+$(V, E)$ mit einer Menge Knoten $V$ und Kanten $E \subseteq V \times V$
+
+\paragraph{Baum}
+\index{Baum}
+Ungerichteter Graph mit
+
+\begin{description}
+  % TODO: TikZ pics
+  \item [Einfach] keine Schleife () oder Doppelkanten ()
+        \index{Einfacher Graph}
+
+  \item [Zusammenhängend]
+        \index{Zusammenhängender Graph}
+        Für jede zwei Knoten gibt es genau eine Folge von Kanten die sie verbindet
+
+  \item [Azyklisch]
+        \index{Azyklischer Graph}
+        kein Zyklus (Cycle)
+\end{description}
+
+\paragraph{Wurzelbaum}
+\index{Wurzelbaum}
+Baum mit genau einem Knoten der Wurzel hei\ss t
+
+\paragraph{Orientierter Wurzelbaum}
+\index{Orientierter Wurzelbaum}
+Alle Knoten sind Wurzel ihrer disjunkten Unterbäume und haben verschiedene Werte gleichen Typs. (Im Nachfolgenden einfach nur ,,Baum``)
+
+% TODO: TikZ Grafik für Wurzelbaumterminologie
+
+\paragraph{Darstellungsarten}
+
+% TODO: TikZ Grafiken
+\begin{description}
+  \item[Array]
+  \item[Verkettete Liste]
+  \item[Graph]
+  \item[Einrückung]
+  \item[Menge]
+  \item[Klammer]
+\end{description}
+
+\paragraph{Grö\ss en}
+
+\begin{description}
+  \item[Ordnung] Max. Anzahl von Kindern jedes Knoten eines Baums
+    \index{Baumordnung}
+
+  \item[Tiefe] Anzahl Kanten zwischen einem Knoten und Wurzel
+    \index{Knotentiefe}
+
+  \item[Stufe] Alle Knoten gleicher Tiefe
+    \index{Baumstufe}
+
+  \item[Höhe] Max. Tiefe $+ 1$
+    \index{Baumhöhe}
+\end{description}
+
+\paragraph{Eigenschaften}
+
+\begin{description}
+  \item[Geordnet] Kinder erfüllen Ordnung von links nach rechts
+    \index{Geordneter Baum}
+
+  \item[Vollständig]
+    \index{Vollständiger Baum}
+    Alle Blätter auf gleicher Stufe, jede Stufe hat max. Anzahl von Kindern
+\end{description}
+
+\section{Binärbäume}
+\index{Binärbaum}
+
+Geordneter, orientierter Wurzelbaum der Ordnung $2$ (oft auch nur $0$ oder $2$ Kinder)
+
+Somit mit für $i$ Stufen max. $2^i$ Knoten
+
+\begin{description}
+  \item[Strikt]
+    \index{Strikter Binärbaum}
+    Jeder Knoten hat $0$ oder $2$ Kinder (Kein Knoten hat genau $1$ Kind).
+
+  \item[Vollständig]
+    \index{Vollständiger Binärbaum}
+    Jeder Knoten außer der letzten Stufe hat genau $2$ Kinder.
+\end{description}

@@ -874,6 +874,7 @@ Zerlege Liste in $k$ Teile, sortiere diese (mit Mergesort) und verschmelze die s
 
 \begin{description}
   \item [Iteratives 2-Mergesort]
+
         \begin{algorithm}[H]
           \TitleOfAlgo{Iteratives 2-Mergesort}
 
@@ -941,7 +942,9 @@ Zerlegen in $m$ Blöcke, sortieren im Hauptspeicher (Run) der mind. $m + 1$ Blö
         \index{Ausgeglichenes 2-Wege-Mergesort}
         Daten auf Band $n$, sortieren von Block $r_1 < n$ auf zweites Band und $r_2$ auf drittes Band, löschen des ersten Bandes und Merge $2r$ abwechselnd auf erstes (neues $2r_1$) und viertes Band (neues $2r_2$) und wiederholen.
 
-  \item [Replacement Selectionsort] Lese $r < n$ Elemente auf Priority-Queue $Q$. Falls $x = \min(Q) \geq$ letztem Element auf zweiten Band, schreibe $x$ aus, sonst schreibe $Q$ auf Band. Wiederhole auf dritten Band und dann merge.
+  \item [Replacement Selectionsort]
+        \index{Replacement Selectionsort}
+        Lese $r < n$ Elemente auf Priority-Queue $Q$. Falls $x = \min(Q) \geq$ letztem Element auf zweiten Band, schreibe $x$ aus, sonst schreibe $Q$ auf Band. Wiederhole auf dritten Band und dann merge.
 \end{description}
 
 \mzBreak\
