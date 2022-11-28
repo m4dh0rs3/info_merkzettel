@@ -162,6 +162,9 @@
 % Draw vector graphics.
 \RequirePackage{tikz}
 
+% More geometric shapes.
+\usetikzlibrary{shapes.geometric}
+
 % Line decorations.
 \usetikzlibrary{decorations.pathmorphing}
 
@@ -360,8 +363,8 @@
   %---------------
 
   % Set stock width to third and height to half of A4 paper.
-  \stockheight=148.5mm\stockwidth=70mm
-  % \stockheight=297mm\stockwidth=140mm
+  % \stockheight=148.5mm\stockwidth=70mm
+  \stockheight=297mm\stockwidth=70mm
   \settrimmedsize{\stockheight}{\stockwidth}{*}
 
   % Set margins.

@@ -14,8 +14,21 @@ $(V, E)$ mit einer Menge Knoten $V$ und Kanten $E \subseteq V \times V$
 Ungerichteter Graph mit
 
 \begin{description}
-  % TODO: TikZ pics
-  \item [Einfach] keine Schleife () oder Doppelkanten ()
+  \item [Einfach] keine Schleife
+        \mzInline{
+          \begin{tikzpicture}[every loop/.style={}]
+            \node [circle,draw] {$v$} edge[loop right] ();
+          \end{tikzpicture}
+        }
+        oder Doppelkanten
+        \mzInline{
+          \begin{tikzpicture}
+            \node (v) [circle,draw] {$v$};
+            \node (w) at (1,0) [circle,draw] {$w$};
+            \path (v) edge [bend left] (w);
+            \path (w) edge [bend left] (v);
+          \end{tikzpicture}
+        }
         \index{Einfacher Graph}
 
   \item [Zusammenhängend]
@@ -25,6 +38,15 @@ Ungerichteter Graph mit
   \item [Azyklisch]
         \index{Azyklischer Graph}
         kein Zyklus (Cycle)
+        \mzInline{
+          \begin{tikzpicture}
+            \node (v) [circle,draw] {$v$};
+            \node (w) at (1,0) [circle,draw] {$w$};
+            \node (k) at (.5,-.5) [circle,draw] {$k$};
+
+            \draw (v) -- (w) -- (k) -- (v);
+          \end{tikzpicture}
+        }
 \end{description}
 
 \paragraph{Wurzelbaum}
@@ -41,12 +63,33 @@ Alle Knoten sind Wurzel ihrer disjunkten Unterbäume und haben verschiedene Wert
 
 % TODO: TikZ Grafiken
 \begin{description}
-  \item[Array]
-  \item[Verkettete Liste]
   \item[Graph]
-  \item[Einrückung]
-  \item[Menge]
-  \item[Klammer]
+    \mzInline{
+      \begin{tikzpicture}[xscale=2]
+        \node (b) at (0,0) [circle,draw] {$b$};
+        \node (a) at (1,1) [circle,draw] {$a$};
+        \node (c) at (2,0) [circle,draw] {$c$};
+        \node (d) at (1,-1) [circle,draw] {$d$};
+        \node (e) at (3,-1) [circle,draw] {$e$};
+
+        \draw (b) -- (a) -- (c) -- (e);
+        \draw (c) -- (d);
+      \end{tikzpicture}
+    }
+    \mzInline{
+      \begin{tikzpicture}[xscale=2]
+        \node (b) at (0,0) [circle,draw] {$b$};
+        \node (a) at (1,1) [circle,draw] {$a$};
+        \node (c) at (2,0) [isosceles triangle,shape border rotate=90,draw] {$T_r$};
+
+        \draw (b) -- (a) -- (c.apex);
+      \end{tikzpicture}
+    }
+  \item[Array] $[a,b,c,\emptyset,\emptyset,d,e]$
+    % \item[Verkettete Liste]
+    % \item[Einrückung]
+  \item[Menge] $\{\{a,b,c,d,e\},\{b\},\{c,d,e\},\{d\},\{e\}\}$
+  \item[Klammer] $(a, (b), (c, (d), (e)))$
 \end{description}
 
 \paragraph{Grö\ss en}
@@ -79,9 +122,7 @@ Alle Knoten sind Wurzel ihrer disjunkten Unterbäume und haben verschiedene Wert
 \section{Binärbäume}
 \index{Binärbaum}
 
-Geordneter, orientierter Wurzelbaum der Ordnung $2$ (oft auch nur $0$ oder $2$ Kinder)
-
-Somit mit für $i$ Stufen max. $2^i$ Knoten
+Geordneter, orientierter Wurzelbaum der Ordnung $2$.
 
 \begin{description}
   \item[Strikt]
@@ -90,5 +131,31 @@ Somit mit für $i$ Stufen max. $2^i$ Knoten
 
   \item[Vollständig]
     \index{Vollständiger Binärbaum}
-    Jeder Knoten außer der letzten Stufe hat genau $2$ Kinder.
+    Jeder Knoten au\ss er der letzten Stufe hat genau $2$ Kinder.
+
+  \item[Fast Vollständig]
+    \index{Fast Vollständiger Binärbaum}
+    Vollständig, außer Blätter können rechts fehlen.
+
+  \item[Ausgeglichen]
+    \index{Ausgeglichener Binärbaum}
+    Vollständig, aber Blätter auf letzten $2$ Stufen
 \end{description}
+
+$2$ Binärbäume hei\ss en
+
+\begin{description}
+  \item[Ähnlich] selbe Struktur
+    \index{Ähnliche Binärbäume}
+
+  \item[Äquivalent] Ähnlich und selbe Knoten
+    \index{Äquivalte Binärbäume}
+\end{description}
+
+\paragraph{Grö\ss en}
+
+\begin{itemize}
+  \item Für $i$ Stufen max. $2^i$ Knoten
+  \item Für $n$ Knoten genau $n - 1$ Kanten
+  \item Vollständiger B. mit $n$ Knoten hat Höhe von $\log_2 n + 1$
+\end{itemize}
