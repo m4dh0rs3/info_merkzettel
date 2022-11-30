@@ -90,40 +90,42 @@
 
 \mzBreak\
 
-\mzGraphic{
-  \begin{tblr}{
-    cells = {c},
-    cell{1}{1} = {c=2}{},
-    cell{2}{3} = {r=2}{r},
-    cell{4}{3} = {r=2}{r},
-    cell{6}{3} = {r=2}{r},
-    cell{8}{3} = {r=2}{r},
-    cell{10}{3} = {r},
-    cell{11}{3} = {r=2}{r},
-    cell{13}{3} = {r=2}{r},
-    cell{15}{3} = {r=3}{r},
-    vline{2} = {2-17}{},
-    hline{1-2,18} = {-}{},
-      }
-    \textbf{Äquivalente Formeln $\boldsymbol{\Leftrightarrow}$}               &                                                 & Bezeichnung \\
-    $A \land B$                                & $B \land A$                                     & \index{Logische Kommutativität}Kommutativ  \\
-    $A \lor B$                                 & $B \lor A$                                      &             \\
-    $A \land (B \land C)$                      & $(A \land B) \land C$                           & \index{Logische Assoziativität}Assoziativ  \\
-    $A \lor (B \lor C)$                        & $(A \lor B) \lor C$                             &             \\
-    $A \land (B \lor C)$                       & $(A \land B) \lor (A \land C)$                  & \index{Logische Distributivität}Distributiv \\
-    $A \lor (B \land C)$                       & $(A \lor B) \land (A \lor C)$                   &             \\
-    $A \land A$                                & $A$                                             & \index{Idempotenz}Idempotenz  \\
-    $A \lor A$                                 & $A$                                             &             \\
-    $\neg \neg A$                              & $A$                                             & \index{Involution}Involution  \\
-    $\neg (A \land B)$                         & $\neg A \boldsymbol{\lor} \neg B$  & \index{\textsc{De-Morgan}}\textsc{De-Morgan}   \\
-    $\neg (A \lor B)$                          & $\neg A \boldsymbol{\land} \neg B$ &             \\
-    $A \land (\mathbf{A} \lor B)$ & $A$                                             & \index{Absoption}Absorption  \\
-    $A \lor (\mathbf{A} \land B)$ & $A$                                             &             \\
-    $A \Rightarrow B$                          & $\mathbf{\neg A} \lor B$           & \index{Elimination}Elimination \\
-    $\neg (A \Rightarrow B)$                   & $A \land \neg B$                                &             \\
-    $A \Leftrightarrow B$                      & $(A \Rightarrow B) \land (B \Rightarrow A)$     &
-  \end{tblr}
-}
+\begin{mzImportant}
+  \mzGraphic{
+    \begin{tblr}{
+      cells = {c},
+      cell{1}{1} = {c=2}{},
+      cell{2}{3} = {r=2}{r},
+      cell{4}{3} = {r=2}{r},
+      cell{6}{3} = {r=2}{r},
+      cell{8}{3} = {r=2}{r},
+      cell{10}{3} = {r},
+      cell{11}{3} = {r=2}{r},
+      cell{13}{3} = {r=2}{r},
+      cell{15}{3} = {r=3}{r},
+      vline{2} = {2-17}{},
+      hline{1-2,18} = {-}{},
+        }
+      \textbf{Äquivalente Formeln $\boldsymbol{\Leftrightarrow}$}               &                                                 & Bezeichnung \\
+      $A \land B$                                & $B \land A$                                     & \index{Logische Kommutativität}Kommutativ  \\
+      $A \lor B$                                 & $B \lor A$                                      &             \\
+      $A \land (B \land C)$                      & $(A \land B) \land C$                           & \index{Logische Assoziativität}Assoziativ  \\
+      $A \lor (B \lor C)$                        & $(A \lor B) \lor C$                             &             \\
+      $A \land (B \lor C)$                       & $(A \land B) \lor (A \land C)$                  & \index{Logische Distributivität}Distributiv \\
+      $A \lor (B \land C)$                       & $(A \lor B) \land (A \lor C)$                   &             \\
+      $A \land A$                                & $A$                                             & \index{Idempotenz}Idempotenz  \\
+      $A \lor A$                                 & $A$                                             &             \\
+      $\neg \neg A$                              & $A$                                             & \index{Involution}Involution  \\
+      $\neg (A \land B)$                         & $\neg A \boldsymbol{\lor} \neg B$  & \index{\textsc{De-Morgan}}\textsc{De-Morgan}   \\
+      $\neg (A \lor B)$                          & $\neg A \boldsymbol{\land} \neg B$ &             \\
+      $A \land (\mathbf{A} \lor B)$ & $A$                                             & \index{Absoption}Absorption  \\
+      $A \lor (\mathbf{A} \land B)$ & $A$                                             &             \\
+      $A \Rightarrow B$                          & $\mathbf{\neg A} \lor B$           & \index{Elimination}Elimination \\
+      $\neg (A \Rightarrow B)$                   & $A \land \neg B$                                &             \\
+      $A \Leftrightarrow B$                      & $(A \Rightarrow B) \land (B \Rightarrow A)$     &
+    \end{tblr}
+  }
+\end{mzImportant}
 
 \subsection{Axiomatik}
 

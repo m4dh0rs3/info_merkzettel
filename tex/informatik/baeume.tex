@@ -13,41 +13,43 @@ $(V, E)$ mit einer Menge Knoten $V$ und Kanten $E \subseteq V \times V$
 \index{Baum}
 Ungerichteter Graph mit
 
-\begin{description}
-  \item [Einfach] keine Schleife
-        \mzInline{
-          \begin{tikzpicture}[every loop/.style={}]
-            \node [circle,draw] {$v$} edge[loop right] ();
-          \end{tikzpicture}
-        }
-        oder Doppelkanten
-        \mzInline{
-          \begin{tikzpicture}
-            \node (v) [circle,draw] {$v$};
-            \node (w) at (1,0) [circle,draw] {$w$};
-            \path (v) edge [bend left] (w);
-            \path (w) edge [bend left] (v);
-          \end{tikzpicture}
-        }
-        \index{Einfacher Graph}
+\begin{mzImportant}
+  \begin{description}
+    \item [Einfach] keine Schleife
+          \mzInline{
+            \begin{tikzpicture}[every loop/.style={}]
+              \node [circle,draw] {$v$} edge[loop right] ();
+            \end{tikzpicture}
+          }
+          oder Doppelkanten
+          \mzInline{
+            \begin{tikzpicture}
+              \node (v) [circle,draw] {$v$};
+              \node (w) at (1,0) [circle,draw] {$w$};
+              \path (v) edge [bend left] (w);
+              \path (w) edge [bend left] (v);
+            \end{tikzpicture}
+          }
+          \index{Einfacher Graph}
 
-  \item [Zusammenhängend]
-        \index{Zusammenhängender Graph}
-        Für jede zwei Knoten gibt es genau eine Folge von Kanten die sie verbindet
+    \item [Zusammenhängend]
+          \index{Zusammenhängender Graph}
+          Für jede zwei Knoten gibt es genau eine Folge von Kanten die sie verbindet
 
-  \item [Azyklisch]
-        \index{Azyklischer Graph}
-        kein Zyklus (Cycle)
-        \mzInline{
-          \begin{tikzpicture}
-            \node (v) [circle,draw] {$v$};
-            \node (w) at (1,0) [circle,draw] {$w$};
-            \node (k) at (.5,-.5) [circle,draw] {$k$};
+    \item [Azyklisch]
+          \index{Azyklischer Graph}
+          kein Zyklus (Cycle)
+          \mzInline{
+            \begin{tikzpicture}
+              \node (v) [circle,draw] {$v$};
+              \node (w) at (1,0) [circle,draw] {$w$};
+              \node (k) at (.5,-.5) [circle,draw] {$k$};
 
-            \draw (v) -- (w) -- (k) -- (v);
-          \end{tikzpicture}
-        }
-\end{description}
+              \draw (v) -- (w) -- (k) -- (v);
+            \end{tikzpicture}
+          }
+  \end{description}
+\end{mzImportant}
 
 \paragraph{Wurzelbaum}
 \index{Wurzelbaum}
@@ -94,53 +96,59 @@ Alle Knoten sind Wurzel ihrer disjunkten Unterbäume und haben verschiedene Wert
 
 \paragraph{Grö\ss en}
 
-\begin{description}
-  \item[Ordnung] Max. Anzahl von Kindern jedes Knoten eines Baums
-    \index{Baumordnung}
+\begin{mzImportant}
+  \begin{description}
+    \item[Ordnung] Max. Anzahl von Kindern jedes Knoten eines Baums
+      \index{Baumordnung}
 
-  \item[Tiefe] Anzahl Kanten zwischen einem Knoten und Wurzel
-    \index{Knotentiefe}
+    \item[Tiefe] Anzahl Kanten zwischen einem Knoten und Wurzel
+      \index{Knotentiefe}
 
-  \item[Stufe] Alle Knoten gleicher Tiefe
-    \index{Baumstufe}
+    \item[Stufe] Alle Knoten gleicher Tiefe
+      \index{Baumstufe}
 
-  \item[Höhe] Max. Tiefe $+ 1$
-    \index{Baumhöhe}
-\end{description}
+    \item[Höhe] Max. Tiefe $+ 1$
+      \index{Baumhöhe}
+  \end{description}
+\end{mzImportant}
 
 \paragraph{Eigenschaften}
 
-\begin{description}
-  \item[Geordnet] Kinder erfüllen Ordnung von links nach rechts
-    \index{Geordneter Baum}
+\begin{mzImportant}
+  \begin{description}
+    \item[Geordnet] Kinder erfüllen Ordnung von links nach rechts
+      \index{Geordneter Baum}
 
-  \item[Vollständig]
-    \index{Vollständiger Baum}
-    Alle Blätter auf gleicher Stufe, jede Stufe hat max. Anzahl von Kindern
-\end{description}
+    \item[Vollständig]
+      \index{Vollständiger Baum}
+      Alle Blätter auf gleicher Stufe, jede Stufe hat max. Anzahl von Kindern
+  \end{description}
+\end{mzImportant}
 
 \section{Binärbäume}
 \index{Binärbaum}
 
 Geordneter, orientierter Wurzelbaum der Ordnung $2$.
 
-\begin{description}
-  \item[Strikt]
-    \index{Strikter Binärbaum}
-    Jeder Knoten hat $0$ oder $2$ Kinder (Kein Knoten hat genau $1$ Kind).
+\begin{mzImportant}
+  \begin{description}
+    \item[Strikt]
+      \index{Strikter Binärbaum}
+      Jeder Knoten hat $0$ oder $2$ Kinder (Kein Knoten hat genau $1$ Kind).
 
-  \item[Vollständig]
-    \index{Vollständiger Binärbaum}
-    Jeder Knoten au\ss er der letzten Stufe hat genau $2$ Kinder.
+    \item[Vollständig]
+      \index{Vollständiger Binärbaum}
+      Jeder Knoten au\ss er der letzten Stufe hat genau $2$ Kinder.
 
-  \item[Fast Vollständig]
-    \index{Fast Vollständiger Binärbaum}
-    Vollständig, außer Blätter können rechts fehlen.
+    \item[Fast Vollständig]
+      \index{Fast Vollständiger Binärbaum}
+      Vollständig, außer Blätter können rechts fehlen.
 
-  \item[Ausgeglichen]
-    \index{Ausgeglichener Binärbaum}
-    Vollständig, aber Blätter auf letzten $2$ Stufen
-\end{description}
+    \item[Ausgeglichen]
+      \index{Ausgeglichener Binärbaum}
+      Vollständig, aber Blätter auf letzten $2$ Stufen
+  \end{description}
+\end{mzImportant}
 
 $2$ Binärbäume hei\ss en
 

@@ -208,11 +208,13 @@ Sei Indexmenge $I$ und Mengen $M_i \quad \forall i \in I$.
 \paragraph{Neutrale Elemente}
 \index{Neutrale Mengenelemente}
 
-\begin{itemize}
-  \item $\bigcup_{i \in \emptyset} M_i = \boldsymbol{\emptyset}$ (,,hinzufügen``)
+\begin{mzImportant}
+  \begin{itemize}
+    \item $\bigcup_{i \in \emptyset} M_i = \boldsymbol{\emptyset}$ (,,hinzufügen``)
 
-  \item $\bigcap_{i \in \emptyset} M_i = \boldsymbol{U}$ (,,wegnehmen``)
-\end{itemize}
+    \item $\bigcap_{i \in \emptyset} M_i = \boldsymbol{U}$ (,,wegnehmen``)
+  \end{itemize}
+\end{mzImportant}
 
 \subsection{Potenzmenge}
 \index{Potenzmenge}
@@ -281,20 +283,22 @@ $$\mathbf{f}: X \rightarrow Y$$
 
 \paragraph{Eigenschaften}
 
-\begin{description}
-  \item [Injektiv]
-        \index{Injektiv}
-        $\forall x_1, x_2 \in X:$ \\
-        $x_1 \boldsymbol{\neq} x_2 \Leftrightarrow f(x_1) \boldsymbol{\neq} f(x_2)$
+\begin{mzImportant}
+  \begin{description}
+    \item [Injektiv]
+          \index{Injektiv}
+          $\forall x_1, x_2 \in X:$ \\
+          $x_1 \boldsymbol{\neq} x_2 \Leftrightarrow f(x_1) \boldsymbol{\neq} f(x_2)$
 
-  \item [Surjektiv]
-        \index{Surjektiv}
-        $\forall y \in Y \exists x \in X: \mathbf{y = f(x)}$
+    \item [Surjektiv]
+          \index{Surjektiv}
+          $\forall y \in Y \exists x \in X: \mathbf{y = f(x)}$
 
-  \item [Bijektiv/Invertierbar]
-        \index{Bijektiv}
-        wenn injektiv und surjektiv
-\end{description}
+    \item [Bijektiv/Invertierbar]
+          \index{Bijektiv}
+          wenn injektiv und surjektiv
+  \end{description}
+\end{mzImportant}
 
 \paragraph{Verkettung} $f \circ g: A \rightarrow C$
 \index{Verkettung}
@@ -332,38 +336,40 @@ $$(f \circ g) (a) = f(g(a))$$
 
 $$m \boldsymbol{\sim} n \Leftrightarrow (m, n) \in R$$
 
-\begin{description}
-  \item [$\boldsymbol{\equiv}$ Reflexiv]
-        \index{Reflexivität}
-        $\forall x \in M: (\mathbf{x}, \mathbf{x}) \in R$ \\
-        $\Leftrightarrow \text{id}_M \subseteq R$
-        % \\ $\not\Leftrightarrow \text{Irreflexiv} \land M \neq \emptyset$
+\begin{mzImportant}
+  \begin{description}
+    \item [$\boldsymbol{\equiv}$ Reflexiv]
+          \index{Reflexivität}
+          $\forall x \in M: (\mathbf{x}, \mathbf{x}) \in R$ \\
+          $\Leftrightarrow \text{id}_M \subseteq R$
+          % \\ $\not\Leftrightarrow \text{Irreflexiv} \land M \neq \emptyset$
 
-  \item [Irreflexiv]
-        \index{Irreflexivität}
-        $\forall x \in M: (x, x) \boldsymbol{\notin} R$ \\
-        $\Leftrightarrow \text{id}_M \cap R = \emptyset$
+    \item [Irreflexiv]
+          \index{Irreflexivität}
+          $\forall x \in M: (x, x) \boldsymbol{\notin} R$ \\
+          $\Leftrightarrow \text{id}_M \cap R = \emptyset$
 
-  \item [$\boldsymbol{\equiv}$ Sym.]
-        \index{Symmetrie}
-        $\forall (x,\mathbf{y}) \in R: (\mathbf{y}, x) \in R$ \\
-        $\Leftrightarrow R \subseteq R^{-1}$
+    \item [$\boldsymbol{\equiv}$ Sym.]
+          \index{Symmetrie}
+          $\forall (x,\mathbf{y}) \in R: (\mathbf{y}, x) \in R$ \\
+          $\Leftrightarrow R \subseteq R^{-1}$
 
-  \item [Antis.]
-        \index{Antisymmetrie}
-        $\forall x,y: ((x,y) \in R \land (y,x) \in R) \Rightarrow \mathbf{x = y}$ \\
-        $\Leftrightarrow R \cap R' \subseteq \text{id}_M$
+    \item [Antis.]
+          \index{Antisymmetrie}
+          $\forall x,y: ((x,y) \in R \land (y,x) \in R) \Rightarrow \mathbf{x = y}$ \\
+          $\Leftrightarrow R \cap R' \subseteq \text{id}_M$
 
-  \item [$\boldsymbol{\equiv}$ Transitiv]
-        \index{Transitivität}
-        $\forall \mathbf{x},y,\mathbf{z}: ((x,y) \in R \land (y,z) \in R) \Rightarrow (\mathbf{x},\mathbf{z}) \in R$ \\
-        $\Leftrightarrow R;R \subseteq R$
+    \item [$\boldsymbol{\equiv}$ Transitiv]
+          \index{Transitivität}
+          $\forall \mathbf{x},y,\mathbf{z}: ((x,y) \in R \land (y,z) \in R) \Rightarrow (\mathbf{x},\mathbf{z}) \in R$ \\
+          $\Leftrightarrow R;R \subseteq R$
 
-  \item [Vollst.]
-        \index{Vollständigkeit}
-        $\forall \mathbf{x},\mathbf{y} \in M: (x,y) \in R \lor (y,x) \in R$ \\
-        $\Leftrightarrow R \cup R^{-1} = M \times M$
-\end{description}
+    \item [Vollst.]
+          \index{Vollständigkeit}
+          $\forall \mathbf{x},\mathbf{y} \in M: (x,y) \in R \lor (y,x) \in R$ \\
+          $\Leftrightarrow R \cup R^{-1} = M \times M$
+  \end{description}
+\end{mzImportant}
 
 % TODO: This <https://de.wikipedia.org/wiki/Relation_(Mathematik)#/media/Datei:Zusammenhang_der_Eigenschaften_bin%C3%A4rer_Relationen.svg>.
 
@@ -384,59 +390,61 @@ $$m \boldsymbol{\sim} n \Leftrightarrow (m, n) \in R$$
 
 \subsection{Spezielle Relationen}
 
-\begin{description}
-  \item [Inverse Relation $R^{-1}$]
-        \index{Inverse Relation}
-        mit $R \in M \times N :=$ \\
-        $\{ (n, m) \in N \times M \mid (m, n) \in R \}$
+\begin{mzImportant}
+  \begin{description}
+    \item [Inverse Relation $R^{-1}$]
+          \index{Inverse Relation}
+          mit $R \in M \times N :=$ \\
+          $\{ (n, m) \in N \times M \mid (m, n) \in R \}$
 
-  \item [Komposition $R ; R$]
-        \index{Komposition}
-        mit $R' \in N \times P :=$ \\
-        $\{ (m, p) \in M \times P \mid \exists n \in N: (m, n) \in R \land (n, p) \in R' \}$
+    \item [Komposition $R ; R$]
+          \index{Komposition}
+          mit $R' \in N \times P :=$ \\
+          $\{ (m, p) \in M \times P \mid \exists n \in N: (m, n) \in R \land (n, p) \in R' \}$
 
-  \item [Leere Relation $\emptyset$]
-        \index{Leere Relation}
+    \item [Leere Relation $\emptyset$]
+          \index{Leere Relation}
 
-  \item [Identität $\text{id}_M$]
-        \index{Relationsidentität}
-        $:= \{ (m,m) \mid m \in M \}$ ($=$)
+    \item [Identität $\text{id}_M$]
+          \index{Relationsidentität}
+          $:= \{ (m,m) \mid m \in M \}$ ($=$)
 
-  \item [Allrelation $M \times M$]
-        \index{Allrelation}
+    \item [Allrelation $M \times M$]
+          \index{Allrelation}
 
-  \item [Äquivalenzrelation $\boldsymbol{\equiv}$]
-        \index{Äquivalenzrelation}
-        reflexiv, symmetrisch und transitiv. (Gleichheit***)
+    \item [Äquivalenzrelation $\boldsymbol{\equiv}$]
+          \index{Äquivalenzrelation}
+          reflexiv, symmetrisch und transitiv. (Gleichheit***)
 
-        \item[Äquivalenzklasse $\mathbf{[m]_\equiv}$]
-        \index{Äquivalenzklasse}
-        auf $M$, Vertreter $m \in M$.
+          \item[Äquivalenzklasse $\mathbf{[m]_\equiv}$]
+          \index{Äquivalenzklasse}
+          auf $M$, Vertreter $m \in M$.
 
-        \begin{align*}
-          [m]_\equiv & := \{ x \in M \mid m \equiv x \}        \\
-                     & \Leftrightarrow [m]_\equiv = [x]_\equiv
-        \end{align*}
+          \begin{align*}
+            [m]_\equiv & := \{ x \in M \mid m \equiv x \}        \\
+                       & \Leftrightarrow [m]_\equiv = [x]_\equiv
+          \end{align*}
 
-  \item [Zerlegung $\boldsymbol{\mathcal{N}}$]
-        \index{Zerlegung}
-        $\subseteq \mathcal{P}(M)$ von $M$.
+    \item [Zerlegung $\boldsymbol{\mathcal{N}}$]
+          \index{Zerlegung}
+          $\subseteq \mathcal{P}(M)$ von $M$.
 
-        \begin{itemize}
-          \item $\emptyset \notin \mathcal{N}$
-          \item $M = \bigcup \mathcal{N}$
-          \item $N \cap N' = \emptyset$ \\
-                ($N, N' \in \mathcal{N}: N \neq N'$)
-          \item (Korrespondiert zur ÄR.)
-        \end{itemize}
+          \begin{itemize}
+            \item $\emptyset \notin \mathcal{N}$
+            \item $M = \bigcup \mathcal{N}$
+            \item $N \cap N' = \emptyset$ \\
+                  ($N, N' \in \mathcal{N}: N \neq N'$)
+            \item (Korrespondiert zur ÄR.)
+          \end{itemize}
 
-  \item [Quotient $\mathbf{(M / \equiv)}$]
-        \index{Mengenquotient}
-        Sei $\equiv$ ÄR. auf $M$. (ist Zerlegung)
+    \item [Quotient $\mathbf{(M / \equiv)}$]
+          \index{Mengenquotient}
+          Sei $\equiv$ ÄR. auf $M$. (ist Zerlegung)
 
-        $$(M / \equiv) := \{ [m]_\equiv \mid m \in M \}$$
+          $$(M / \equiv) := \{ [m]_\equiv \mid m \in M \}$$
 
-        \begin{itemize}
-          \item (Korrespondiert zur ÄK.)
-        \end{itemize}
-\end{description}
+          \begin{itemize}
+            \item (Korrespondiert zur ÄK.)
+          \end{itemize}
+  \end{description}
+\end{mzImportant}

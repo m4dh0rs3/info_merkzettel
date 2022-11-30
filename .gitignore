@@ -259,6 +259,9 @@ pythontex-files-*/
 # Package Latexian.
 TSWLatexianTemp*
 
+# Package extract.
+*.xtr
+
 # Editors.
 # WinEdt.
 *.bak

@@ -39,6 +39,9 @@
 \newif\ifClassy
 \Classyfalse
 
+\newif\ifExtract
+\Extractfalse
+
 \DeclareOption{poster}{
   \Postertrue
   \Bookletfalse
@@ -58,6 +61,10 @@
 \DeclareOption{classy}{
   \Classytrue
   \UniLeipzigfalse
+}
+
+\DeclareOption{extract}{
+  \Extracttrue
 }
 
 % Execute all called option definitions.
@@ -134,6 +141,8 @@
 \RequirePackage{algorithm2e}
 \SetAlFnt{\tiny}
 \SetArgSty{oldEmph}
+
+% \RequirePackage{pseudo}
 
 % Source code highlighting.
 % Requirers at least Python 2.6 and Pygments.
@@ -221,6 +230,22 @@
   \RequirePackage{multicol}
 \fi
 
+\ifExtract
+  % Extract important content.
+  \RequirePackage[
+    active,
+    generate=info_merkzettel_wichtig,
+    extract-env=mzImportant,
+    % Not a standalone LaTeX document.
+    copydocumentclass=false,
+    % handles=false,
+  ]{extract}
+
+  \begin{extract}
+    \documentclass[uniLeipzig]{merkzettel}
+  \end{extract}
+\fi
+
 % COLORS
 %%%%%%%%
 
@@ -262,6 +287,9 @@
 
 % Set `\fancybreak` with Dingbat symbols.
 \newcommand{\mzBreak}{\fancybreak{\ding{167}\quad\ding{167}\quad\ding{167}}}
+
+% Mark important content for the extract option.
+\newenvironment{mzImportant}{}{}
 
 % Floor and ceiling math functions.
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
