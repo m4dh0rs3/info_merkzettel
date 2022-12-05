@@ -167,3 +167,127 @@ $2$ Binärbäume hei\ss en
   \item Für $n$ Knoten genau $n - 1$ Kanten
   \item Vollständiger B. mit $n$ Knoten hat Höhe von $\log_2 n + 1$
 \end{itemize}
+
+\subsection{Speicherung}
+\index{Speicherung von Binärbäumen}
+
+\begin{description}
+  \item[Verkettet] \fbox{Zeiger Links | Knoten | Zeiger Rechts}
+  \item[Feldbaum] Sequenz von \fbox{Knoten | Index Links | Index Rechts}
+  \item[Sequenziell] Lesen vollst. Baum links nach rechts, oben nach unten, leere Elemente für fehlende Knoten (ineffizient für degenerierte Bäume)
+\end{description}
+
+\subsection{Traversierung}
+\index{Traversierung}
+
+\begin{itemize}
+  \item $W$ Verarbeite Wurzel
+  \item $L$ Durchlaufe linken Unterbaum
+  \item $R$ Durchlaufe rechten Unterbaum
+\end{itemize}
+
+Konvention erst links, dann rechts:
+
+\begin{itemize}
+  \item $WLR$ Preorder
+        \index{Preorder}
+        \index{Vorordnung}
+  \item $LWR$ Inorder
+        \index{Inorder}
+        \index{Zwischenordnung}
+  \item $LRW$ Postorder
+        \index{Postorder}
+        \index{Nachordnung}
+\end{itemize}
+
+Implementation rekursiv oder linear mit eigenem Stack (effizienter)
+
+\subsection{Gefädelte Binärbäume}
+\index{Gefädelter Binärbaum}
+
+Zeiger ,,Faden`` in Knoten zeigt auf nächsten Knoten nach Durchlaufordnung.
+
+Nachteil: Zusätzlicher Speicheraufwand teilweise redundant; Lösung: Nur Null-Zeiger (Blätter) sind Fäden
+
+\begin{description}
+  \item[rFaden] zeigt auf Nachfolgerknoten
+    \index{rFaden}
+  \item[lFaden] zeigt auf Vorgängerknoten
+    \index{lFaden}
+\end{description}
+
+\section{Binäre Suchbäume}
+\index{Binärer Suchbaum}
+
+\subsection{Natürliche binäre Suchbäume}
+\index{Natürlicher Binärer Suchbaum}
+
+$$B_l < B_x < B_r$$
+
+\begin{description}
+  \item [Suchen] rekursiv oder mit Durchlaufalg. $\in O(\ln n)$
+  \item [Einfügen] dort wo Suche terminiert
+  \item [Löschen] mit zwei nicht-leeren Unterbäumen: Hochziehen des grö\ss ten Wertes im linken oder kleinsten Wert im rechten Unterbaum (Alt: Als gelöscht markieren)
+\end{description}
+
+\subsection{Balancierte Binärbäume}
+\index{Blancierter Binärbaum}
+
+Grundoperationen auf ausgeglichene Binärbäume kosten am wenigsten. Herstellung der Ausgeglichenheit in $O(n)$
+
+\begin{description}
+  \item [Balancefaktor] von Knoten $x$ ist $BF(x) := h(B_l (x)) - h(B_r (x))$
+        \index{Balancefaktor}
+
+  \item[$k$-Balanciert] $\forall x \in B: |BF(x)| \leq k$
+    \index{k-Balanciert}
+\end{description}
+
+\paragraph{AVL-Baum} 1-balancierter Binärer Suchbaum
+\index{AVL-Baum}
+
+Herstellung der Ausgeglichenheit durch Rotationen
+\index{Rotationen auf AVL-Bäumen}
+
+% TODO: TikZ Grafik
+
+\begin{itemize}
+  \item $BF(u) = -2, BF(v) \in \{ 0, -1 \}$: Einfachrotation $\mathbf{\text{Links}(u)}$
+  \item $BF(u) = +2, BF(v) \in \{ 0, -1 \}$: Einfachrotation $\mathbf{\text{Rechts}(u)}$
+  \item $BF(u) = -2, BF(v) = +1$: Doppelrotation $\mathbf{\text{Rechts}(v) + \text{Links}(u)}$
+  \item $BF(u) = +2, BF(v) = -1$: Doppelrotation $\mathbf{\text{Links}(v) + \text{Rechts}(u)}$
+\end{itemize}
+
+Für jeden AVL-Baum $T$ der Höhe $h$ gilt:
+
+\begin{itemize}
+  \item $|T| \geq F_h$ (Fibonacci)
+  \item $h \leq \frac{\log_2 (n\sqrt{5} + 1)}{\log_2 (\frac{1 + \sqrt{5}}{2})}$
+\end{itemize}
+
+\paragraph{Fibonacci-Bäume}
+\index{Fibonacci-Baum}
+
+$B_0$ ist leerer Baum, $B_1$ ist einzelner Knoten, $B_h = \texttt{BUILD}(B_{h-1}, x, B_{h-2})$ für $h \geq 2$
+
+(Maximal unbalancierter AVL-Baum der Höhe h)
+
+\subsection{Gewichtsbalancierte Binärbäume}
+\index{Gewichtsbalancierter Binärbaum}
+
+\begin{description}
+  \item[Wurzelbalance]
+    \index{Wurzelbalance}
+    $\rho (B) = \frac{n_l + 1}{n + 1}$ mit $n$ Knoten und $n_l$ Knoten im linken Unterbaum
+
+  \item [Gewichtsbalanciert (BB)] $\forall \text{ Unterbaum } B': \alpha \leq \rho(B') \leq 1 - \alpha$
+
+        \begin{itemize}
+          \item $\alpha = 1/2$: Vollst. Binärbaum
+          \item $\alpha < 1/2$: Zunehmend weniger ausgeglichen
+          \item $\alpha = 0$: Keine Einschränkung
+        \end{itemize}
+\end{description}
+
+% \subsection{Positionssuche in balancierten Bäumen}
+
