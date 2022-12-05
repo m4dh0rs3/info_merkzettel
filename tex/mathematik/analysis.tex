@@ -233,12 +233,12 @@ Sei $A \subseteq \mathbb{R}, A \neq \emptyset, a_0 \boldsymbol{\in} A$.
 \begin{mzImportant}
   \begin{description}
     \item [Minimum]
-          \index{Minimum}
+          \index{Minimum in $\mathbb{R}$}
           $\min(A) := a_0$ \\
           $\Leftrightarrow \forall a \in A: \mathbf{a_0} \boldsymbol{\leq} a$
 
     \item [Maximum]
-          \index{Maximum}
+          \index{Maximum in $\mathbb{R}$}
           $\max(A) := a_0$ \\
           $\Leftrightarrow \forall a \in A: \mathbf{a} \boldsymbol{\leq} a_0$
   \end{description}
@@ -251,11 +251,11 @@ Sei $A \subseteq \mathbb{R}, A \neq \emptyset, a_0 \boldsymbol{\in} A$.
 
 \begin{description}
   \item [Oben beschränkt]
-        \index{Obere Schranken}
+        \index{Obere Schranken in $\mathbb{R}$}
         $\exists s \in \mathbb{R} \forall a \in A: \mathbf{a} \boldsymbol{\leq} s$
 
   \item [Unten beschränkt]
-        \index{Untere Schranken}
+        \index{Untere Schranken in $\mathbb{R}$}
         $\exists s \in \mathbb{R} \forall a \in A: \mathbf{s} \boldsymbol{\leq} a$
 \end{description}
 
@@ -608,6 +608,95 @@ $${(a_n)_{n \in \mathbb{N}}}_\text{\emph{\textsc{Cauchy}}} \Leftrightarrow \exis
    & \Rightarrow \exists h \quad \text{\tiny (BW)}                 \\
    & \Rightarrow \lim_{n \rightarrow \infty} a_n = h)
 \end{align*}
+
+\subsection{Stetigkeit}
+
+\begin{description}
+  \item [Berührungspunkt]
+        \index{Berührungspunkt}
+        $D \subseteq \mathbb{R}, a \in \mathbb{R}$
+
+        \begin{gather*}
+          a \text{ BP. von } D \\
+          \Leftrightarrow \exists (x_n)_{n \in \mathbb{N}} \text{ in } D: x_n \xrightarrow{n \rightarrow \infty} a \\
+          \Leftrightarrow \forall \delta > 0 \exists x \in D: |x - a| \leq \delta
+        \end{gather*}
+
+  \item [Grenzwert gegen Stelle]
+        \index{Grenzwert gegen Stelle}\
+        $f: D \rightarrow \mathbb{R}, y \in \mathbb{R}, a \text{ BP. von } D$
+
+        \begin{gather*}
+          \lim_{x \rightarrow a} f(x) = y \\
+          \Leftrightarrow \forall (x_n)_{n \in \mathbb{N}} \text{ in } D: \\ x_n \xrightarrow{n \rightarrow \infty} a \Rightarrow f(x_n) \xrightarrow{n \rightarrow \infty} y \\
+          \Leftrightarrow \forall \epsilon > 0 \exists \delta > 0 \forall x \in D: \\
+          |x - a| \leq \delta \Rightarrow |f(x) - y| \leq \epsilon
+        \end{gather*}
+
+        (Grenzwertsätze gelten analog)
+
+  \item [Stetig an Stelle] $f$ stetig bei $a$
+        \index{Stetigkeit}
+
+        \begin{gather*}
+          \lim_{x \rightarrow a} f(x) = f(a) \\
+          \Leftrightarrow \forall (x_n)_{n \in \mathbb{N}} \text{ in } D: \\ x_n \xrightarrow{n \rightarrow \infty} a \Rightarrow f(x_n) \xrightarrow{n \rightarrow \infty} f(a) \\
+          \Leftrightarrow \forall \epsilon > 0 \exists \delta > 0 \forall x \in D: \\
+          |x - a| \leq \delta \Rightarrow |f(x) - f(a)| \leq \epsilon
+        \end{gather*}
+
+        (U.A. stetig: Summen, Produkte, Quotienten, Verkettungen stetiger Fkt. und Polynome)
+
+  \item [Einseitiger Grenzwert]
+        \index{Einseitiger Grenzwert}
+        $x_0 {}^{<}/_{>} a \in D$
+
+        \begin{gather*}
+          \lim_{x {}^{\nearrow}/_{\searrow} a} f(x) = y \\
+          \Leftrightarrow \forall (x_n)_{n \in \mathbb{N}} \text{ in } D: \\ (x_n \xrightarrow{n \rightarrow a} a \land  \mathbf{\forall n: x_n {}^{<}/_{>} a}) \\ \Rightarrow f(x_n) \xrightarrow{n \rightarrow \infty} y \\
+          \Leftrightarrow \lim_{x \rightarrow a} f(x) = y \land x_0 {}^{<}/_{>} a \in D
+        \end{gather*}
+
+  \item [Grenzwert gegen $\infty$]
+        \index{Grenzwert gegen Unendlich}
+        $D$ unbeschränkt
+
+        \begin{gather*}
+          \lim_{x \rightarrow \infty} f(x) = y \\
+          \Leftrightarrow \forall (x_n)_{n \in \mathbb{N}} \text{ in } D: \\
+          x_n \xrightarrow{n \rightarrow \infty} \infty \Rightarrow f(x_n) \xrightarrow{n \rightarrow \infty} y \\
+          \Leftrightarrow \forall \epsilon > 0 \exists x_0 \in \mathbb{R} \forall x \in D: \\
+          x \geq x_0 \Rightarrow |f(x) - y| \leq \epsilon
+        \end{gather*}
+
+  \item [Grenzwert $= \infty$]
+        \index{Grenzwert gleich Unendlich}
+
+        \begin{gather*}
+          \lim_{x \rightarrow a} f(x) = \infty \\
+          \Leftrightarrow \forall (x_n)_{n \in \mathbb{N}} \text{ in }: \\
+          x_n \xrightarrow{n \rightarrow \infty} a \Rightarrow f(x_n) \xrightarrow{n \rightarrow \infty} \infty \\
+          \Leftrightarrow \forall R > 0 \exists \delta > 0 \forall x \in D: \\
+          |x - a| \leq \delta \Rightarrow f(x) \geq R
+        \end{gather*}
+\end{description}
+
+\subsection{Eigenschaften stetiger Funktionen}
+
+\begin{description}
+  \item[Lemma] $f(a) > \eta \Rightarrow \forall x \exists \delta > 0 \in D \cap [a - \delta, a + \delta]: f(x) > \eta$
+  \item[Zwischenwert]
+    \index{Zwischenwertsatz}
+    $[a; b] \subseteq \mathbb{R}$, $f: [a; b] \rightarrow \mathbb{R}$ stetig, $f(a) \neq f(b)$
+
+    \begin{gather*}
+      f(a) < c < f(b) \\
+      \Rightarrow \exists \xi \in (a; b): f(\xi) = c
+    \end{gather*}
+
+  \item [Korollar] $f(a) * f(b) < 0 \Rightarrow \exists \xi \in (a; b): f(\xi) = 0$
+        (versch. Vorzeichen)
+\end{description}
 
 \section{Reihen}
 

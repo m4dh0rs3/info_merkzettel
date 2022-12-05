@@ -354,7 +354,7 @@ $$m \boldsymbol{\sim} n \Leftrightarrow (m, n) \in R$$
           $\forall (x,\mathbf{y}) \in R: (\mathbf{y}, x) \in R$ \\
           $\Leftrightarrow R \subseteq R^{-1}$
 
-    \item [Antis.]
+    \item [$\boldsymbol{\preceq}$ Antis.]
           \index{Antisymmetrie}
           $\forall x,y: ((x,y) \in R \land (y,x) \in R) \Rightarrow \mathbf{x = y}$ \\
           $\Leftrightarrow R \cap R' \subseteq \text{id}_M$
@@ -446,5 +446,26 @@ $$m \boldsymbol{\sim} n \Leftrightarrow (m, n) \in R$$
           \begin{itemize}
             \item (Korrespondiert zur ÄK.)
           \end{itemize}
+
+    \item [Ordnungsrelation $\boldsymbol{\preceq}$]
+          \index{Ordnungsrelation}
+          reflexiv, antisymmetrisch, transitiv
+
+          \begin{description}
+            \item [Minimale $x$] $\forall m \in M \setminus \{ x \}: m \not\preceq x$
+                  \index{Minimale Elemente}
+                  \index{Maximale Elemente}
+
+            \item [Untere Schranken $m \in \downarrow X$] $\forall x \in X: m \preceq x$
+                  \index{Untere Schranken}
+                  \index{Obere Schranken}
+
+            \item [Kleinstes] $\min_\preceq X \in X$
+                  \index{Kleinstes Element}
+                  \index{Größtes Element}
+          \end{description}
+
+    \item [Totale Ordnung] $+$ vollständig (Trichotomie)
+          \index{Totale Ordnung}
   \end{description}
 \end{mzImportant}
