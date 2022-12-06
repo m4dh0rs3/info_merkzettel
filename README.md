@@ -4,7 +4,7 @@ Das ist mein Merkzettel für den
 Studiengang Informatik Bachelor of Science
 an der Universität Leipzig 2022.
 
-Die Module sind zu Fächern zusammengefasst,
+Die Module sind zu Fächern gefasst,
 da sich die Inhalte oft überschneiden.
 
 ## Ziele

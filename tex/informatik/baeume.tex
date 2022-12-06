@@ -142,7 +142,7 @@ Geordneter, orientierter Wurzelbaum der Ordnung $2$.
 
     \item[Fast Vollständig]
       \index{Fast Vollständiger Binärbaum}
-      Vollständig, außer Blätter können rechts fehlen.
+      Vollständig, au\ss er Blätter können rechts fehlen.
 
     \item[Ausgeglichen]
       \index{Ausgeglichener Binärbaum}
@@ -291,3 +291,83 @@ $B_0$ ist leerer Baum, $B_1$ ist einzelner Knoten, $B_h = \texttt{BUILD}(B_{h-1}
 
 % \subsection{Positionssuche in balancierten Bäumen}
 
+\section{Mehrwegbäume}
+\index{Mehrwegbaum}
+
+Breiter Baum als Indexstruktur für gro\ss e externe Daten (,,Seiten``)
+
+\subsection{$m$-Wege-Suchbäume}
+\index{m-Wege-Suchbaum}
+\index{m-ärer Suchbaum}
+
+\begin{itemize}
+  \item $m$-ter Ordnung (max. $m$ Kinder)
+  \item Knoten mit max. $b \leq m - 1$ sortierten Einträgen:
+        \fbox{$\mathbf{P_0} | K_1 | P_1 | \dots | K_b | P_b$}
+  \item Werte im Unterbaum: $K_i < B_{P_i} < K_{i + 1}$
+\end{itemize}
+
+\paragraph{B-Bäume}
+\index{B-Baum}
+der Klasse $t$ ist (fast-ausgeglichener) $2t$-Wege-Suchbaum
+
+\begin{itemize}
+  \item Blätter der Wurzel gleich weit entfernt
+  \item Alle Knoten au\ss er Wurzel min. $t -1$, max. $2t -1$ Werte und min. $t$, max. $2t$ Kinder (au\ss er Blätter)
+  \item Wurzel min. $1$, max. $2t - 1$ Werte (oder B. leer) und min. $2$, max. $2t$ Kinder (oder Blatt)
+\end{itemize}
+
+Für $n$ Knoten ist Höhe $h \leq 1 + \log_t \frac{n + 1}{2}$
+
+\begin{description}
+  \item[Suchen] Finde grö\ss ten Index im Knoten $x \leq K_i$, suche in $P_i$
+
+  \item[Einfügen] Teilen voller ($2t - 1$) Knoten bei Suche, einfügen im Blatt
+
+    \begin{description}
+      \item[Teilen] (Elternknoten ist nicht voll, da vorher geteilt) Mittlerer Wert in Elternknoten, Werte links davon in linken Unterbaum
+    \end{description}
+
+  \item[Löschen] Verschieben o. Verschmelzen zu kleiner ($t - 1$) Knoten bei Suche, dann entfernen
+
+    \begin{description}
+      \item[Verschieben] Kleinster Wert (ganz vorne) im rechten Unterbaum in Knoten ziehen, Knoten in linken Unterbaum rechts anfügen (und umgekehrt, je nach dem welcher Baum grö\ss er ist)
+
+      \item[Verschmelzen] Beide Bäume zu klein, also $t - 1$ zu einem Unterbaum zusammenfügen ($2t - 2$)
+    \end{description}
+
+\end{description}
+
+\paragraph{B*-Bäume}
+\index{B*-Baum}
+\index{B+-Baum}
+B-Baum Variante mit Daten in den Blättern, Blätter sequenziell verkettet; Standard in DBS
+% TODO: TikZ Grafik
+
+\paragraph{Binäre B-Bäume} Alternative zu AVL-Bäumen
+
+\subsection{Digitale Suchbäume}
+\index{Digitaler Suchbaum}
+\index{Digitalbaum}
+
+Blattschlüssel $=$ Zeichenkette/Wort des Pfads von Wurzel zu Blatt
+% TODO. TikZ Grafik
+
+Für max. Schlüssellänge $l$ und Schlüsselteillänge $k$ ist Höhe $= l/k + 1$
+
+\begin{description}
+  \item [$m$-äre Tries]
+        \index{Trie}
+        \index{m-ärer Trie}
+        Knoten enthalten (Null-)Zeiger für jeden Teilschlüssel der Länge $k$ in $m = |\Sigma|^k$; Schlechte Speichernutzung, desh. Kompression des Knoten
+        % TODO: TikZ Grafik
+
+  \item [PATRICIA-Tree]
+        \index{PATRICIA-Tree}
+        % TODO: Einfach durch TikZ-Grafik erklärt
+
+  \item [Präfix-/Radix-Baum]
+        \index{Präfix-Baum}
+        \index{Radix-Baum}
+        % TODO: Einfach durch TikZ-Grafik erklärt
+\end{description}
