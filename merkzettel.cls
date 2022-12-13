@@ -180,6 +180,11 @@
 % Draw matrices.
 \usetikzlibrary{matrix}
 
+% Draw graphs.
+% \usetikzlibrary{graphs}
+% \usetikzlibrary{graphdrawing}
+% \usegdlibrary{trees}
+
 % Draw circuits.
 \RequirePackage{circuitikz}
 

@@ -696,6 +696,20 @@ $${(a_n)_{n \in \mathbb{N}}}_\text{\emph{\textsc{Cauchy}}} \Leftrightarrow \exis
 
   \item [Korollar] $f(a) * f(b) < 0 \Rightarrow \exists \xi \in (a; b): f(\xi) = 0$
         (versch. Vorzeichen)
+
+  \item [Satz]
+        \begin{gather*}
+          f: [a; b] \rightarrow \mathbb{R} \text{ stetig} \\
+          \Rightarrow f \text{ beschränkt} \\
+          \Rightarrow \exists {}^{\min}/_{\max} \{ f(x) \mid x \in [a; b] \}
+        \end{gather*}
+
+  \item [Satz] Sei $I$ Intervall, $I, J \subseteq \mathbb{R}$, $f: I \rightarrow J$ stetig, strg. mnt ($\Rightarrow$ injektiv), surjektiv
+        \begin{gather*}
+          \Rightarrow J \text{ Intervall} \\
+          \Rightarrow f \text{ bijektiv} \\
+          \Rightarrow f^{-1}: J \rightarrow I \text{ stetig}
+        \end{gather*}
 \end{description}
 
 \section{Reihen}
@@ -822,7 +836,7 @@ $${(a_n)_{n \in \mathbb{N}}}_\text{\emph{\textsc{Cauchy}}} \Leftrightarrow \exis
 \index{Exponentialfunktion}
 
 \begin{mzImportant}
-  $$\exp(x) := \sum_{n = 0}^\infty \frac{x^n}{x!}$$
+  $$\exp(x) := \sum_{n = 0}^\infty \frac{x^n}{x!} = e^x$$
 \end{mzImportant}
 
 \begin{itemize}
@@ -853,3 +867,100 @@ $${(a_n)_{n \in \mathbb{N}}}_\text{\emph{\textsc{Cauchy}}} \Leftrightarrow \exis
   \item $\exp(r * x) = (\exp (x))^r$
   \item $\exp(r) = e^r$
 \end{itemize}
+
+$$\exp_a (x) := \exp(x * \log a) = a^x$$
+
+\begin{itemize}
+  \item $a > 1 \Rightarrow$ strng. mnt. steigend
+  \item $0 < a < 1 \Rightarrow$ strng. mnt. fallend
+  \item $0 < a \neq 1 \Rightarrow \exp_a: \mathbb{R} \rightarrow \mathbb{R}^+$ bijektiv
+\end{itemize}
+
+\subsection{Logarithmen}
+\index{Logarithmus}
+
+$$\log = \exp^{-1}: \mathbb{R}^+ \rightarrow \mathbb{R}$$
+
+\begin{itemize}
+  \item $\log 1/x = - \log x$
+  \item $\log x/y = \log x - \log y$
+  \item $\log x^r = r * \log x$
+\end{itemize}
+
+$$\log (x * y) = \log x + \log y$$
+
+$$\log_a x = \frac{\log x}{\log a} = \exp_a^{-1}$$
+
+% TODO: TikZ Graph of Log and Exp.
+
+\subsection{Trigonometrische Funktionen}
+\index{Trigonometrische Funktion}
+
+$$\sin x := \sum_{k = 0}^\infty \frac{(-1)^k x^{2k + 1}}{(2k + 1)!}$$
+\index{Sinus}
+
+$$\cos x := \sum_{k = 0}^\infty \frac{(-1)^k x^{2k}}{(2k)!}$$
+\index{Kosinus}
+
+(beide absolut konvergent, $0^0 := 1$)
+
+\begin{itemize}
+  \item $|{}^{\sin}/_{\cos} x| \leq 1$
+  \item $\sin - x = - \sin x$
+  \item $\cos - x = \cos x$
+  \item $\sin (x + y) = \sin(x) \cos(y) + \cos(x) \sin (y)$
+        \index{Additionstheoreme}
+  \item $\cos (x + y) = \cos(x) \cos(y) - \sin(x) \sin (y)$
+  \item $\sin 2x = 2 \sin (x) \cos (x)$
+  \item $\cos 2x = \cos^2 x - \sin^2 x$
+  \item $\sin^2 x + \cos^2 x = 1$
+        \index{Trigonometrischer \textsc{Pythagoras}}
+  \item $\sin x - \sin y = 2 \cos (\frac{x + y}{2}) \sin(\frac{x - y}{2})$
+  \item $\cos x - \cos y = 2 \sin (\frac{x + y}{2}) \sin(\frac{y - x}{2})$
+\end{itemize}
+
+$$\pi: \cos \frac{\pi}{2} = 0$$
+
+% TODO: TikZ Graph of Sin and Cos and important values.
+
+\begin{itemize}
+  \item ${}^{\sin}/_{\cos} (x + 2\pi) = {}^{\sin}/_{\cos} x$
+  \item ${}^{\sin}/_{\cos} (x + \pi) = - {}^{\sin}/_{\cos} x$
+  \item ${}^{\sin}/_{\cos} (x + \frac{\pi}{2}) = {}^{\cos}/_{\sin} x$
+  \item $\sin x = 0 \quad \forall k \in \mathbb{Z}: x = k \pi$
+  \item $\cos x = 0 \quad \forall k \in \mathbb{Z}: x = (2k + 1) *\frac{\pi}{2}$
+\end{itemize}
+
+$$\tan x := \frac{\sin x}{\cos x}$$
+\index{Tangens}
+
+\section{Differenzierbarkeit}
+
+$D \subseteq \mathbb{R}$, $f: D \rightarrow \mathbb{R}$, $a \in D$ BP von $D \setminus \{a\}$
+
+\paragraph{Differenzierbar}
+\index{Ableitung}
+\index{Differenzierbarkeit}
+an der Stelle $a$, falls
+
+\begin{align*}
+    & \lim_{x \rightarrow a} \frac{f(x) - f(a)}{x - a} =: f'(x) \\
+  = & \lim_{h \rightarrow 0} \frac{f(a + h) - f(a)}{h}
+\end{align*}
+
+\begin{itemize}
+  \item Differenzierbar bei $a \Rightarrow$ stetig bei $a$
+  \item $(f + g)'(a) = f'(a) + g'(a)$
+  \item $(c * f)'(a) = c * f'(a)$
+\end{itemize}
+
+% \mzGraphic{
+%   \begin{tblr}{
+%       hline{2} = {-}{},
+%     }
+%     $f'$ & $f$      & $F$            \\
+%     $0$  & $a$      & $ax + c$       \\
+%     $1$  & $x$      & $1/2 x^2 + c$ \\
+%     $2x$ & $x^2$ & $1/3 x^3 + c$
+%   \end{tblr}
+% }

@@ -64,6 +64,17 @@
 \index{endlich}
 \index{unendlich}
 
+\paragraph{Kardinalität}
+\index{Kardinalität}
+ÄK. für Gleichmächtigkeit
+
+$$|M| \leq |N| \Leftarrow \exists f_\text{injekt.}: M \rightarrow N$$
+
+\begin{itemize}
+  \item $M \subseteq N \Rightarrow |M| \leq |N|$
+  \item $|M| \leq |N| \Leftrightarrow \exists f_\text{surj.}: N \rightarrow M$ (AC)
+\end{itemize}
+
 \paragraph{Abzählbar} \index{Abzählbarkeit} $\exists f_\text{surj.}: \mathbb{N} \rightarrow M$
 
 \begin{itemize}
@@ -236,90 +247,6 @@ Für Menge $\mathcal{X}$ nicht-leerer Mengen:
 
 Nutzung kennzeichnen!
 
-\section{Abbildungen}
-\index{Abbildung}
-\index{Funktion}
-
-\paragraph{Abbildung $\mathbf{f}$}
-von $X$ (Definitionsb. \index{Definitionsbereich}) nach $Y$ (Werteb. \index{Wertebereich}) ordnet jedem $x \in X$ eindeutig ein $y \in Y$ zu.
-
-\begin{description}
-  \item[Totalität] $\forall x \in X \exists y \in Y: f(x) = y$
-  \item[Eindeutigkeit] $\forall x \in X \forall a, b \in Y: f(x) = a \land f(x) = b \Rightarrow a = b$
-\end{description}
-
-$$\mathbf{f}: X \rightarrow Y$$
-
-\begin{description}
-  \item [Bilder] $f(X') = \{ f(x) \mid x \in X' \} \quad X' \subseteq X$
-        \index{Bild}
-  \item [Urbilder] $f^{-1}(Y') = \{ x \in X \mid f(x) \in Y' \} \quad Y' \subseteq Y$
-        \index{Urbild}
-\end{description}
-
-\begin{description}
-  \item [Graph]
-        \index{Funktionsgraph}
-        $\text{gr} (f) := \{ (x, f(x)) \mid x \in X \}$
-
-  \item [Identität]
-        \index{Abbildungsindentität}
-        \begin{align*}
-           & \text{id}_A: A \rightarrow A              \\
-           & \text{id}_A(a) := a \quad \forall a \in A
-        \end{align*}
-
-  \item [Umkehrfunktion $f^{-1}: Y \rightarrow X$]
-        \index{Umkehrfunktion}
-        wenn $f$ bijektiv und $(f \circ f^{-1}) (y) = y$ bzw. $f;f^{-1} = \text{id}_X \land f^{-1};f = \text{id}_X$
-
-        Für die Relation $f^{-1}$ gilt:
-
-        \begin{itemize}
-          \item $x \in f^{-1}(\{ f(x) \})$
-          \item $f(f^{-1}(\{ y \})) = \{ y \}$ falls $f$ surjektiv
-        \end{itemize}
-\end{description}
-
-\paragraph{Eigenschaften}
-
-\begin{mzImportant}
-  \begin{description}
-    \item [Injektiv]
-          \index{Injektiv}
-          $\forall x_1, x_2 \in X:$ \\
-          $x_1 \boldsymbol{\neq} x_2 \Leftrightarrow f(x_1) \boldsymbol{\neq} f(x_2)$
-
-    \item [Surjektiv]
-          \index{Surjektiv}
-          $\forall y \in Y \exists x \in X: \mathbf{y = f(x)}$
-
-    \item [Bijektiv/Invertierbar]
-          \index{Bijektiv}
-          wenn injektiv und surjektiv
-  \end{description}
-\end{mzImportant}
-
-\paragraph{Verkettung} $f \circ g: A \rightarrow C$
-\index{Verkettung}
-
-$$(f \circ g) (a) = f(g(a))$$
-
-(der Reihenfolge nach)
-
-\mzScale{0.4}{
-  \begin{tikzpicture}
-    \node (A) at (0,0) {$A$};
-    \node (B) at (1,1) {$B$};
-    \node (C) at (2,0) {$C$};
-
-    \path[->]
-    (A) edge node[above left] {$f$} (B)
-    (B) edge node[above right] {$g$} (C)
-    (A) edge node[below] {$f \circ g$} (C);
-  \end{tikzpicture}
-}
-
 \section{Relationen}
 
 \paragraph{Kartesisches Produkt}
@@ -469,3 +396,114 @@ $$m \boldsymbol{\sim} n \Leftrightarrow (m, n) \in R$$
           \index{Totale Ordnung}
   \end{description}
 \end{mzImportant}
+
+\section{Abbildungen}
+\index{Abbildung}
+\index{Funktion}
+
+\paragraph{Abbildung $\mathbf{f}$}
+von $X$ (Definitionsb. \index{Definitionsbereich}) nach $Y$ (Werteb. \index{Wertebereich}) ordnet jedem $x \in X$ eindeutig ein $y \in Y$ zu.
+
+\begin{description}
+  \item[Totalität] $\forall x \in X \exists y \in Y: f(x) = y$
+  \item[Eindeutigkeit] $\forall x \in X \forall a, b \in Y: f(x) = a \land f(x) = b \Rightarrow a = b$
+\end{description}
+
+$$\mathbf{f}: X \rightarrow Y$$
+
+\begin{description}
+  \item [Bilder] $f(X') = \{ f(x) \mid x \in X' \} \quad X' \subseteq X$
+        \index{Bild}
+  \item [Urbilder] $f^{-1}(Y') = \{ x \in X \mid f(x) \in Y' \} \quad Y' \subseteq Y$
+        \index{Urbild}
+\end{description}
+
+\begin{description}
+  \item [Graph]
+        \index{Funktionsgraph}
+        $\text{gr} (f) := \{ (x, f(x)) \mid x \in X \}$
+
+  \item [Identität]
+        \index{Abbildungsindentität}
+        \begin{align*}
+           & \text{id}_A: A \rightarrow A              \\
+           & \text{id}_A(a) := a \quad \forall a \in A
+        \end{align*}
+
+  \item [Umkehrfunktion $f^{-1}: Y \rightarrow X$]
+        \index{Umkehrfunktion}
+        wenn $f$ bijektiv und $(f \circ f^{-1}) (y) = y$ bzw. $f;f^{-1} = \text{id}_X \land f^{-1};f = \text{id}_X$
+
+        Für die Relation $f^{-1}$ gilt:
+
+        \begin{itemize}
+          \item $x \in f^{-1}(\{ f(x) \})$
+          \item $f(f^{-1}(\{ y \})) = \{ y \}$ falls $f$ surjektiv
+        \end{itemize}
+\end{description}
+
+\paragraph{Eigenschaften}
+
+\begin{mzImportant}
+  \begin{description}
+    \item [Injektiv]
+          \index{Injektiv}
+          $\forall x_1, x_2 \in X:$ \\
+          $x_1 \boldsymbol{\neq} x_2 \Leftrightarrow f(x_1) \boldsymbol{\neq} f(x_2)$
+
+    \item [Surjektiv]
+          \index{Surjektiv}
+          $\forall y \in Y \exists x \in X: \mathbf{y = f(x)}$
+
+    \item [Bijektiv/Invertierbar]
+          \index{Bijektiv}
+          wenn injektiv und surjektiv
+  \end{description}
+\end{mzImportant}
+
+\paragraph{\textsc{Cantor-Schröder-Bernstein}}
+\index{\textsc{Cantor-Schröder-Bernstein}}
+
+\begin{gather*}
+  \left.\begin{array}{l}
+    f: M \rightarrow N \\
+    g: N \rightarrow M
+  \end{array}\right\} \text{injekt.}\\ \Rightarrow \exists B_\text{bijekt.}: M \rightarrow N
+\end{gather*}
+
+\paragraph{Fixpunkt}
+\index{Fixpunkt}
+$f(m) = m$
+
+Sei $X \subseteq Y \subseteq M$, $f: M \rightarrow N$
+
+\begin{itemize}
+  \item $f(X) \subseteq f(Y)$ (Monotonie)
+  \item $M \setminus Y \subseteq M \setminus X$
+  \item $M \setminus (M \setminus X) = X$
+\end{itemize}
+
+\paragraph{\textsc{Knaster-Tarski}-Lemma}
+\index{\textsc{Knaster-Tarski}-Lemma}
+
+Sei $X \subseteq Y \subseteq M \Rightarrow f(X) \subseteq f(Y)$ (monoton), dann hat $f: \mathcal{P}(M) \rightarrow \mathcal{P}(M)$ einen Fixpunkt
+
+\paragraph{Verkettung} $f \circ g: A \rightarrow C$
+\index{Verkettung}
+
+$$(f \circ g) (a) = f(g(a))$$
+
+(der Reihenfolge nach)
+
+\mzScale{0.4}{
+  \begin{tikzpicture}
+    \node (A) at (0,0) {$A$};
+    \node (B) at (1,1) {$B$};
+    \node (C) at (2,0) {$C$};
+
+    \path[->]
+    (A) edge node[above left] {$f$} (B)
+    (B) edge node[above right] {$g$} (C)
+    (A) edge node[below] {$f \circ g$} (C);
+  \end{tikzpicture}
+}
