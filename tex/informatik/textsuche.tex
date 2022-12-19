@@ -1,0 +1,181 @@
+\chapter{Textsuche}
+
+Finden aller Positionen (erste Indice) eines Patterns der Länge $m$ in einem String der Länge $n$ durch Vergleich mit allen Fenstern
+
+\begin{description}
+  \item [Naiv] $\in O(n * m)$
+        \index{Naive Textsuche}
+
+  \item [Statisch] effiziente Index-Strukturen (z.B Suffix-Baum, Signaturen) $\in O(m)$
+        \index{Suche in statischen Texten}
+
+  \item [Patternanalyse] Vorverarbeitung des Patterns $\in O(n + m)$
+\end{description}
+
+\section[Patternanalyse]{Patternanalyse $\in O(n + m)$}
+
+\subsection{\textsc{Knuth-Morris-Pratt}}
+\index{\textsc{Knuth-Morris-Pratt}}
+
+Nutzung bereits gelesener Informationen bei Missmatch, kein Zurückgehen
+
+\paragraph{Next-Tabelle}
+\index{Next-Tabelle}
+
+\begin{itemize}
+  \item Wie lang sind Präfix und Suffix gleich im Pattern vor jedem Buchstabe?
+  \item next$[0] = -1$
+\end{itemize}
+
+\SetKwFunction{PrintKeyword}{Print}
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Next-Tabelle}
+  \SetKwFunction{NextTabelle}{Next-Tabelle}
+
+  \KwIn{Muster pattern$[0\dots m - 1]$}
+  \KwOut{Tabelle next$[0\dots m]$}
+
+  $i \leftarrow 0$
+
+  $j \leftarrow -1$
+
+  next$[i] \leftarrow j$
+
+  \While{$j < m$}{
+    \While{$j \geq 0 \land$ patter$[j] \neq $ pattern$[i]$}{
+      $j \leftarrow$ next$[j]$
+    }
+
+    $i \leftarrow i + 1$
+
+    $j \leftarrow j + 1$
+
+    next$[i] \leftarrow j$
+  }
+\end{algorithm}
+
+\paragraph{Suche $\in O(n + m)$} Bei Missmatch oder kompletten Match verschieben des Präfix auf den Suffix (oder bei $0$ komplett dahinter)
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Knuth-Morris-Pratt-Suche}
+  \SetKwFunction{KnuthMorrisPrattSearch}{Knuth-Morris-Pratt-Suche}
+
+  \KwIn{Pattern$[0..m - 1]$, String$[0\dots n-1]$, Next-Tabelle}
+  \KwOut{Alle Positionen wo das Pattern im String liegt}
+
+  $i \leftarrow 0$
+
+  $j \leftarrow 0$
+
+  \While{$j < n$}{
+    \While{$j \geq 0 \land$ string$[i] \neq $ pattern$[j]$}{
+      $j \leftarrow$ next$[i]$
+    }
+
+    $j \leftarrow j + 1$
+
+    $i \leftarrow i + 1$
+
+    \uIf{$j = m$}{
+      \PrintKeyword $i - m$
+
+      $j \leftarrow$ next$[i]$
+    }
+
+  }
+\end{algorithm}
+
+\subsection{\textsc{Boyer-Moore}}
+\index{\textsc{Boyer-Moore}}
+
+\paragraph{Last-Tabelle}
+\index{Last-Tabelle}
+
+\begin{itemize}
+  \item Letztes Vorkommen im Pattern für jeden Buchstaben des Alphabets
+  \item $-1$ falls nicht vorkommen
+\end{itemize}
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Last-Tabelle}
+  \SetKwFunction{LastTabelle}{Last-Tabelle}
+
+  \KwIn{Alphabet $\Sigma$}
+  \KwOut{Tabelle next$[0\dots|\Sigma| - 1]$}
+
+  \ForEach{$a \in \Sigma$}{
+    last$[a] \leftarrow -1$
+  }
+
+  \For{$j$ \KwTo $m - 1$}{
+    $a \leftarrow$ pattern$[j]$
+
+    last$[a] \leftarrow j$
+  }
+\end{algorithm}
+
+\paragraph{Suche}
+\begin{itemize}
+  \item Vergleiche Patter von Rechts nach Links
+  \item Bei Missmatch verschieben des letzten Pattern-Buchstaben zu String-Buchstaben
+  \item Wenn Patter-Buchstabe nicht vorhanden, dann komplett verschieben
+  \item $C_A(n,m) \in O(n/m)$
+  \item $C_W(n,m) \in O(n * m)$
+\end{itemize}
+
+\begin{algorithm}[H]
+  \TitleOfAlgo{Boyer-Moore-Suche}
+  \SetKwFunction{BoyerMooreSearch}{Boyer-Moore-Suche}
+
+  \KwIn{Pattern$[0\dots m - 1]$, String$[0\dots n- 1]$, Last-Tabelle}
+  \KwOut{Position des ersten Vorkommens oder $-1$}
+
+  $i \leftarrow 0$
+
+  \While{$i \leq n - m$}{
+    $j \leftarrow m -1$
+
+    \While{$j \geq 0 \land$ pattern$[j] =$ string$[i + j]$}{
+      $j \leftarrow j - 1$
+    }
+
+    \eIf{$j < 0$}{
+      \Return $i$
+    }{
+      \eIf{last$[$string$[i + j]] > j$}{
+        $i \leftarrow i + 1$
+      }{
+        $i \leftarrow i + j -$ last$[$string$[i + j]]$
+      }
+    }
+
+    \Return $-1$
+  }
+\end{algorithm}
+
+% TODO: Match-Heuristik
+
+\section{Statische Textsuche}
+
+\begin{enumerate}
+  \item Index im Anhang von Büchern
+  \item Signatur-Dateien
+\end{enumerate}
+
+\section{Approximative Suche}
+\index{Approximative Suche}
+\index{Ähnlichkeitssuche}
+
+\begin{description}
+  \item[\textsc{Hamming}-Distanz] Anzahl der Missmatches zwischen $s_1$ und $s_2$
+    \index{\textsc{Hamming}-Distanz}
+
+  \item[Editierdistanz] Kosten $s_1$ zu $s_2$ editieren (Cut, Paste, Replace)
+    \index{Editierdistanz}
+\end{description}
+
+\paragraph{$k$-Missmatch-Suchproblem}
+\index{$k$-Missmatch-Suchproblem}
+
+Alle Vorkommen eines Muster in einem Text mit einer \textsc{Hamming}-Distanz $\leq k$

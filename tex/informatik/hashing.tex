@@ -1,0 +1,148 @@
+\chapter{Hashing}
+
+Aus Schlüsseln $S$ werden Adressen/Indices $A$ direkt berechnet,
+
+$$h: S \rightarrow A$$
+
+\begin{description}
+  \item [Kollision] $|A| \ll |S| \Rightarrow \neg (h \text{ injekt.})$
+        \index{Kollision}
+
+  \item [Synonyme] $h(K_i) = h(K_j)$
+        \index{Synonym}
+
+  \item [Kollisionsklasse] $[A]_h = \{ K \in S \mid h(K) = A \}$
+        \index{Kollisionsklasse}
+\end{description}
+
+\section{Hashfunktionen}
+
+\paragraph{Divisionsrest} $h(K_i) := K_i \mod q$
+\index{Divisionsrest-Hash}
+
+\begin{itemize}
+  \item $q$ prim $\Rightarrow$ keinen Teiler mit $K$
+  \item Optimal bei äquidistanter Schlüsselverteilung
+\end{itemize}
+
+\paragraph{Falten} Teilsequenzen des Schlüssels werden addiert (Quersumme) oder XOR-verknüpft (Binär)
+\index{Falt-Hash}
+
+\begin{description}
+  \item[Rand-Falten] Rechte Teilsequenzen werden gespiegelt
+    \index{Rand-Falten}
+  \item[Shift-Falten] Teilsequenzen in Reihenfolge
+    \index{Shift-Falten}
+\end{description}
+
+\paragraph{Mid-Square-Hash} $h(K) := K^2[K.\text{len} - t/2, K.\text{len} + t/2]$
+\index{Mid-Square-Hash}
+
+\paragraph{Zufalls-Hash} $K_i$ ist Saat des Zufallsgenerators
+\index{Zufalls-Hash}
+
+\paragraph{Ziffernanalyse-Hash} Teilsequenz von $K_i$
+\index{Ziffernanalyse-Hash}
+
+\section{Hashtabelle}
+\index{Hashtabelle}
+
+\begin{description}
+  \item[Kapazität $m$]
+  \item[Belegte Adressen $n_a$]
+  \item[Belegungsfaktor $\beta = n_a / m$]
+    \index{Belegungsfaktor}
+    sollte $<.85$ und somit $m > n_a$
+  \item[Erfolgreiche Suche] in $S(\beta)$ Schritten
+  \item[Erfolglose Suche] in $U(\beta)$ Schritten
+\end{description}
+
+\subsection{Kollisionsbehandlung}
+\index{Kollisionsbehandlung}
+
+Beim Auftritt einer Kollision $h(K_q) = h(K_p)$ eines gespeicherten $K_q$, welches die Adresse für $K_p$ besetzt:
+
+\paragraph{Sondieren}
+\index{Sondieren}
+Zusätzliche Klasse Hashfunktionen $h_i$ nach $i$-ter Kollision
+
+\begin{description}
+  \item[Linear] $h_i(K_p) = (h_0(K_p) + f(i, h(K_p))) \mod m$
+    \index{Lineares Sondieren}
+
+    \begin{itemize}
+      \item $S(\beta) \approx \frac{1}{2}(1 + \frac{1}{1 - \beta})$
+      \item $U(\beta) \approx \frac{1}{2}(1 + \frac{1}{(1 - \beta)^2})$
+    \end{itemize}
+
+  \item[Quadratisch] $h_i(K_p) = (h_0(K_p) + ai + bi^2) \mod m$
+    \index{Quadratisches Sondieren}
+    \begin{align*}
+      h_i(K_p) = & (h_0(K_p) - \ceil{i/2}^2(-1)^i) \\
+                 & \mod m
+    \end{align*}
+    (Sucht in quadratisch wachsenden Abstand in beide Richtungen zur ursprünglichen Adresse)
+
+    \begin{itemize}
+      \item Sondierungsfolge versch. Schlüssel korrellieren nicht (Uniform)
+      \item $S(\beta) \approx - \frac{1}{\beta} \ln (1 - \beta)$
+      \item $U(\beta) \approx \frac{1}{1 - \beta}$
+    \end{itemize}
+
+
+  \item [Zufällig]
+        \index{Zufälliges Sonderien}
+        Deterministischer Zufallsgenerator generiert Schrittfolge $z_i$
+        $$h_i(K_p) = (h_0(K_p) + z_i) \mod m$$
+
+  \item [Double-Hash] Zweite Hashfunktion $h'$
+        \index{Double-Hashing}
+        \begin{align*}
+          h_i(K_p) = & (h_0(K_p) + ih'(K_p)) \\
+                     & \mod m
+        \end{align*}
+\end{description}
+
+Platzhalter für gelöschte Schlüssel zur Signalisierung sondierter Adressen
+
+\paragraph{Verkettung}
+\index{Synonymverkettung}
+Synonyme werde in dynamischer externen Struktur (Sekundärbereich) in Einfügereihenfolge linear verkettet
+
+\begin{itemize}
+  \item $S(\beta) \approx 1 + \frac{\beta}{2}$
+  \item $U(\beta) \approx \beta - e^{-\beta}$
+\end{itemize}
+
+\section{Hashing auf Externspeicher}
+
+\begin{itemize}
+  \item Adresse bezeichnet Bucket der mehrere Daten in Einfügereihenfolge fässt
+  \item Überlaufsmethode beliebig, aber Vermeidung langer Sondierungsfolgen, häufig spearater Überlaufsbereich mit dynamischer Zuordnung der Buckets
+\end{itemize}
+
+\section{Dynamische Hashstrukturen}
+
+Nachteile der Hashtabelle
+
+\begin{itemize}
+  \item Statische Allokationen speicherineffizient
+  \item Re-hashing bei Speichererweiterung
+\end{itemize}
+
+\paragraph{Erweiterbares Hashing} Digitalbaumk; Bits des Schlüssels oder Hashs steuern Pfad
+
+\paragraph{HAMT: Hashed Array Mapped Tries}
+\index{HAMT}
+\index{Hashed Array Mapped Tries}
+% TODO: TikZ Grafik
+Viele Nullzeiger werden durch Bitmap-Kompression vermieden: Knoten mit $n$ Feldern hat $n$ lange Bitmap: 0 zeigt Nullzeiger an, 1 zeigt belegt durch Zeiger
+
+\section{Signaturen}
+\index{Signatur}
+
+Möglichst eindeutiges Merkmal eines Datensatzes
+
+\paragraph{Rolling-Hash}
+\index{Rolling-Hash}
+Signaturhash der mit Hilfe des vorgehenden Fensters (Teilzeichenkette) in konstanter statt linearer Zeit berechnet werden kann
