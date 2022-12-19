@@ -55,7 +55,8 @@
 
 \begin{align*}
   |M| & \begin{cases}
-    = n \quad         & \text{endlich}   \\
+    = n \quad         & \text{endlich}                                    \\
+                      & M \text{ injekt.} \Leftrightarrow M \text{ surj.} \\
     \geq \infty \quad & \text{unendlich}
   \end{cases}                                         \\
       & = |N| \Leftrightarrow \exists f_{\text{bijekt.}}: M \rightarrow N
@@ -75,7 +76,7 @@ $$|M| \leq |N| \Leftarrow \exists f_\text{injekt.}: M \rightarrow N$$
   \item $|M| \leq |N| \Leftrightarrow \exists f_\text{surj.}: N \rightarrow M$ (AC)
 \end{itemize}
 
-\paragraph{Abzählbar} \index{Abzählbarkeit} $\exists f_\text{surj.}: \mathbb{N} \rightarrow M$
+\paragraph{Abzählbar} \index{Abzählbarkeit} $|M| \leq |\mathbb{N}|$
 
 \begin{itemize}
   \item Endliche Mengen, $\emptyset$, $\mathbb{N}$, $\mathbb{Z}$, $\boldsymbol{\mathbb{Q}}$
@@ -230,10 +231,30 @@ Sei Indexmenge $I$ und Mengen $M_i \quad \forall i \in I$.
 \subsection{Potenzmenge}
 \index{Potenzmenge}
 
-\begin{align*}
-  \mathcal{P}(M) :=  & \{N \mid N \subseteq M \}                 \\
-  |\mathcal{P}(M)| = & 2^{|M|} \quad (\in / \notin \text{binär})
-\end{align*}
+$$\mathcal{P}(M) := \{N \mid N \subseteq M \}$$
+
+\paragraph{Satz von \textsc{Cantor}} $|M| < |\mathcal{P}(M)|$
+\index{Satz von \textsc{Cantor}}
+
+$$|\mathcal{P}(M)| = 2^{|M|} \quad (\in / \notin \text{binär})$$
+
+\begin{itemize}
+  \item Menge der Kardinalitäten $\mathcal{K}$ ist unendlich
+\end{itemize}
+
+\paragraph{Satz von \textsc{Hartogs} (AC)}
+\index{Satz von \textsc{Hartogs}}
+
+$(\mathcal{K}, \preceq)$ ist total geordnet\
+
+\mzBreak
+
+$$|(0,1)| = |\mathbb{R}| = |\mathcal{P}(\mathbb{N})|$$
+
+\paragraph{Kontinuumshypothese}
+\index{Kontinuumshypothese}
+
+$$\nexists M: |\mathbb{N}| < |M| < |\mathcal{P}(\mathbb{N})| = |\mathbb{R}|$$
 
 \subsection{Auswahlaxiom (AC)}
 \index{Auswahlaxiom}
@@ -246,6 +267,10 @@ Für Menge $\mathcal{X}$ nicht-leerer Mengen:
 \end{gather*}
 
 Nutzung kennzeichnen!
+
+\begin{itemize}
+  \item unabh. vom ZFC
+\end{itemize}
 
 \section{Relationen}
 
@@ -383,13 +408,26 @@ $$m \boldsymbol{\sim} n \Leftrightarrow (m, n) \in R$$
                   \index{Minimale Elemente}
                   \index{Maximale Elemente}
 
-            \item [Untere Schranken $m \in \downarrow X$] $\forall x \in X: m \preceq x$
+            \item [Untere Schranken $m \in \downarrow X$] $\forall x \in X: m \preceq x$\
                   \index{Untere Schranken}
                   \index{Obere Schranken}
+
+                  \begin{itemize}
+                    \item ${}^{\downarrow}/_{\uparrow} \emptyset = M$
+                  \end{itemize}
 
             \item [Kleinstes] $\min_\preceq X \in X$
                   \index{Kleinstes Element}
                   \index{Größtes Element}
+
+            \item [Infimum $\max \downarrow X$]\
+                  \index{Infimum}
+                  \index{Supremum}
+
+                  \begin{itemize}
+                    \item $\inf \{ x, y \} = x \land y$
+                    \item $\sup \{ x, y \} = x \lor y$
+                  \end{itemize}
           \end{description}
 
     \item [Totale Ordnung] $+$ vollständig (Trichotomie)
@@ -507,3 +545,30 @@ $$(f \circ g) (a) = f(g(a))$$
     (A) edge node[below] {$f \circ g$} (C);
   \end{tikzpicture}
 }
+
+\subsection{Verbände}
+\index{Verband}
+
+Sei $(M, \preceq)$ teilweise geordnet
+
+$$\forall m, n \in M \exists {}^{\inf}/_{\sup} \{m, n\}$$
+
+\paragraph{Vollständig} $\forall X \subseteq M: \exists {}^{\inf}/_{\sup} X$
+\index{Vollständiger Verband}
+
+\begin{itemize}
+  \item $\exists {}^{\min}/_{\max} M = {}^{\sup}/_{\inf} \emptyset$
+\end{itemize}
+
+\paragraph{Distributivität}
+\index{Distributivität des Verbands}
+
+\begin{align*}
+  \forall x, y, z \in M:                              \\
+  x \land (y \lor z) & = (x \land y) \lor (x \land z) \\
+  x \lor (y \land z) & = (x \lor y) \land (x \lor z)
+\end{align*}
+
+\begin{itemize}
+  \item Jede total geordnete Menge ist distributiv
+\end{itemize}

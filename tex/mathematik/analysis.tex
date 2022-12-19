@@ -265,11 +265,11 @@ Sei $A \subseteq \mathbb{R}, A \neq \emptyset, a_0 \boldsymbol{\in} A$.
 \begin{mzImportant}
   \begin{description}
     \item [Infimum (klein)] $\inf(A)$ \\
-          \index{Infimum}
+          \index{Reelles Infimum}
           $:= \mathbf{\max} \{ s \in \mathbb{R} \mid \forall a \in A: \mathbf{s} \boldsymbol{\leq} a \}$
 
     \item [Supremum (gro\ss)] $\sup(A)$ \\
-          \index{Supremum}
+          \index{Reelles Supremum}
           $:= \mathbf{\min} \{ s \in \mathbb{R} \mid \forall a \in A: \mathbf{a} \boldsymbol{\leq} s \}$
   \end{description}
 \end{mzImportant}
@@ -950,17 +950,113 @@ an der Stelle $a$, falls
 
 \begin{itemize}
   \item Differenzierbar bei $a \Rightarrow$ stetig bei $a$
-  \item $(f + g)'(a) = f'(a) + g'(a)$
-  \item $(c * f)'(a) = c * f'(a)$
 \end{itemize}
 
-% \mzGraphic{
-%   \begin{tblr}{
-%       hline{2} = {-}{},
-%     }
-%     $f'$ & $f$      & $F$            \\
-%     $0$  & $a$      & $ax + c$       \\
-%     $1$  & $x$      & $1/2 x^2 + c$ \\
-%     $2x$ & $x^2$ & $1/3 x^3 + c$
-%   \end{tblr}
-% }
+\begin{description}
+  \item [Summenregel]
+        \index{Summenregel}
+        $(f + g)'(a) = f'(a) + g'(a)$
+
+  \item [Faktorregel]
+        \index{Faktorregel}
+        $(c * f)'(a) = c * f'(a)$
+
+  \item [Produktregel]
+        \index{Produktregel}
+        $(f * g)'(a) = f'(a) * g(a) + f(a) * g'(a)$
+
+  \item [Reziprokregel]
+        \index{Reziprokregel}
+        $(1/f)'(a) = - \frac{g'(a)}{g^2(a)}$
+
+  \item [Quotientenregel]
+        \index{Quotientenregel}
+        $(f/g)'(a) = \frac{f'(a) * g(a) - f(a) * g'(a)}{g^2(a)}$
+
+  \item [Kettenregel]
+        \index{Kettenregel}
+        $(f \circ g)'(a) = f'(g(a)) * g'(a)$
+
+  \item [Umkehrfunktion]
+        \index{Ableitung der Umkehrfunktion}
+        $(f^{-1})'(b) = 1 / f'(f^{-1}(b))$
+\end{description}
+
+\mzGraphic{
+  \begin{tblr}{
+    cells = {c},
+    hline{1-2,7,9,12} = {-}{},
+      }
+    $f'$                   & $f$          & $F$                           \\
+    $0$                    & $a$          & $ax + c$                      \\
+    $1$                    & $x$          & $\frac{1}{2} x^2 + c$         \\
+    $-1/x^2$               & $1/x$        & $\ln (x) + c$                 \\
+    $\frac{1}{2 \sqrt{x}}$ & $\sqrt{x}$   & $\frac{2}{3} x\sqrt{x} + c$   \\
+    $ax^a - 1$             & $x^a$        & $\frac{1}{a + 1} x^a + 1 + c$ \\
+    $\cos x$               & $\sin x$     & $-\cos(x) + c$                \\
+    $-\sin x$              & $\cos x$     & $\sin(x) + c$                 \\
+    $e^x$                  & $e^x$        & $e^x$                         \\
+    $a^x \ln a$            & $a^x$        &                               \\
+    $\frac{1}{x \ln a}$    & $\log_a x$   &
+  \end{tblr}
+}
+
+Sei $f,g: [a, b] \rightarrow \mathbb{R}$ diffbar und stetig:
+
+\paragraph{Satz von \textsc{Rolle}}
+\index{Satz von \textsc{Rolle}}
+
+$$f(a) = f(b) \Rightarrow \exists \xi \in (a, b): f'(\xi) = 0$$
+% TODO: TikZ Grafik
+
+\paragraph{Mittelwertsatz}
+\index{Mittelwertsatz}
+
+$$\exists \xi \in (a, b): f'(\xi) = \frac{f(b) - f(a)}{b - a}$$
+% TODO: TikZ Grafik
+\begin{gather*}
+  \exists \xi \in (a, b): \\
+  f'(\xi)(g(b) - g(a)) = g'(\xi)(f(b) - f(a))
+\end{gather*}
+\index{(Erweiterter) Mittelwertsatz}
+
+\paragraph{Monotonie}
+
+\begin{itemize}
+  \item $(\forall x \in D: f(x) \leq 0) \Rightarrow f$ mnt. fallend
+  \item $(\forall x \in D: f(x) < 0) \Rightarrow f$ strng. mnt. fallend
+  \item $f$ (nicht streng) mnt. fallend $\Rightarrow \forall x \in D: f'(x) \leq 0$
+\end{itemize}
+
+\paragraph{Höhere Ableitungen}
+\index{Höhere Ableitung}
+
+\begin{description}
+  \item[$n$-mal ableitbar] $\exists f', f'', \dots, f^{(n)}$
+  \item[Stetig ableitbar] Ableitung stetig
+\end{description}
+
+\subsection{Extrema}
+
+\paragraph{Lokales Extrema}
+\index{Lokales Extrema}
+\index{Lokales Minimum}
+\index{Lokales Maximum}
+
+\begin{gather*}
+  \exists \epsilon > 0 \forall x \in D \cap (x_0 - \epsilon, x_0 + \epsilon):\\
+  f(x_0) {}^{\leq}/_{\geq} f(x)
+\end{gather*}
+
+Ist $D$ Intervall und $x_0$ innerer Punkt und lokales Extremum:
+
+$$\Rightarrow f'(x_0) = 0$$
+
+(Achtung: Umkehrung nicht notwendig!)
+
+Sei zusätzlich $f(x_0) = 0$ und $f 2$ mal ableitbar:
+
+\begin{itemize}
+  \item $f''(x_0) < 0 \Rightarrow x_0$ lokales Maximum
+  \item $f''(x_0) > 0 \Rightarrow x_0$ lokales Minimum
+\end{itemize}
