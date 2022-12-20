@@ -1,0 +1,201 @@
+\chapter{Elektrischer Strom}
+
+
+\section{Elektrisches Feld}
+
+\paragraph{Elektrische Ladung}
+
+$$Q = N * e_0 = [C] = [As]$$
+
+\begin{itemize}
+  \item $1C = (6,242 * 10^{18}) * e_0$
+  \item $e_0 = 1,602 * 10^{-19} C$
+\end{itemize}
+
+\paragraph{Culombsches Gesetz}
+
+$$\vec{F} = \frac{1}{4 \pi \epsilon} * \frac{Q_1 * Q_2}{r^2} * (\vec{r_0}) = [N]$$
+
+\begin{itemize}
+  \item $\epsilon_0 = 8,854 * 10^{-12} \frac{C^2}{Nm^2}$
+  \item Ungleiche Ladungen ($Q$) ziehen sich an, gleich sto\ss en sich ab
+\end{itemize}
+
+\paragraph{Elektrisches Feldstärke}
+% TODO: TikZ Bild vom Elektrischen Feld.
+
+$$\vec{E} = \frac{\vec{F}}{q} = \left[\frac{V}{m}\right] = \left[\frac{N}{C}\right]$$
+
+\begin{itemize}
+  \item Kraft, die Probeladung $q$ erfährt
+  \item Feldlinien von kleineren Ladung zur grö\ss eren Ladung (Positiv zu Negativ); gleich der wirkenden Kraftrichtung
+\end{itemize}
+
+\paragraph{Elektrisches Potential}
+
+$$\varphi(r) = \frac{Q}{4 \pi \epsilon r} = (-\int_\infty^r \frac{Q}{4 \pi \epsilon r^2} dr)$$
+
+\begin{itemize}
+  \item Punktladung $Q$ erzeugt Potential um sich
+  \item Potential ist Steigung des E-Feld $E = - \frac{d\varphi}{dr}$
+\end{itemize}
+
+\paragraph{Elektrische Spannung}
+
+\begin{align*}
+  U                       & = \frac{W}{q} = [V] = [\frac{Nm}{C}] \\
+  U_{r_1 \rightarrow r_2} & = \varphi(r_1) - \varphi(r_2)        \\
+\end{align*}
+
+\begin{itemize}
+  \item Arbeit um $q$ von $r_1$ nach $r_2$ zu bewegen $W_{r_1 \rightarrow r_2} = \int_{r_1}^{r_2} \vec{F}dr$
+\end{itemize}
+
+\subsection{Elektrischer Strom}
+
+$$I = Q/t = [A] = \left[\frac{C}{s}\right]$$
+
+\begin{itemize}
+  \item Gleichmä\ss ig gerichteter Fluss von Elektronen von Minus nach Plus
+  \item $1A = \frac{1}{1,602} * 10^{19}$ Elektronen pro Sekunde
+  \item $\Rightarrow Q = \int_0^t i(t)dt$
+\end{itemize}
+
+\paragraph{Elektrische Arbeit}
+
+$$W = I * t * U = [Ws] = [J]$$
+
+\begin{itemize}
+  \item Ladungstransport über Zeit mit Spannung
+  \item Am Widerstand freigesetzte Energie $W = \frac{U^2}{R} * t$
+\end{itemize}
+
+\paragraph{Elektrische Leistung}
+
+$$P = \frac{W}{t} = U * I = [W] = [VA]$$
+
+\begin{itemize}
+  \item Arbeit pro Zeit
+  \item Am Widerstand $P = U^2 / R$
+\end{itemize}
+
+\subsection{Elektrisches Netz}
+
+% TODO: TikZ Schema.
+
+Strom flie\ss t per Definition von Plus ($+$) nach Minus ($-$)
+
+\begin{description}
+  \item[Generator $G$] gibt Energie frei $W < 0$
+  \item[Verbraucher $R$] verbraucht E. $W > 0$
+  \item[Verbindungsleitungen] nach Kirchhoff:
+    \paragraph{Knoten $K$} Verzweigung der Verbindungsleitung
+    $$\sum_{i \in K} I_i = 0 A$$
+
+    \begin{itemize}
+      \item Stromrichtung einmalig willkürlich festlegen
+      \item Eingehende Ströme addieren, ausgehende subtrahieren
+    \end{itemize}
+
+    \paragraph{Masche $M$} Geschlossener Pfad ohne Knotenwiederholung
+    $$\sum_{k \in M} U_k = 0 V$$
+
+    \begin{itemize}
+      \item Pfad startet im Knoten
+      \item Vorher Spannungsrichtung ($=$ Stromrichtung) einzeichnen
+      \item Spannungsrichtung in Maschenrichtung addieren, entgegen Maschenrichtung (Quellen) subtrahieren
+    \end{itemize}
+\end{description}
+
+\subsection{Lösen Linearer Gleichungssysteme}
+
+Kirchhoff'sche Sätze schaffen Lineares Gleichungssystem der Form
+
+$$A x = b$$
+
+\begin{itemize}
+  \item $x$ ist der gesuchte Vektor der Ströme $I_k = x_k$
+  \item $A$ ist die Matrix der Koeffizienten (Widerstände)
+  \item $b$ sind vom Strom unabhängige Grö\ss en (Spannungen, $0A$ im Knoten)
+\end{itemize}
+
+\paragraph{Matrixmul.}
+\index{Matrixmultiplikation}
+$(m \times n)(n \times p) = (m \times p)$
+
+\begin{mzImportant}
+  $$(AB)_{ij} = \sum_{k=1}^m a_{ik}b_{kj}$$
+
+  (Zeile $\times$ Spalte)
+\end{mzImportant}
+
+\paragraph{Determinante}
+
+\begin{align*}
+  \det A & = \sum_{i=1}^n (-1)^{i + j} * a_{ij} * \det A_{ij} \\
+         & = \sum_{j=1}^n (-1)^{i + j} * a_{ij} * \det A_{ij} \\
+\end{align*}
+
+\begin{itemize}
+  \item Für Matrix $A = (n \times n)$
+  \item ,,Entwickeln`` nach $i$-ter Zeile oder $j$-ter Spalte
+  \item $A_{ij} =$ Matrix $A$ ohne $i$-te Zeile und $j$-te Spalte
+  \item Zeile/Spalte wählen mit viel $a_{ij} = 0$, damit $\det A_{ij}$ nicht berechnet werden muss
+\end{itemize}
+
+\paragraph{$(2 \times 2)$ Matrix}
+
+$$\det A = \begin{vmatrix}
+    a & c \\
+    b & d
+  \end{vmatrix} = ad - bc$$
+
+\paragraph{$(3 \times 3)$ Matrix (Regel von Sarrus)}
+
+\mzScale{.7}{
+  \begin{tikzpicture}
+    \matrix (sarrus) [
+      matrix of math nodes,
+      ampersand replacement=\&,
+      column sep=1em,
+      row sep=1em
+    ] {
+      a_{11} \& a_{12} \& a_{13} \& a_{11} \& a_{12} \\
+      a_{21} \& a_{22} \& a_{23} \& a_{21} \& a_{22} \\
+      a_{31} \& a_{32} \& a_{33} \& a_{31} \& a_{32} \\
+    };
+
+    \path
+    (sarrus-1-3.north east) edge[dashed] (sarrus-3-3.south east)
+    (sarrus-3-1) edge[color=primary] (sarrus-2-2)
+    (sarrus-2-2) edge[color=primary] (sarrus-1-3)
+    (sarrus-3-2) edge[color=primary] (sarrus-2-3)
+    (sarrus-2-3) edge[color=primary] (sarrus-1-4)
+    (sarrus-3-3) edge[color=primary] (sarrus-2-4)
+    (sarrus-2-4) edge[color=primary] (sarrus-1-5)
+    (sarrus-1-1) edge         (sarrus-2-2)
+    (sarrus-2-2) edge         (sarrus-3-3)
+    (sarrus-1-2) edge         (sarrus-2-3)
+    (sarrus-2-3) edge         (sarrus-3-4)
+    (sarrus-1-3) edge         (sarrus-2-4)
+    (sarrus-2-4) edge         (sarrus-3-5);
+
+    \foreach \c in {1,2,3} {\node[anchor=south] at (sarrus-1-\c.north) {$+$};};
+    \foreach \c in {1,2,3} {\node[anchor=north] at (sarrus-3-\c.south) {$-$};};
+  \end{tikzpicture}
+}
+
+\paragraph{Cramer'sche Regel}
+
+\begin{align*}
+  x_k & = (I_k) = \frac{\det A_k}{\det A} \quad \det A_k \neq 0        \\
+  A_k & = (a_1 \mid \dots \mid a_{k-1} \mid b \mid a_{k + 1} \mid a_m)
+\end{align*}
+
+\begin{itemize}
+  \item $A_k$ ist Matrix $A$ mit Vektor $b$ statt $k$-ter Spalte
+\end{itemize}
+
+\section{Wechselspannung}
+
+\section{Elektromagnetisches Feld}

@@ -1,0 +1,125 @@
+\chapter{Elektrische Bauteile}
+
+\section{Elektrischer Leiter}
+
+\paragraph{Elektrische Flussdichte}
+
+$$D = \frac{Q}{A} = \left[\frac{C}{m^2}\right]$$
+
+\begin{itemize}
+  \item Frei bewegliche Ladungsträger verteilen sich gleichmä\ss ig auf der Oberfläche
+  \item $\Rightarrow Q = A * \iint_A Dd$
+  \item $\vec{D} = \epsilon_0 * \epsilon_r * \vec{E}$ ($r$ raumfüllendes Material)
+\end{itemize}
+
+\paragraph{Metallischer Leiter}
+
+$$R = \rho \frac{l}{A}$$
+
+\begin{itemize}
+  \item Linearer Widerstand, abhängig vom Material $\rho$
+  \item $\rho = [\Omega \frac{mm^2}{m}] \propto$ Länge, kleinere Oberfläche
+\end{itemize}
+
+\section{Ohmsch: Lineare Widerstände}
+
+$$U = R * I$$
+
+\begin{itemize}
+  \item Kurz ,,Uri``
+  \item Strom $\propto$ Spannung, kleinerer Widerstand
+\end{itemize}
+
+$$R = [\Omega] = \left[\frac{V}{A}\right]$$
+
+\paragraph{Leitwert} $G = 1/R = [S] = \left[\frac{A}{V}\right]$
+
+\paragraph{Schaltung}
+
+\begin{description}
+  \item[Reihe] $R_G = \sum R_k$
+    \begin{itemize}
+      \item $I_k = I \Rightarrow U_k = I * R_k$
+    \end{itemize}
+
+  \item[Parallel] $R_G = 1 / \sum \frac{1}{R_k}$
+    \begin{itemize}
+      \item $U_k = U \Rightarrow I_k = U/R_k$
+    \end{itemize}
+\end{description}
+
+\paragraph{Kennlinie} Graph $I(U)$
+% TODO: TikZ Graph der Kennlinie
+
+\begin{itemize}
+  \item Je flacher desto stärker der Widerstand
+  \item Für nicht-lineare Graphen gilt das Ohmsche Gesetz nicht!
+\end{itemize}
+
+\section{Kapazitiv: Kondensator}
+
+% TODO: TikZ Grafik des Kondensators mit metallischen Hohlraum.
+
+$$Q = C * U$$
+
+(,,Kuh gleich Kuh``)
+
+$$E = \frac{U}{d} = \frac{D}{\epsilon}$$
+
+\paragraph{Kapazität}
+
+$$C = \frac{\epsilon * A}{d} = [F] = \left[\frac{C}{V}\right]$$
+
+\begin{itemize}
+  \item Kondensator speichert elektrische Ladung
+  \item $\propto$ Gro\ss e Oberfläche, gro\ss e Permittivität
+\end{itemize}
+
+\paragraph{Schaltung}
+
+\begin{description}
+  \item[Reihe] $C_G = 1/{\sum \frac{1}{C_k}}$
+  \item[Parallel] $C_G = \sum C_k$
+\end{description}
+
+\paragraph{Influenz: Faraday'scher Käfig}
+Das Innere eines metallischen Hohlraums ist feldfrei.
+
+% TODO: Arten von Kondensatoren.
+
+\section{Induktiv: Spule}
+
+\section{Quellen}
+
+\section{Messgeräte}
+
+\subsection{Voltmeter}
+
+\begin{itemize}
+  \item Schaltung in Parallel
+\end{itemize}
+
+\subsection{Amperemeter}
+
+\begin{itemize}
+  \item Schaltung in Reihe
+\end{itemize}
+
+\section{Spezielle Kombinationen}
+
+\subsection{Spannungsteiler}
+
+$$U_A = \frac{U_0}{\frac{R_1}{R_2} + 1}$$
+
+\paragraph{Potentiometer} $R_1 = R - R_2$
+
+$$\Rightarrow U_A = U_0 * \frac{R_2}{R}$$
+
+\paragraph{Potentiometer unter Last $R_L$}
+$R_1 = R - (R_2 \parallel R_L)$
+
+$$\Rightarrow U_A = U_0 * \frac{R_2}{R} * \frac{R_L}{R_L + R_2}$$
+
+\subsection{Transformator}
+
+\subsection{Schwingkreis}

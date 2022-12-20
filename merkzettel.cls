@@ -180,6 +180,9 @@
 % Draw matrices.
 \usetikzlibrary{matrix}
 
+% Calculate values on the fly.
+% \usetikzlibrary{calc}
+
 % Draw graphs.
 % \usetikzlibrary{graphs}
 % \usetikzlibrary{graphdrawing}
