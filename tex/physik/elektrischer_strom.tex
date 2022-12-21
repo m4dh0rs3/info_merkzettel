@@ -56,7 +56,7 @@ $$\varphi(r) = \frac{Q}{4 \pi \epsilon r} = (-\int_\infty^r \frac{Q}{4 \pi \epsi
 $$I = Q/t = [A] = \left[\frac{C}{s}\right]$$
 
 \begin{itemize}
-  \item Gleichmä\ss ig gerichteter Fluss von Elektronen von Minus nach Plus
+  \item Gleichmä\ss ig gerichteter Fluss von Elektronen von Minus nach Plus (,,physikalisch``)
   \item $1A = \frac{1}{1,602} * 10^{19}$ Elektronen pro Sekunde
   \item $\Rightarrow Q = \int_0^t i(t)dt$
 \end{itemize}
@@ -83,7 +83,7 @@ $$P = \frac{W}{t} = U * I = [W] = [VA]$$
 
 % TODO: TikZ Schema.
 
-Strom flie\ss t per Definition von Plus ($+$) nach Minus ($-$)
+Strom flie\ss t per Definition (,,technisch``) von Plus ($+$) nach Minus ($-$)
 
 \begin{description}
   \item[Generator $G$] gibt Energie frei $W < 0$
@@ -199,3 +199,36 @@ $$\det A = \begin{vmatrix}
 \section{Wechselspannung}
 
 \section{Elektromagnetisches Feld}
+% TODO: TikZ Grafik.
+
+Stromdurchflossene Leiter erzeugen Magnetfelder orthogonal zur Flussrichtung:
+
+\paragraph{Rechte-Hand-Regel}
+
+\begin{itemize}
+  \item Daumen in (technische) Stromrichtung
+  \item Gekrümmte Finger in Magnetfeldrichtung (Norden)
+\end{itemize}
+
+\paragraph{Magnetische Feldstärke}
+
+$$\vec{H} = \frac{\vec{I}}{2\pi r} = \left[\frac{A}{m}\right]$$
+
+\begin{itemize}
+  \item Erzeugt durch stromdurchflossene Leiter $\vec{I}$
+  \item Kreisradius $2\pi r$ beliebig
+\end{itemize}
+
+\paragraph{1. Maxwell'sche Gleichung: Durchflutungsgesetz}
+
+$$\oint \vec{H} ds = \iint_A \vec{j} dA$$
+
+Geschlossene magnetische Feldlinien werden von Strom durchflutet
+
+\paragraph{Magnetische Spannung}
+
+$$\vec{\Theta}_{s_1 \rightarrow s_2} = \int_{s_1}^{s_2} \vec{H} ds = \vec{I} = [A]$$
+
+\begin{itemize}
+  \item Zwischen Umfang $s_1$ (z.B $2\pi r_1$) und $s_2$
+\end{itemize}

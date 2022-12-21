@@ -12,6 +12,16 @@ $$D = \frac{Q}{A} = \left[\frac{C}{m^2}\right]$$
   \item $\vec{D} = \epsilon_0 * \epsilon_r * \vec{E}$ ($r$ raumfüllendes Material)
 \end{itemize}
 
+\paragraph{Elektrische Stromdichte}
+
+$$J = \frac{I}{A}$$
+
+\begin{itemize}
+  \item Querschnitt $A$ senkrecht zum Stromfluss $\vec{I}$
+  \item $\propto$ Erwärmung des Leiters
+  \item Aber: Dünne Leitungen kühlen besser (Verhältnis Querschnitt zu Umfang) $\Rightarrow$ Dicke Leitungen haben geringeres zulässiges $J$
+\end{itemize}
+
 \paragraph{Metallischer Leiter}
 
 $$R = \rho \frac{l}{A}$$
@@ -56,6 +66,12 @@ $$R = [\Omega] = \left[\frac{V}{A}\right]$$
   \item Für nicht-lineare Graphen gilt das Ohmsche Gesetz nicht!
 \end{itemize}
 
+\paragraph{Arbeitspunkt} Schnittpunkt der Kennlinien
+
+\begin{itemize}
+  \item Bestimmung der dynamischen Austarierung nicht-linearer Bauteile
+\end{itemize}
+
 \section{Kapazitiv: Kondensator}
 
 % TODO: TikZ Grafik des Kondensators mit metallischen Hohlraum.
@@ -91,18 +107,74 @@ Das Innere eines metallischen Hohlraums ist feldfrei.
 
 \section{Quellen}
 
+\subsection{Spannungsquelle}
+
+\begin{itemize}
+  \item Feste Spannung $U_Q$
+  \item Ideal: $\lim_{R_L \rightarrow 0} I \geq \infty$
+\end{itemize}
+
+\paragraph{Klemmspannung} Tatsächliche Spannung mit geringem Innenwiderstand $R_{iQ}$
+
+$$U = U_Q - I * R_{iQ} \Rightarrow I = \frac{U_Q}{R_{iQ} + R_L}$$
+
+\begin{description}
+  \item[Leerlauf] Nicht geschlossen, $I = 0$
+  \item[Kurzschluss] Ohne Last geschlossen; da $R_{iQ}$ gering $\Rightarrow$ gefährlich hohe Leistung $P = U_Q^2 / R_{iQ}$
+\end{description}
+
+\subsection{Stromquelle}
+
+\begin{itemize}
+  \item Fester Strom $\forall R_L: I_L = \text{konst.}$
+\end{itemize}
+
+\paragraph{Reale Stromquelle} Hoher Innenwiderstand $R_{iQ}$
+
+\begin{itemize}
+  \item $I_L = I_Q - I_{iR}$
+  \item Ideal: $\lim_{R_{iQ}} \rightarrow \infty I_L = I_Q$
+\end{itemize}
+
+\begin{description}
+  \item[Leerlauf] Nicht geschlossen, $U = R_{iQ} * I_Q$
+  \item[Kurzschluss] Ohne Last geschlossen; $I_L = I_Q$, $U = 0$
+\end{description}
+
 \section{Messgeräte}
 
-\subsection{Voltmeter}
+\subsection{Spannung: Voltmeter}
 
 \begin{itemize}
   \item Schaltung in Parallel
+  \item Hoher Innenwiderstand $R_{iV} \Rightarrow$ Strom teilt sich auf, Spannung geringer gemessen
+  \item $R_{iV} \gg R_L \Rightarrow U_L \approx R_L * I$
 \end{itemize}
 
-\subsection{Amperemeter}
+\subsection{Strom: Amperemeter}
 
 \begin{itemize}
   \item Schaltung in Reihe
+  \item Geringer Innenwiderstand $R_{iA} \Rightarrow$ Strom geringer gemessen
+  \item $R_{iA} \ll R_L \Rightarrow I_L \approx U/R_L$
+\end{itemize}
+
+\subsection{Widerstand: Fehlerschaltungen}
+
+Zum Messen des Widerstands $R$ wird $I_R$ und $U_R$ benötigt:
+
+\paragraph{Kleiner Widerstand: Stromfehlerschaltung}
+
+\begin{itemize}
+  \item Erst Amperemeter in Reihe, dann Voltmeter parallel zum Widerstand
+  \item $I \approx I_R$
+\end{itemize}
+
+\paragraph{Gro\ss er Widerstand: Spannungsfehlerschaltung}
+
+\begin{itemize}
+  \item Erst Voltmeter, dazu parallel der Widerstand und dazwischen in Reihe des Amperemeter
+  \item $U \approx U_R$
 \end{itemize}
 
 \section{Spezielle Kombinationen}
