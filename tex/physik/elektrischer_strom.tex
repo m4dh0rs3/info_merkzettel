@@ -19,6 +19,7 @@ $$\vec{F} = \frac{1}{4 \pi \epsilon} * \frac{Q_1 * Q_2}{r^2} * (\vec{r_0}) = [N]
 \begin{itemize}
   \item $\epsilon_0 = 8,854 * 10^{-12} \frac{C^2}{Nm^2}$
   \item Ungleiche Ladungen ($Q$) ziehen sich an, gleich sto\ss en sich ab
+  \item $F \propto 1/r^2$
 \end{itemize}
 
 \paragraph{Elektrisches Feldstärke}
@@ -95,6 +96,7 @@ Strom flie\ss t per Definition (,,technisch``) von Plus ($+$) nach Minus ($-$)
     \begin{itemize}
       \item Stromrichtung einmalig willkürlich festlegen
       \item Eingehende Ströme addieren, ausgehende subtrahieren
+      \item Ladungen werden nicht angehäuft $\Rightarrow$ Eingehender $=$ ausgehender Strom auch bei Bauteilen
     \end{itemize}
 
     \paragraph{Masche $M$} Geschlossener Pfad ohne Knotenwiederholung
@@ -137,7 +139,7 @@ $(m \times n)(n \times p) = (m \times p)$
 \end{align*}
 
 \begin{itemize}
-  \item Für Matrix $A = (n \times n)$
+  \item Für Matrix $A \in \mathbb{R}^n$
   \item ,,Entwickeln`` nach $i$-ter Zeile oder $j$-ter Spalte
   \item $A_{ij} =$ Matrix $A$ ohne $i$-te Zeile und $j$-te Spalte
   \item Zeile/Spalte wählen mit viel $a_{ij} = 0$, damit $\det A_{ij}$ nicht berechnet werden muss
@@ -194,9 +196,8 @@ $$\det A = \begin{vmatrix}
 
 \begin{itemize}
   \item $A_k$ ist Matrix $A$ mit Vektor $b$ statt $k$-ter Spalte
+  \item Lösbar $\Leftrightarrow \det A \neq 0$
 \end{itemize}
-
-\section{Wechselspannung}
 
 \section{Elektromagnetisches Feld}
 % TODO: TikZ Grafik.
@@ -206,8 +207,9 @@ Stromdurchflossene Leiter erzeugen Magnetfelder orthogonal zur Flussrichtung:
 \paragraph{Rechte-Hand-Regel}
 
 \begin{itemize}
-  \item Daumen in (technische) Stromrichtung
+  \item Daumen in (technische) Stromrichtung (Vektorprodukt)
   \item Gekrümmte Finger in Magnetfeldrichtung (Norden)
+  \item Zeigefinger in Magnetfeldrichtung $\Rightarrow$ Mittelfinger in Kraftwirkung auf Leiter
 \end{itemize}
 
 \paragraph{Magnetische Feldstärke}
@@ -231,4 +233,125 @@ $$\vec{\Theta}_{s_1 \rightarrow s_2} = \int_{s_1}^{s_2} \vec{H} ds = \vec{I} = [
 
 \begin{itemize}
   \item Zwischen Umfang $s_1$ (z.B $2\pi r_1$) und $s_2$
+\end{itemize}
+
+\paragraph{Magnetische Flussdichte}
+
+$$B = \mu_0 * \mu_r * \vec{H} = [T] = \left[\frac{Vs}{m^2}\right]$$
+
+\begin{itemize}
+  \item $\mu_0 = 1,2566 * 10^{-6} \frac{Vs}{Am}$
+\end{itemize}
+
+\paragraph{Relative Permeabilität: Hysteresekurve}
+
+\begin{itemize}
+  \item Feromagnetische Stoffe $\mu_r = 10^2 \dots 10^5$ oder nicht konstant
+  \item Speichern magnetische Zustände
+\end{itemize}
+% TODO: TikZ Grafik der Hysteresekurve.
+
+\begin{description}
+  \item[Remanenzpunkt $B_r$] Magnetische Flussdichte $B_r$, die \emph{nach} ($H = 0$) einer Magnetisierung besteht
+  \item[Koerzitivfeldstärke $-H_c$] Feldstärke um Material zu entmagnetisieren
+\end{description}
+
+\paragraph{Wechselschriftverfahren}
+
+\begin{itemize}
+  \item $1$ Permanenter Richtungswechsel des Stroms (durch antiparalleles Magnetfeld zum vorherigen Takt)
+  \item $0$ keine Veränderung des Stroms
+\end{itemize}
+
+\begin{description}
+  \item[Lesen] Bewegung des magnetisierten Mediums induziert Strom bei antiparalleln Magnetfeld zum vorherigen Takt (Veränderung), bleibt $0$ bei keiner Veränderung
+  \item[Schreiben] Positiver und negativer Strom magnetisiert Medium antiparallel
+\end{description}
+
+\paragraph{Kraftwirkung des magnetischen Feldes}
+
+$$\vec{F} = \mu * l * \vec{I} \times \vec{H} = l * \vec{I} \times \vec{B}$$
+
+\begin{itemize}
+  \item Kinetische Kraft auf stromdurchflossene Leiter $\vec{I}$ der Länge $l$
+  \item $|F| = \mu * l * I * H = l * I * B$
+\end{itemize}
+
+\paragraph{Kreuzprodukt} $\vec{a} \times \vec{b}$
+
+$$\begin{pmatrix}
+    a_1 \\ a_2 \\ a_3
+  \end{pmatrix} \times \begin{pmatrix}
+    b_1 \\ b_2 \\ b_3
+  \end{pmatrix} = \begin{pmatrix}
+    a_2b_3 - a_3b_2 \\
+    a_3b_1 - a_1b_3 \\
+    a_1b_2 - a_2b_1 \\
+  \end{pmatrix}$$
+
+\paragraph{Elektromagnetische Induktion}
+
+$$U_i = - \frac{d \iint \vec{B} d\vec{A}}{dt} = - \frac{d \Phi}{dt}$$
+
+\begin{itemize}
+  \item Umgekehrt induziert Bewegung eines Leiters im Magnetfeld eine Spannung
+  \item Induktivität $[H] = \frac{Vs}{A}$, wenn bei einer gleichförmigen Stromveränderung von einem Ampere in einer Sekunde eine Selbstinduktion von einem Volt erzeugt wird
+\end{itemize}
+
+\paragraph{Magnetischer Fluss}
+
+$$\Phi = \iint \vec{B} d \vec{A} = [Wb] = [T * m^2]$$
+
+\begin{itemize}
+  \item Homogenes Magnetfeld $\Phi = \vec{B} * \vec{A}$
+  \item Leiter im Winkel zum geradlinigen Magnetfeld $\Phi = B * A * \cos \varphi$
+\end{itemize}
+
+\section{Wechselstrom}
+
+Die Rotation eines Leiters in einem Magnetfeld induziert eine Wechselspannung und einen Wechselstrom:
+
+$$u(t) = \hat{u} * \sin(\omega t)$$
+
+$$i(t) = \hat{i} * \sin(\omega t)$$
+
+\begin{itemize}
+  \item Frequenz $f = 1/T$ (Anzahl der Perioden pro Zeiteinheit)
+  \item Drehgeschwindigkeit $\omega = \frac{\varphi}{t} = 2 \pi f$ (Anzahl der Perioden auf $2\pi$ Weg)
+\end{itemize}
+
+\paragraph{Kenngrö\ss en}
+
+\begin{description}
+  \item[Linearer Mittelwert] (Durchschnitt)
+    $$\overline{Y} = \frac{\int y(x)dx}{\int dx} \quad \overline{I} = \frac{1}{T} \int^T i(t) dt$$
+
+    \begin{itemize}
+      \item Gemä\ss~Normung $= 0$
+    \end{itemize}
+
+  \item[Gleichrichtwert] (Durchschnitt des Betrag)
+    $$|\overline{I}| = \frac{1}{T} \int^T |i(t)| dt$$
+
+  \item[Effektivwert] (Leistung Gleichstrom)
+    $$I_\text{eff.} = \sqrt{\frac{1}{T} \int^T i^2(t) dt} $$
+
+    \begin{itemize}
+      \item Sinusförmig: $I_\text{eff.} = \frac{\hat{i}}{\sqrt{2}}$, $U_\text{eff.} = \frac{\hat{u}}{\sqrt{2}}$
+    \end{itemize}
+
+  \item[Formfaktor] $k = \frac{I_\text{eff.}}{|\overline{I}|}$
+
+    \begin{itemize}
+      \item Sinusförmig: $k = \frac{\pi}{\sqrt{8}} \approx 1,1107$
+      \item Rechteck: $k = 1$
+    \end{itemize}
+\end{description}
+
+\section{Häufige Fehler}
+
+\begin{itemize}
+  \item Vektor und Skalare Formeln mischen
+  \item $mm^3 = (10^{-3} m)^3 = 10^{-9} m^3$
+  \item $1/k\Omega = m\Omega$
 \end{itemize}

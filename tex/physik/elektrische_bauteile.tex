@@ -58,19 +58,25 @@ $$R = [\Omega] = \left[\frac{V}{A}\right]$$
     \end{itemize}
 \end{description}
 
-\paragraph{Kennlinie} Graph $I(U)$
+\paragraph{Kennlinie} Graph $I(U_A)$
 % TODO: TikZ Graph der Kennlinie
 
 \begin{itemize}
   \item Je flacher desto stärker der Widerstand
-  \item Für nicht-lineare Graphen gilt das Ohmsche Gesetz nicht!
+  \item Für lineare Bauteile: Nullstelle $I(U_A) = 0A$ und Schnittpunkt mit der $I$-Achse bestimmen $I(0V) = I_0$
+  \item Für nicht-lineare Graphen $R(U, I) = U/I$ gilt das Ohmsche Gesetz nicht!
 \end{itemize}
 
-\paragraph{Arbeitspunkt} Schnittpunkt der Kennlinien
+\paragraph{Arbeitspunkt} Schnittpunkt der Kennlinien $I_1 (U_A) = I_2 (U_A)$
 
 \begin{itemize}
   \item Bestimmung der dynamischen Austarierung nicht-linearer Bauteile
+  \item Kennlinie in Abhängigkeit der Spannung am Bauteil, nicht der Quellspannung!
 \end{itemize}
+
+\paragraph{Energierverbrauch}
+
+$$W_R = t * RI^2$$
 
 \section{Kapazitiv: Kondensator}
 
@@ -88,8 +94,16 @@ $$C = \frac{\epsilon * A}{d} = [F] = \left[\frac{C}{V}\right]$$
 
 \begin{itemize}
   \item Kondensator speichert elektrische Ladung
-  \item $\propto$ Gro\ss e Oberfläche, gro\ss e Permittivität
+  \item $\propto$ Gro\ss e Oberfläche, gro\ss e Permittivität, kleiner Abstand
+  \item Durchschlagfestigkeit $E_d = U_d / d$
 \end{itemize}
+
+\paragraph{Energie im Elektrischen Feld}
+
+$$W = \frac{1}{2} C * U^2$$
+
+\paragraph{Influenz: Faraday'scher Käfig}
+Das Innere eines metallischen Hohlraums ist feldfrei.
 
 \paragraph{Schaltung}
 
@@ -97,20 +111,78 @@ $$C = \frac{\epsilon * A}{d} = [F] = \left[\frac{C}{V}\right]$$
   \item[Reihe] $C_G = 1/{\sum \frac{1}{C_k}}$
   \item[Parallel] $C_G = \sum C_k$
 \end{description}
-
-\paragraph{Influenz: Faraday'scher Käfig}
-Das Innere eines metallischen Hohlraums ist feldfrei.
-
 % TODO: Arten von Kondensatoren.
 
+\paragraph{Ladevorgänge}
+
+\begin{description}
+  \item[Einschalten]\
+  \begin{itemize}
+    \item $U_C = U * (1 - e^{- \frac{t}{R * C}})$
+    \item $I_C = \frac{U}{R} * e^{- \frac{t}{R * C}}$
+  \end{itemize}
+
+  \item[Ausschalten]\
+  \begin{itemize}
+    \item $U_C = U * e^{- \frac{t}{R * C}}$
+    \item $I_C = \frac{U}{R} * e^{- \frac{t}{R * C}}$
+  \end{itemize}
+\end{description}
+
+\paragraph{Wechselstrom}
+
+$$i(t) = C \hat{u} * \omega \cos (\omega t)$$
+
+\begin{itemize}
+  \item Maximalstrom $\hat{i} = C \hat{u} * \omega$
+  \item Phasensprung von $\pi/2$
+  \item Widerstand $R_C = \frac{1}{\omega * C}$
+\end{itemize}
+
 \section{Induktiv: Spule}
+
+Die durch die Spannungsveränderung (z.B Anlegung) induzierte Spannung wirkt der Spannung entgegen (Lenzsche Regel):
+
+$$U = L * \frac{dI}{dt}$$
+
+Ein magnetischer Fluss induziert in der Spule eine Spannung:
+
+$$\Phi = L * I$$
+
+\paragraph{Selbstinduktivität} $L$
+
+\begin{itemize}
+  \item $\propto N^2$ Quadrat der Windungszahl
+\end{itemize}
+
+\paragraph{Energie im Magnetfeld}
+
+$$W = \frac{1}{2} L * I^2$$
+
+\paragraph{Ladevorgänge}
+
+\begin{description}
+  \item[Einschalten] $I_L = \frac{U}{R} * (1 - e^{-t * \frac{R}{L}})$
+  \item[Ausschalten] $I_L = \frac{U}{R} * e^{-t * \frac{R}{L}}$
+\end{description}
+
+\paragraph{Wechselstrom}
+
+$$i(t) = \frac{\hat{u}}{\omega * L} * \sin (\omega t - \frac{\pi}{2})$$
+
+\begin{itemize}
+  \item Maximalstrom $\hat{i} = \frac{\hat{u}}{\omega * L}$
+  \item Phasensprung von $-\pi/2$
+  \item Widerstand $R_L = \omega * L$
+\end{itemize}
 
 \section{Quellen}
 
 \subsection{Spannungsquelle}
 
+Feste Spannung $U_Q$
+
 \begin{itemize}
-  \item Feste Spannung $U_Q$
   \item Ideal: $\lim_{R_L \rightarrow 0} I \geq \infty$
 \end{itemize}
 
@@ -125,9 +197,7 @@ $$U = U_Q - I * R_{iQ} \Rightarrow I = \frac{U_Q}{R_{iQ} + R_L}$$
 
 \subsection{Stromquelle}
 
-\begin{itemize}
-  \item Fester Strom $\forall R_L: I_L = \text{konst.}$
-\end{itemize}
+Fester Strom $\forall R_L: I_L = \text{konst.}$
 
 \paragraph{Reale Stromquelle} Hoher Innenwiderstand $R_{iQ}$
 
@@ -146,7 +216,7 @@ $$U = U_Q - I * R_{iQ} \Rightarrow I = \frac{U_Q}{R_{iQ} + R_L}$$
 \subsection{Spannung: Voltmeter}
 
 \begin{itemize}
-  \item Schaltung in Parallel
+  \item Schaltung in Parallel, ohne Amperemeter messen!
   \item Hoher Innenwiderstand $R_{iV} \Rightarrow$ Strom teilt sich auf, Spannung geringer gemessen
   \item $R_{iV} \gg R_L \Rightarrow U_L \approx R_L * I$
 \end{itemize}
@@ -154,7 +224,7 @@ $$U = U_Q - I * R_{iQ} \Rightarrow I = \frac{U_Q}{R_{iQ} + R_L}$$
 \subsection{Strom: Amperemeter}
 
 \begin{itemize}
-  \item Schaltung in Reihe
+  \item Schaltung in Reihe, ohne Voltmeter messen!
   \item Geringer Innenwiderstand $R_{iA} \Rightarrow$ Strom geringer gemessen
   \item $R_{iA} \ll R_L \Rightarrow I_L \approx U/R_L$
 \end{itemize}
@@ -181,7 +251,13 @@ Zum Messen des Widerstands $R$ wird $I_R$ und $U_R$ benötigt:
 
 \subsection{Spannungsteiler}
 
-$$U_A = \frac{U_0}{\frac{R_1}{R_2} + 1}$$
+Die Arbeitsspannung verhält sich zur Quellspannung wie der zweiter Widerstand zum Gesamtwiderstand:
+
+$$\frac{U_A}{U_0} = \frac{R_2}{R_1 + R_2}$$
+
+\begin{itemize}
+  \item Setzt Restenergie in Wärme frei
+\end{itemize}
 
 \paragraph{Potentiometer} $R_1 = R - R_2$
 
@@ -194,4 +270,24 @@ $$\Rightarrow U_A = U_0 * \frac{R_2}{R} * \frac{R_L}{R_L + R_2}$$
 
 \subsection{Transformator}
 
+$$\frac{U_1}{U_2} = \frac{N_1}{N_2}$$
+
+\begin{itemize}
+  \item Wechselspannung der Primärspule induziert Wechselspannung in Sekundärspule
+  \item Ideal: Verlustfreier Spannungsteiler, da Energie im Magnetfeld durch Abbau wiedererlangt wird
+\end{itemize}
+
 \subsection{Schwingkreis}
+
+$$\omega = \sqrt{\frac{1}{L * C}} = \frac{2\pi}{T}$$
+
+\begin{itemize}
+  \item $u_C(t) + u_L(t) = 0$
+  \item (Gedämpft durch Widerstand)
+\end{itemize}
+
+\section{Häufige Fehler}
+
+\begin{itemize}
+  \item Parallelschaltung von Kondensatoren verhält sich wie Reihenschaltung von Widerständen
+\end{itemize}

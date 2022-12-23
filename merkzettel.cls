@@ -230,8 +230,12 @@
 
 % Table formatting.
 \RequirePackage{tabularray}
+
 % Sideways text in table cell.
 \RequirePackage{rotating}
+
+% Layout of item environments.
+\usepackage[shortlabels]{enumitem}
 
 \ifPoster
   % Multiple columns for dense information presentation
@@ -349,6 +353,10 @@
   \chapterstyle{wilsondob}
 \fi
 
+% Set margins of item environments and paragraphs.
+\setlength{\parindent}{1em}
+\setlist{leftmargin=1em}
+
 \ifPoster
   % POSTER LAYOUT 
   %--------------
@@ -408,6 +416,11 @@
   \setulmarginsandblock{14mm}{14mm}{*}
 
   % Ruled header style.
+  % \copypagestyle{ruledColor}{ruled}
+  % % \makeheadfootruleprefix{ruledColor}{\color{primary}}{\color{primary}}
+  % \makeevenfoot{ruledColor}{\color{primary}\thepage}{}{}
+  % \makeoddfoot{ruledColor}{}{}{\color{primary}\thepage}
+  % \pagestyle{ruledColor}
   \pagestyle{ruled}
 
   % Use indexing.
@@ -418,8 +431,11 @@
     \setsubsecheadstyle{\large\bfseries\color{primary}}
   \else
     % Extend chapter, sub-/section style with underline.
-    \setsecheadstyle{\filbreak\Large\bfseries\secUnderline}
-    \setsubsecheadstyle{\filbreak\large\bfseries\secUnderline}
+    % \setsecheadstyle{\filbreak\Large\bfseries\secUnderline}
+    % \setsubsecheadstyle{\filbreak\large\bfseries\secUnderline}
+
+    \setsecheadstyle{\Large\bfseries\color{primary}}
+    \setsubsecheadstyle{\large\bfseries\color{primary}}
   \fi
 
   % Print ToC at beginning of document.
