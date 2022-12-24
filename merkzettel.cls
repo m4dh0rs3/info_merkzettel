@@ -309,7 +309,9 @@
 
 \ifClassy
   % Common underline style specifically for sections.
-  \newcommand{\secUnderline}[1]{#1\vskip2ex{\color{primary}\hrule}}
+  \newcommand{\secUnderline}[1]{\filbreak#1\vskip2ex{\color{primary}\hrule}}
+
+  \newcommand{\centerText}[1]{{\centering#1}}
 \fi
 
 % Resize and position inline graphics.
@@ -355,7 +357,24 @@
 
 % Set margins of item environments and paragraphs.
 \setlength{\parindent}{1em}
-\setlist{leftmargin=1em}
+
+\setlist{
+  leftmargin=1em,
+  itemsep=1ex,
+}
+\ifUniLeipzig
+  \setlist[description]{font=\itshape}
+\else
+  \setlist[description]{font=\normalfont\scshape}
+\fi
+
+\ifUniLeipzig
+  \setsecheadstyle{\Large\bfseries\color{primary}}
+  \setsubsecheadstyle{\large\bfseries\color{primary}}
+\else
+  \setsecheadstyle{\Large\bfseries\color{primary}\centerText}
+  \setsubsecheadstyle{\large\bfseries\color{primary}\centerText}
+\fi
 
 \ifPoster
   % POSTER LAYOUT 
@@ -382,15 +401,6 @@
   % Don't start new page on poster.
   \renewcommand{\clearforchapter}{}
 
-  \ifUniLeipzig
-    \setsecheadstyle{\Large\bfseries\color{primary}}
-    \setsubsecheadstyle{\large\bfseries\color{primary}}
-  \else
-    % Extend chapter, sub-/section style with underline.
-    \setsecheadstyle{\Large\bfseries\secUnderline}
-    \setsubsecheadstyle{\large\bfseries\secUnderline}
-  \fi
-
   % Fix removed header warnings.
   \setlength{\headheight}{0pt}
   \setlength{\footskip}{0pt}
@@ -400,6 +410,8 @@
   \renewcommand{\printchapternum}{\hfill}
 
   % Set multicolumn layout.
+  % \setlength{\columnseprule}{.1pt}
+  % \def\columnseprulecolor{\color{background}}
   \AtBeginDocument{\begin{multicols*}{5}}
   \AtEndDocument{\end{multicols*}}
 \else
@@ -425,18 +437,6 @@
 
   % Use indexing.
   \makeindex
-
-  \ifUniLeipzig
-    \setsecheadstyle{\Large\bfseries\color{primary}}
-    \setsubsecheadstyle{\large\bfseries\color{primary}}
-  \else
-    % Extend chapter, sub-/section style with underline.
-    % \setsecheadstyle{\filbreak\Large\bfseries\secUnderline}
-    % \setsubsecheadstyle{\filbreak\large\bfseries\secUnderline}
-
-    \setsecheadstyle{\Large\bfseries\color{primary}}
-    \setsubsecheadstyle{\large\bfseries\color{primary}}
-  \fi
 
   % Print ToC at beginning of document.
   \AtBeginDocument{
