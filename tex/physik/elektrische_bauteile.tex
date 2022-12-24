@@ -74,6 +74,16 @@ $$R = [\Omega] = \left[\frac{V}{A}\right]$$
   \item Kennlinie in Abhängigkeit der Spannung am Bauteil, nicht der Quellspannung!
 \end{itemize}
 
+\paragraph{Wechselstrom}
+
+$$i(t) = \frac{\hat{u}}{R} * \sin \omega t$$
+
+\begin{itemize}
+  \item Maximalstrom $\hat{i} = \frac{\hat{u}}{R}$
+  \item Widerstand $R = \frac{\hat{u}}{\hat{i}}$
+  \item Komplex $\underbar{u}(t) = R * \underline{i}(t)$, $\underline{U}_\text{eff.} = R * \underline{I}_\text{eff.}$
+\end{itemize}
+
 \paragraph{Energierverbrauch}
 
 $$W_R = t * RI^2$$
@@ -137,6 +147,7 @@ $$i(t) = C \hat{u} * \omega \cos (\omega t)$$
   \item Maximalstrom $\hat{i} = C \hat{u} * \omega$
   \item Phasensprung von $\pi/2$
   \item Widerstand $R_C = \frac{1}{\omega * C}$
+  \item Komplex $\underline{i}(t) = C \underline{u}(t) * j\omega$, $\underline{u}(t) = \underline{i}(t) / (C * j\omega)$, $\underline{I}_\text{eff.} = C \underline{U}_\text{eff.} * j\omega$
 \end{itemize}
 
 \section{Induktiv: Spule}
@@ -177,6 +188,7 @@ $$i(t) = \frac{\hat{u}}{\omega * L} * \sin (\omega t - \frac{\pi}{2})$$
   \item Maximalstrom $\hat{i} = \frac{\hat{u}}{\omega * L}$
   \item Phasensprung von $-\pi/2$
   \item Widerstand $R_L = \omega * L$
+  \item Komplex $\underline{u}(t) = L * \underline{i}(t) * j\omega$, $\underline{U}_\text{eff.} = L * \underline{I}_\text{eff.} * j\omega$
 \end{itemize}
 
 \section{Quellen}
