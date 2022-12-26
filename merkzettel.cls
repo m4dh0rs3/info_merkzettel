@@ -75,7 +75,7 @@
 %%%%%%%%%%%%%%%%%%%
 
 \title{Merkzettel Informatik Bachelor of Science}
-\author{Benedikt Schöps @m4dh0rs3 <schoeps.benedikt@gmail.com>}
+\author{Benedikt Schöps (@m4dh0rs3) <schoeps.benedikt@gmail.com>}
 
 % Set meta-data of the cheatsheet.
 \RequirePackage[xetex,
@@ -85,12 +85,15 @@
     pdfsubject={Informatik Bachelor of Science, Universität Leipzig (Analysis, Diskrete Strukturen, Algorithmen und Datenstrukturen, Modellierung und Programmierung, Technische Informatik)},
     pdfkeywords={Informatik, Computer science, Cheatsheet, Merkzettel, Universität Leipzig, Benedikt Schöps, m4dh0rs3},
     pdfproducer={LaTeX, Latexmk, TeX Live, memoir, TikZ, VSCode LaTeX Workshop},
-    baseurl={m4dh0rs3.github.io/},
+    baseurl={https://github.com/m4dh0rs3/info_merkzettel/},
     pdfcenterwindow=true,
     pdfdisplaydoctitle=true,
     pdffitwindow=true,
     pdflang=de,
+    colorlinks=true,
 ]{hyperref}
+
+\author{Benedikt Schöps (\texttt{@m4dh0rs3}) \texttt{<\href{mailto:schoeps.benedikt@gmail.com}{schoeps.benedikt@gmail.com}>}}
 
 % PACKAGES
 %%%%%%%%%%
@@ -202,28 +205,6 @@
 
 % Color definitions.
 \RequirePackage{xcolor}
-
-\ifUniLeipzig
-  % Background pictures.
-  \RequirePackage{eso-pic}
-
-  % Universität Leipzig corporate design. See
-  % <https://gitea.math.uni-leipzig.de/hellmund/leipzig-theme/src/commit/a0b89c43e7c6d2e5499db484fe855137adb37a3f/beamerthemeleipzig.sty#L402-L415>.
-  \AddToShipoutPictureBG{
-    \hbox to \paperwidth{
-      \hfill
-      \begin{tikzpicture}[scale=1/16]
-        % Rendered redundant parts for less color-fringing.
-        \path [fill=background] (0,0) -- (24,0) -- (24,12) -- cycle;
-        \path [fill=primary] (24,12) -- (40,12) -- (40,60) -- cycle;
-        \path [fill=tertiary] (20,0) -- (40,0) -- (40,20) -- (24,12) -- cycle;
-
-        % Author.
-        % \draw[white] (30,3) node[scale=0.7] {\tiny Benedikt Schöps};
-      \end{tikzpicture}
-    }
-  }
-\fi
 
 % LAYOUT
 %-------
@@ -377,6 +358,38 @@
 \fi
 
 \ifPoster
+  % Background pictures.
+  \RequirePackage{eso-pic}
+  
+  \ifUniLeipzig
+    % Universität Leipzig corporate design. See
+    % <https://gitea.math.uni-leipzig.de/hellmund/leipzig-theme/src/commit/a0b89c43e7c6d2e5499db484fe855137adb37a3f/beamerthemeleipzig.sty#L402-L415>.
+    \AddToShipoutPictureBG{
+      \hbox to \paperwidth{
+        \hfill
+        \begin{tikzpicture}[scale=1/16]
+          % Rendered redundant parts for less color-fringing.
+          \path [fill=background] (0,0) -- (24,0) -- (24,12) -- cycle;
+          \path [fill=primary] (24,12) -- (40,12) -- (40,60) -- cycle;
+          \path [fill=tertiary] (20,0) -- (40,0) -- (40,20) -- (24,12) -- cycle;
+        
+          % Author.
+          % \draw (40,3) node[scale=0.7,left] {\tiny \@author, \today};
+        \end{tikzpicture}
+      }
+    }
+  \else
+    \AddToShipoutPictureBG{
+      \hbox to \paperwidth{
+        \hfill
+        \begin{tikzpicture}[scale=1/16]
+          % Author.
+          \draw node[scale=0.7,left] {\tiny \@author, \today};
+        \end{tikzpicture}
+      }
+    }
+  \fi
+
   % POSTER LAYOUT 
   %--------------
 
