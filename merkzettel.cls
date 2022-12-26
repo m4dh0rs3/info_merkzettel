@@ -93,7 +93,7 @@
     colorlinks=true,
 ]{hyperref}
 
-\author{Benedikt Schöps (\texttt{@m4dh0rs3}) \texttt{<\href{mailto:schoeps.benedikt@gmail.com}{schoeps.benedikt@gmail.com}>}}
+% \author{Benedikt Schöps (\texttt{@m4dh0rs3}) \texttt{<\href{mailto:schoeps.benedikt@gmail.com}{schoeps.benedikt@gmail.com}>}}
 
 % PACKAGES
 %%%%%%%%%%
@@ -384,7 +384,7 @@
         \hfill
         \begin{tikzpicture}[scale=1/16]
           % Author.
-          \draw node[scale=0.7,left] {\tiny \@author, \today};
+          \draw node[scale=0.7,left] {\tiny\color{background} \@author, \today};
         \end{tikzpicture}
       }
     }

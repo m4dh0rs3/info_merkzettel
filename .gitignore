@@ -261,6 +261,7 @@ TSWLatexianTemp*
 
 # Package extract.
 *.xtr
+info_merkzettel_wichtig.tex
 
 # Editors.
 # WinEdt.
