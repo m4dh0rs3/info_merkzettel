@@ -221,7 +221,7 @@ $$\vec{H} = \frac{\vec{I}}{2\pi r} = \left[\frac{A}{m}\right]$$
   \item Kreisradius $2\pi r$ beliebig
 \end{itemize}
 
-\paragraph{1. Maxwell'sche Gleichung: Durchflutungsgesetz}
+\paragraph{1. \textsc{Maxwell}'sche Gleichung: Durchflutungsgesetz}
 
 $$\oint \vec{H} ds = \iint_A \vec{j} dA$$
 
@@ -232,7 +232,7 @@ Geschlossene magnetische Feldlinien werden von Strom durchflutet
 $$\vec{\Theta}_{s_1 \rightarrow s_2} = \int_{s_1}^{s_2} \vec{H} ds = \vec{I} = [A]$$
 
 \begin{itemize}
-  \item Zwischen Umfang $s_1$ (z.B $2\pi r_1$) und $s_2$
+  \item Zwischen Umfang $s_1$ (z.B $=2\pi r_1$) und $s_2$
 \end{itemize}
 
 \paragraph{Magnetische Flussdichte}
@@ -320,12 +320,6 @@ Die Rotation eines Leiters in einem Magnetfeld induziert eine Wechselspannung un
   \item Drehgeschwindigkeit $\omega = \frac{\varphi}{t} = 2 \pi f$ (Anzahl der Perioden auf $2\pi$ Weg)
 \end{itemize}
 
-$$\underline{\hat{u}} = \hat{u} * (\cos \hat{\varphi} + j \sin \hat{\varphi}) = \hat{u} * e^{j\hat{\varphi}}$$
-
-\begin{itemize}
-  \item Komplexe Amplitude mit Phasensprung $\hat{\varphi}$
-\end{itemize}
-
 \paragraph{Kenngrö\ss en}
 
 \begin{description}
@@ -352,6 +346,27 @@ $$\underline{\hat{u}} = \hat{u} * (\cos \hat{\varphi} + j \sin \hat{\varphi}) = 
       \item Sinusförmig: $k = \frac{\pi}{\sqrt{8}} \approx 1,1107$
       \item Rechteck: $k = 1$
     \end{itemize}
+\end{description}
+
+\subsection{Komplexe Wechselstromrechnung}
+
+$$\underline{\hat{u}} = \hat{u} * (\cos \hat{\varphi} + j \sin \hat{\varphi}) = \hat{u} * e^{j\hat{\varphi}}$$
+
+\begin{itemize}
+  \item Komplexe Amplitude mit Phasensprung $\hat{\varphi}$
+  \item $\underline{U}_1 + \underline{U}_2 = \Re(\underline{U}_1) + \Re(\underline{U}_2) + j(\Im(\underline{U}_1) + \Im(\underline{U}_2))$
+  \item $\underline{U}_1 * \underline{U}_2 = U_1 U_2 e^{j(\varphi_1 + \varphi_2)}$
+  \item $\frac{\underline{U}_1}{\underline{U}_2} = \frac{U_1}{U_2} e^{j(\varphi_1 - \varphi_2)}$
+\end{itemize}
+
+\paragraph{Impedanz}
+
+$$\underline{Z} = \underline{U} / \underline{I} = R + jX = [\Omega]$$
+
+\begin{description}
+  \item[Scheinwiderstand] $|\underline{Z}|$
+  \item[Wirkwiderstand] $R$ (Wirkleistung gleich Gesamtleistung bei Ohmschen Widerständen)
+  \item[Blindwiderstand] $X$ (Blindleistung bei Induktiven und Kapazitiven Bauteilen zum Aufbau des Feldes)
 \end{description}
 
 \section{Häufige Fehler}
