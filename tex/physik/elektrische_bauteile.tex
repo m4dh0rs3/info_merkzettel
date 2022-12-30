@@ -31,6 +31,10 @@ $$R = \rho \frac{l}{A}$$
   \item $\rho = [\Omega \frac{mm^2}{m}] \propto$ Länge, kleinere Oberfläche
 \end{itemize}
 
+\paragraph{Magnetische Feldstärke}
+
+$$\vec{H} = \frac{\vec{I}}{2\pi r} = \left[\frac{A}{m}\right]$$
+
 \section{Ohmsch: Lineare Widerstände}
 
 $$U = R * I$$
@@ -190,6 +194,18 @@ $$L = [H] = \left[\frac{Vs}{A}\right]$$
   \item $\propto N^2$ Quadrat der Windungszahl
 \end{itemize}
 
+\paragraph{Magnetische Feldstärke}
+
+$$H = \frac{\Theta}{l} = \frac{I * N}{\sqrt{l^2 + D^2}}$$
+
+\begin{itemize}
+  \item Feldstärke im Zentrum eines Zylinder des Durchmessers $D$
+\end{itemize}
+
+Angenommen $l \gg D$ ,,schlank``
+
+$$H = \frac{I * N}{l}$$
+
 \paragraph{Energie im Magnetfeld}
 
 $$W = \frac{1}{2} L * I^2$$
@@ -232,7 +248,7 @@ Feste Spannung $U_Q$
   \item Ideal: $\lim_{R_L \rightarrow 0} I \geq \infty$
 \end{itemize}
 
-\paragraph{Klemmspannung} Tatsächliche Spannung mit geringem Innenwiderstand $R_{iQ}$
+\paragraph{Klemmspannung} Tatsächliche Spannung mit geringem Innenwiderstand $R_{iQ}$ in Reihe
 
 $$U = U_Q - I * R_{iQ} \Rightarrow I = \frac{U_Q}{R_{iQ} + R_L}$$
 
@@ -282,7 +298,7 @@ Zum Messen des Widerstands $R$ wird $I_R$ und $U_R$ benötigt:
 \paragraph{Kleiner Widerstand: Stromfehlerschaltung}
 
 \begin{itemize}
-  \item Erst Amperemeter in Reihe, dann Voltmeter parallel zum Widerstand
+  \item Erst Amperemeter in Reihe, dann Widerstand und parallel das Voltmeter
   \item $I \approx I_R$
 \end{itemize}
 

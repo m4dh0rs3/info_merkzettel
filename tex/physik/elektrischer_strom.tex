@@ -214,11 +214,11 @@ Stromdurchflossene Leiter erzeugen Magnetfelder orthogonal zur Flussrichtung:
 
 \paragraph{Magnetische Feldstärke}
 
-$$\vec{H} = \frac{\vec{I}}{2\pi r} = \left[\frac{A}{m}\right]$$
+$$\vec{H} = \frac{\vec{\Theta}}{s} = \frac{\vec{I}}{s} = \frac{\vec{I}}{2\pi r} = \left[\frac{A}{m}\right]$$
 
 \begin{itemize}
   \item Erzeugt durch stromdurchflossene Leiter $\vec{I}$
-  \item Kreisradius $2\pi r$ beliebig
+  \item $s$ z.B Kreisradius $= 2\pi *r$
 \end{itemize}
 
 \paragraph{1. \textsc{Maxwell}'sche Gleichung: Durchflutungsgesetz}
@@ -354,10 +354,29 @@ $$\underline{\hat{u}} = \hat{u} * (\cos \hat{\varphi} + j \sin \hat{\varphi}) = 
 
 \begin{itemize}
   \item Komplexe Amplitude mit Phasensprung $\hat{\varphi}$
-  \item $\underline{U}_1 + \underline{U}_2 = \Re(\underline{U}_1) + \Re(\underline{U}_2) + j(\Im(\underline{U}_1) + \Im(\underline{U}_2))$
-  \item $\underline{U}_1 * \underline{U}_2 = U_1 U_2 e^{j(\varphi_1 + \varphi_2)}$
-  \item $\frac{\underline{U}_1}{\underline{U}_2} = \frac{U_1}{U_2} e^{j(\varphi_1 - \varphi_2)}$
 \end{itemize}
+
+\paragraph{Komplexe Zahlen}
+
+$$\underline{c} = x + jy = re^{j \varphi}$$
+
+\begin{itemize}
+  \item $r = \sqrt{x^2 + y^2}$
+  \item $\varphi = \arctan \frac{y}{x}$
+  \item $x = r \cos \varphi$, $y = r \sin \varphi$
+\end{itemize}
+
+\begin{description}
+  \item[Addition]
+    \begin{align*}
+      \underline{U}_1 + \underline{U}_2 = & \Re(\underline{U}_1) + \Re(\underline{U}_2)    \\
+      +                                   & j(\Im(\underline{U}_1) + \Im(\underline{U}_2))
+    \end{align*}
+  \item[Multiplikation]
+    $$\underline{U}_1 * \underline{U}_2 = r_1 r_2 e^{j(\varphi_1 + \varphi_2)}$$
+    % \item[Division]
+    %   $$\frac{\underline{U}_1}{\underline{U}_2} = \frac{U_1}{U_2} e^{j(\varphi_1 - \varphi_2)}$$
+\end{description}
 
 \paragraph{Impedanz}
 
