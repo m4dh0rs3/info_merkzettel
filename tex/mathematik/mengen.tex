@@ -551,11 +551,16 @@ Sei $(M, \preceq)$ teilweise geordnet
 
 $$\forall m, n \in M \exists {}^{\inf}/_{\sup} \{m, n\}$$
 
+\begin{itemize}
+  \item Dann gilt Kommutativität, Assoziativität, Distributivität
+\end{itemize}
+
 \paragraph{Vollständig} $\forall X \subseteq M: \exists {}^{\inf}/_{\sup} X$
 \index{Vollständiger Verband}
 
 \begin{itemize}
   \item $\exists {}^{\min}/_{\max} M = {}^{\sup}/_{\inf} \emptyset$
+  \item Jede endliche nicht-leere Menge ist vollständig
 \end{itemize}
 
 \paragraph{Distributivität}
@@ -568,5 +573,47 @@ $$\forall m, n \in M \exists {}^{\inf}/_{\sup} \{m, n\}$$
 \end{align*}
 
 \begin{itemize}
-  \item Jede total geordnete Menge ist distributiv
+  \item Jede total geordnete Menge und alle Ketten ist distributiv
+  \item Keine Unterstruktur isomorph zu $M_3$ ($l \lor (m \land r)$) oder $N_5$ ($l_\bot \lor (r \land l_\top)$)
+\end{itemize}
+
+\section{Algebraische Strukturen}
+
+\begin{align*}
+  \mathcal{U} = (U, & \langle R_1, \dots, R_k \rangle, \langle f_1, \dots, f_l \rangle, \\
+                    & \langle g_1, \dots, g_m \rangle, \langle c_1, \dots, c_n \rangle)
+\end{align*}
+
+des Types $(k, l, m, n)$
+
+\begin{itemize}
+  \item Grundmenge $U$
+  \item Relationen $R_i$ auf $U$
+  \item Binäre Funktionen $f_i$ auf $U$
+  \item Unäre Funktionen $g_i$ auf $U$
+  \item Konstanten $c_i$ auf $U$ (Beschränken mögliche Isomorphismen)
+\end{itemize}
+
+\paragraph{Isomorphismus} $\varphi: U \rightarrow U'$
+
+\begin{itemize}
+  \item $\mathcal{U}$, $\mathcal{U'}$ gleichen Typs
+  \item $\varphi$ bijektiv
+  \item $(u_1, u_2) \in R_i \Leftrightarrow (\varphi (u_1), \varphi (u_2)) \in R'_i$
+  \item $\varphi(f_i(u_1, u_2)) = f'_i(\varphi(u_1), \varphi(u_2))$
+  \item $\varphi(g_i(u)) = g'_i(\varphi(u))$
+  \item $\varphi(c_i) = c'_i$
+\end{itemize}
+
+$\varphi$ ist ÄR. auf algebraischen Strukturen gleichen Typs
+
+\paragraph{Unterstruktur} $\mathcal{U}$ von $\mathcal{O}$
+
+\begin{itemize}
+  \item $\mathcal{U}$ und $\mathcal{O}$ gleichen Typs
+  \item $U \subseteq O$
+  \item $(u_1, u_2) \in R'_i \Leftrightarrow (u_1, u_2) \in R_i$
+  \item $f'_i(u_1, u_2) = f_i(u_1, u_2)$
+  \item $g'_i(u) = g_i(u)$
+  \item $c'_i = c_i$
 \end{itemize}
