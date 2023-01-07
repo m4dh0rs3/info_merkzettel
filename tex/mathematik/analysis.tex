@@ -1054,9 +1054,85 @@ $$\Rightarrow f'(x_0) = 0$$
 
 (Achtung: Umkehrung nicht notwendig!)
 
-Sei zusätzlich $f(x_0) = 0$ und $f 2$ mal ableitbar:
+Sei zusätzlich $f'(x_0) = 0$ und $f$ $2$-mal ableitbar:
 
 \begin{itemize}
   \item $f''(x_0) < 0 \Rightarrow x_0$ lokales Maximum
   \item $f''(x_0) > 0 \Rightarrow x_0$ lokales Minimum
 \end{itemize}
+
+\subsection{Taylor-Polynome}
+
+Sei $I \subseteq \mathbb{R}$, $a \in I$, $f: I \rightarrow \mathbb{R}$ $n$-mal diff.-bar
+
+$$T_{n,a}^f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(n)}{k!} (x - a)^k$$
+
+\paragraph{Restglied (Lagrange)} $f$ $n+1$-mal diff.-bar
+
+\begin{gather*}
+  R_n (x) = f(x) - T_{n, a}^f (x) \\
+  \Rightarrow \exists \xi \in (x, a): \\
+  R_n(x) = \frac{f^{(n + 1)} (\xi)}{(n + 1)!} (x - a)^{n + 1}
+\end{gather*}
+
+\section{Integralrechnung}
+
+\paragraph{Unterteilung} $(x_i)_{i = 0}^n \in [a, b]$ mit $a = x_0 < x_i < x_n = b$ (nicht notwendigerweise äquidistant)
+
+\paragraph{Treppenfunktion} $\varphi: [a, b] \rightarrow \mathbb{R}$ mit $\exists (x_i)_{i = 0}^n \in [a, b] \forall (x_{i-1}, x_i): \varphi(x) = \text{konst.} = c_i$
+
+\paragraph{Integral der Treppenfunktion}
+
+$$I(\varphi) = \sum_{i=1}^{n} c_i (x_i - x_{i - 1})$$
+
+Sei $\varphi, \psi \in T[a, b]$, $c \in \mathbb{R}$
+\begin{itemize}
+  \item $\varphi + \psi \in T[a, b]$, $c\varphi \in T[a, b]$
+  \item $I(\varphi + psi) = I(\varphi) + I(\psi)$, $I(c\varphi) = cI(\varphi)$
+  \item $\varphi \leq \psi \Rightarrow I(\varphi) \leq I(\psi)$
+\end{itemize}
+
+\paragraph{Unter-/Oberintegral} $f: [a, b] \rightarrow \mathbb{R}$ beschränkt
+
+\begin{description}
+  \item[Unteri.] $U(f) = \sup\{ I(\varphi) \mid \varphi \in T[a, b] \land \varphi \leq f \}$
+  \item[Oberi.] $O(f) = \inf\{ I(\psi) \mid \psi \in T[a, b] \land \psi \geq f \}$
+\end{description}
+
+\paragraph{\textsc{Riemann}-Integral} $f: [a, b] \rightarrow \mathbb{R}$ beschränkt
+
+$$U(f) = O(f) = \int_a^b f$$
+
+\paragraph{Gleichmä\ss ig Stetig} $D \subseteq \mathbb{R}$, $f: D \rightarrow \mathbb{R}$
+
+\begin{gather*}
+  \forall \epsilon > 0 \exists \delta > 0 \forall x, y \in D: \\
+  |x - y| \leq \delta \Rightarrow |f(x) - f(y)| \leq \epsilon
+\end{gather*}
+
+\begin{itemize}
+  \item $f$ glm. stetig $\Rightarrow f$ stetig
+  \item $f: [a, b] \rightarrow \mathbb{R}$ stetig $\Rightarrow f$ stetig
+\end{itemize}
+
+\paragraph{\textsc{Riemann}'sche Summe} $f,g: [a, b] \rightarrow \mathbb{R}$ ($\Rightarrow$ glm.) stetig
+
+\begin{gather*}
+  s_n(f) = \frac{b - a}{n} \sum_{i = 1}^{n} f(a + i\frac{b - a}{n}) \\
+  \lim_{n \rightarrow \infty} s_n (f) = \int_{a}^{b} f
+\end{gather*}
+
+\begin{itemize}
+  \item $\int f + g = \int f + \int g$
+  \item $\int cf = c \int f$
+  \item $f \leq g \Rightarrow \int f \leq \int g$
+  \item $|\int f| \leq \int |f|$
+  \item $\int_{a}^{b} f = \int_{a}^{c} f + \int_{c}^{b} f \quad a < c < b$
+\end{itemize}
+
+\paragraph{Mittelwertsatz} $f: [a, b] \rightarrow \mathbb{R}$ stetig
+
+\begin{align*}
+  \exists c \in [a, b]: & f(c) = \frac{1}{b -a} \int_{a}^{b} f \\
+  \text{bzw. }          & A = \int_{a}^{b} f = (b - a) f(c)
+\end{align*}
