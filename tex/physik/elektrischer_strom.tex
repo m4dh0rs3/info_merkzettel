@@ -214,11 +214,11 @@ Stromdurchflossene Leiter erzeugen Magnetfelder orthogonal zur Flussrichtung:
 
 \paragraph{Magnetische Feldstärke}
 
-$$\vec{H} = \frac{\vec{\Theta}}{s} = \frac{\vec{I}}{s} = \frac{\vec{I}}{2\pi r} = \left[\frac{A}{m}\right]$$
+$$\vec{H} = \frac{\vec{\Theta}}{s} = \frac{I}{s} * \vec{e_s} = \frac{I}{2\pi r} * \vec{e_s} = \left[\frac{A}{m}\right]$$
 
 \begin{itemize}
-  \item Erzeugt durch stromdurchflossene Leiter $\vec{I}$
-  \item $s$ z.B Kreisradius $= 2\pi *r$
+  \item Erzeugt durch stromdurchflossene Leiter $I$
+  \item $\vec{e_s}$ Einheitsvektor tangential zum Umfang
 \end{itemize}
 
 \paragraph{1. \textsc{Maxwell}'sche Gleichung: Durchflutungsgesetz}
@@ -388,10 +388,106 @@ $$\underline{Z} = \underline{U} / \underline{I} = R + jX = [\Omega]$$
   \item[Blindwiderstand] $X$ (Blindleistung bei Induktiven und Kapazitiven Bauteilen zum Aufbau des Feldes)
 \end{description}
 
+\section{Signale}
+
+\paragraph{Bandbreite} Grö\ss e des Frequenzbereichs in dem ohne wesentliche Störeffekte übertragen werden kann
+
+$$W = [Hz]$$
+
+\paragraph{Wei\ss es Rauschen} Signal aller zufälligen Störeffekte
+
+\paragraph{Rauschabstand} Verhältnis Signalstärke zu Rauschstärke (bzw. Leistung)
+
+$$10 \log_{10} \frac{S}{N} = [dB]$$
+
+\paragraph{Kanalkapazität} Maximale Informationsmenge die auf einem Kanal übertragen wird (Satz von \textsc{Shannon})
+
+$$C = W * \log_2 (1 + \frac{S}{N}) = [Bit/s]$$
+
+\paragraph{Signalarten}
+
+\begin{description}
+  \item[Daten]\ \begin{itemize}
+    \item analog (zeitkontin., wertekontin)
+    \item digital (zeitdiskret., wertdiskret.)
+  \end{itemize}
+
+  \item[Signale] (meist zeitkontin) \begin{itemize}
+      \item analog (wertekontin.)
+      \item digital (wertediskret.)
+    \end{itemize}
+\end{description}
+
+\mzGraphic{
+  \begin{tblr}{
+      row{2} = {c},
+      cell{1}{1} = {c=2,r=2}{},
+      cell{1}{3} = {c=4}{c},
+      cell{3}{1} = {r=4}{c},
+      cell{3}{3} = {c},
+      cell{3}{4} = {c},
+      cell{3}{5} = {c},
+      cell{3}{6} = {c},
+      cell{4}{3} = {c},
+      cell{4}{4} = {c},
+      cell{4}{5} = {c},
+      cell{4}{6} = {c},
+      cell{5}{3} = {c},
+      cell{5}{4} = {c},
+      cell{5}{5} = {c},
+      cell{5}{6} = {c},
+      cell{6}{3} = {c},
+      cell{6}{4} = {c},
+      cell{6}{5} = {c},
+      cell{6}{6} = {c},
+      vline{2-3} = {3-6}{},
+      vline{3} = {2-6}{},
+      hline{2} = {3-6}{},
+      hline{3} = {2-6}{},
+    }
+    &  & \textbf{Ergebnissignal} &  &  & \\
+    &  & {\itshape zeitkontin.\\wertkontin.} & {\itshape zeitdiskret.\\wertkontin.} & {\itshape zeitkontin.\\wertdiskret.} & {\itshape zeitdiskret.\\wertdiskret.}\\
+    \begin{sideways}\textbf{Eingangssignal}\end{sideways} & {\itshape zeitkontin.\\wertkontin.} &  & Abtastung & Quantisierung & A/D-Wandlung\\
+    & {\itshape zeitdiskret.\\wertkontin.} & Interpolation &  &  & Quantisierung\\
+    & {\itshape zeitkontin.\\wertdiskret.} & Glättung &  &  & Abtastung\\
+    & {\itshape zeitdiskret.\\wertdiskret.} & D/A-Wandlung &  & Interpolation &
+  \end{tblr}
+}
+
+% TODO: A/D-Wandler + Operationsverstärker.
+
+\paragraph{Auffrischen von Signalen} in Abständen
+
+\begin{description}
+  \item[Verstärker] (analog)
+  \item[Regenerator] (digital)
+\end{description}
+
+\paragraph{Satz von \textsc{Nyquist}} Ein Signal der Frequenz $f$ kann mit einer Abtastfrequenz $\geq 2f$ rekonstruiert werden
+
+\subsection{\textsc{Fourier}-Analyse}
+
+Konvertierung des Zeitraums mit Fourierreihen $a_n$, $b_n$ in Frequenzraum über $n$-Harmonische mit Harmonischer Analyse
+
+\begin{align*}
+  F(t) = \frac{a_0}{2} + & \sum_{n = 1}^{\infty} a_n \cos (2\pi nft)             \\
+  +                      & \sum_{n = 1}^{\infty} b_n \sin (2\pi nft)             \\
+  = \frac{a_0}{2} +      & \sum_{n = 1}^{\infty} c_n \cos (2\pi nft - \varphi_n)
+\end{align*}
+
+\begin{itemize}
+  \item Grundfrequenz $f = 1/T$
+  \item $a_n = \frac{2}{T} \int_{0}^{T} F(t) \cos (2\pi nft) dt$
+  \item $b_n = \frac{2}{T} \int_{0}^{T} F(t) \sin (2\pi nft) dt$
+  \item $c_n = \sqrt{a_n^2 + b_n^2}$, $\varphi_n = \arctan \frac{b_n}{a_n}$
+  \item $f$ muss überall monoton und stetig bzw. existieren an jeder Unstetigkeitsstelle die links- und rechtsseitigen Grenzwerte (\textsc{Dirichletsche}-Bedingung)
+\end{itemize}
+
 \section{Häufige Fehler}
 
 \begin{itemize}
   \item Vektor und Skalare Formeln mischen
+  \item Gesamtkapazitäten statt Kirchhoff
   \item $mm^3 = (10^{-3} m)^3 = 10^{-9} m^3$
   \item $1/k\Omega = m\Omega$
 \end{itemize}

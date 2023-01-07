@@ -33,7 +33,7 @@ $$R = \rho \frac{l}{A}$$
 
 \paragraph{Magnetische Feldstärke}
 
-$$\vec{H} = \frac{\vec{I}}{2\pi r} = \left[\frac{A}{m}\right]$$
+$$H = \frac{I}{2\pi r} = \left[\frac{A}{m}\right]$$
 
 \section{Ohmsch: Lineare Widerstände}
 
@@ -51,12 +51,12 @@ $$R = [\Omega] = \left[\frac{V}{A}\right]$$
 \paragraph{Schaltung}
 
 \begin{description}
-  \item[Reihe] $R_G = \sum R_k$
+  \item[Reihe] $\mathbf{R_G = \sum R_k}$
     \begin{itemize}
       \item $I_k = I \Rightarrow U_k = I * R_k$
     \end{itemize}
 
-  \item[Parallel] $R_G = 1 / \sum \frac{1}{R_k}$
+  \item[Parallel] $\mathbf{R_G = 1 / \sum \frac{1}{R_k}}$
     \begin{itemize}
       \item $U_k = U \Rightarrow I_k = U/R_k$
     \end{itemize}
@@ -132,8 +132,8 @@ Das Innere eines metallischen Hohlraums ist feldfrei.
 \paragraph{Schaltung}
 
 \begin{description}
-  \item[Reihe] $C_G = 1/{\sum \frac{1}{C_k}}$
-  \item[Parallel] $C_G = \sum C_k$
+  \item[Reihe] $\mathbf{C_G = 1/{\sum \frac{1}{C_k}}}$
+  \item[Parallel] $\mathbf{C_G = \sum C_k}$
 \end{description}
 % TODO: Arten von Kondensatoren.
 
@@ -346,6 +346,21 @@ $$\omega = \sqrt{\frac{1}{L * C}} = \frac{2\pi}{T}$$
 \begin{itemize}
   \item $u_C(t) + u_L(t) = 0V$
   \item (Gedämpft durch Widerstand)
+\end{itemize}
+
+\subsection{Tiefpassfilter}
+
+Lässt niedrige Frequenzen passieren
+
+\begin{itemize}
+  \item Reihenschaltung von Widerstand und Kondensator mit Ein- und Ausgehender Spannung
+\end{itemize}
+
+$$\frac{\underline{U}_\text{aus}}{\underline{U}_\text{ein}} = \frac{1 / (j \omega C)}{R + 1/(j \omega C)} = \frac{e^{-j \varphi}}{\sqrt{1 + (\omega R C)^2}}$$
+
+\begin{itemize}
+  \item Niderfrequent: $\lim_{\omega \rightarrow 0} \left|\frac{\underline{U}_\text{aus}}{\underline{U}_\text{ein}}\right| \approx 1$
+  \item Hochfrequent: $\lim_{\omega \rightarrow \infty} \left|\frac{\underline{U}_\text{aus}}{\underline{U}_\text{ein}}\right| \approx 0$
 \end{itemize}
 
 \section{Häufige Fehler}
